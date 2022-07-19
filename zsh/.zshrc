@@ -21,6 +21,8 @@ source theme.zsh_theme
 
 
 # Load plugins with Antidote
+autoload -Uz compinit
+compinit
 [[ -e ~/.antidote ]] || git clone https://github.com/mattmc3/antidote.git ~/.antidote
 . ~/.antidote/antidote.zsh
 antidote load
@@ -32,8 +34,22 @@ function fix_harddrive() {
 	sudo pkill -f fsck;
 }
 
-alias python=python3
-alias py=python3
-alias pip=pip3
+alias python='python3'
+alias py='python3'
+alias pip='pip3'
 
-alias vim=nvim
+alias vim='nvim'
+
+alias dotZsh='nvim ~/.zshrc'
+alias dotNvim='nvim ~/.config/nvim/init.vim'
+
+alias ip='curl ifconfig.me'
+
+alias ls='exa'
+alias exa='exa -a'
+alias l='exa -al --git'
+
+alias up='cd ..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'

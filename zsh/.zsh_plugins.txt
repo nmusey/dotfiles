@@ -1,2 +1,9 @@
 ohmyzsh/ohmyzsh path:plugins/git
 ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+ohmyzsh/ohmyzsh path:plugins/web-search
+ohmyzsh/ohmyzsh path:plugins/jsontools
+
+walesmd/caniuse.plugin.zsh
+zpm-zsh/clipboard
+zpm-zsh/colorize
+pfahlr/zsh_plugin_loremipsum
