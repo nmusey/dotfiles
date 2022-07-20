@@ -44,10 +44,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 nvm install 16
 
 # Setup termianal envionment
-git clone https://github.com/nmusey/dotfiles
 sudo chsh -s $(which zsh)
-
-cd $HOME/dotfiles
 stow zsh
 stow nvim
 
