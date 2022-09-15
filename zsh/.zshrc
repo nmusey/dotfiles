@@ -61,4 +61,8 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
-source local.zshrc
+if [[ -e local.zshrc ]]; then
+    source local.zshrc
+fi
+
+eval "$(/opt/homebrew/bin/brew shellenv)"

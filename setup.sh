@@ -28,6 +28,9 @@ elif [[ "$1" = "macos" ]]; then
     sudo xcodebuild -license accept
 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" # Install homebrew
+
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> zsh/.zshrc
+    eval "$(/opt/homebrew/bin/brew shellenv)"
     brew install git zsh neovim stow ripgrep fzf exa bat curl
     brew install python
     brew install --cask mos docker iterm2
