@@ -40,16 +40,11 @@ alias pip='pip3'
 
 alias vim='nvim'
 
-alias dotZsh='nvim ~/.zshrc'
-alias dotNvim='nvim ~/.config/nvim/init.vim'
-
 alias ip='curl ifconfig.me'
 
 alias ls='exa'
-alias exa='exa -a'
 alias l='exa -al --git'
 
-alias up='cd ..'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -61,8 +56,11 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
-if [[ -e local.zshrc ]]; then
-    source local.zshrc
+if [[ -e ~/local.zshrc ]]; then
+    source ~/local.zshrc
 fi
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+
+if [[ -f /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi

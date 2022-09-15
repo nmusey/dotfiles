@@ -1,9 +1,12 @@
 let mapleader=" "
 
-nnoremap <leader>t :NERDTreeToggle<CR>
-nnoremap <leader>ft :NERDTreeFocus<CR>
+" Basics
+nnoremap <leader>ft :NERDTreeToggle<CR>
+nnoremap <leader>fft :NERDTreeFocus<CR>
 
 nnoremap <leader>r :Rg<CR>
 nnoremap <leader>s :Files<CR>
 
 nnoremap <leader>g :GitGutterPreviewHunk<CR>
+
+nnoremap <Leader>q :Bdelete<CR>
