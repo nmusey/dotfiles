@@ -8,7 +8,7 @@ usage="bash setup.sh {os} -- os is one of 'ubuntu', 'macos', 'arch'"
 # Install programs on Ubuntu
 if [[ "$1" = "ubuntu" ]]; then
     sudo apt update
-    sudo apt install -y git zsh neovim stow ripgrep fzf exa bat curl
+    sudo apt install -y git zsh neovim stow ripgrep fzf exa bat curl tmux
     sudo apt upgrade -y
 
     # Docker is fun to install
@@ -29,13 +29,13 @@ elif [[ "$1" = "macos" ]]; then
 
     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> zsh/.zshrc
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    brew install git zsh neovim stow ripgrep fzf exa bat curl
+    brew install git zsh neovim stow ripgrep fzf exa bat curl tmux
     brew install python
     brew install --cask mos docker iterm2
     brew cleanup
 elif [[ "$1" = "arch" ]]; then 
     sudo pacman -Syu
-    sudo pacman -S git zsh neovim stow ripgrep fzf exa bat curl docker docker-compose
+    sudo pacman -S git zsh neovim stow ripgrep fzf exa bat curl docker docker-compose tmux
     sudo systemctl start docker.service
     sudo systemctl enable docker.service
     sudo usermog -aG docker $USER
