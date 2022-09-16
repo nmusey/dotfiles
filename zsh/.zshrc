@@ -16,7 +16,7 @@ fi
 
 
 # Add my custom theme
-source theme.zsh_theme
+source ~/theme.zsh_theme
 
 
 
@@ -30,9 +30,7 @@ antidote load
 
 
 # Aliases and custom functions
-function fix_harddrive() {
-	sudo pkill -f fsck;
-}
+alias fixhd='sudo pkill -f fsck'
 
 alias python='python3'
 alias py='python3'
@@ -43,12 +41,17 @@ alias vim='nvim'
 alias ip='curl ifconfig.me'
 
 alias ls='exa'
-alias l='exa -al --git'
+alias l='exa -al'
 
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+alias g='git status'
+alias gd='git difftool'
+
+
+# Add path variables
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -56,7 +59,7 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
-if [[ -e ~/local.zshrc ]]; then
+if [[ -f ~/local.zshrc ]]; then
     source ~/local.zshrc
 fi
 
