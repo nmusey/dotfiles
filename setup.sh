@@ -3,9 +3,6 @@
 # Automatic setup script for Unix computers.
 # By Nick Musey
 
-usage="bash setup.sh {os} -- os is one of 'ubuntu', 'macos', 'arch'"
-
-# Install programs on Ubuntu
 if [[ "$1" = "ubuntu" ]]; then
     sudo apt update
     sudo apt install -y git zsh neovim stow ripgrep fzf exa bat curl tmux
@@ -40,7 +37,7 @@ elif [[ "$1" = "arch" ]]; then
     sudo systemctl enable docker.service
     sudo usermog -aG docker $USER
 else
-    echo $usage
+    echo "bash setup.sh {os} -- os is one of 'ubuntu', 'macos', 'arch'"
     exit 1
 fi
 
@@ -49,11 +46,12 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# Install vim plug
+# Install vim plug and vim plugins
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+nvim +PlugInstall
 
-# Setup termianal envionment
+# Setup terminal envionment
 sudo chsh -s $(which zsh)
 stow zsh
 stow nvim
@@ -62,7 +60,4 @@ stow git
 
 # Clean up
 cd $HOME
-echo
-echo
-echo
-echo "Installation is complete."
+source .zshrc
