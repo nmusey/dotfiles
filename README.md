@@ -1,7 +1,9 @@
 # dotfiles
-Setting things up the way I like it. I plan on having some scripts to setup new environments automatically too.
+Setting things up the way I like it. 
 
-I'm currently using [Stow](https://www.gnu.org/software/stow/) to link all my dotfiles to their appropriate locations.
+I also included a script to set up computers and VMs with some basics.
+
+I'm using [Stow](https://www.gnu.org/software/stow/) to link all my dotfiles to their appropriate locations.
 
 ## Configured programs
 - `zsh`
@@ -9,12 +11,5 @@ I'm currently using [Stow](https://www.gnu.org/software/stow/) to link all my do
 - `stow`
 - `antidote`
 
-I'd like to learn how to use `tmux` as well but haven't set it up yet.
-
 ## Usage
-Install scripts exist for MacOS and Ubuntu (or any Ubuntu based distros). Just clone the repo and run `setup.sh {macos,ubuntu}` to install.
-
-## Todo
-* Configure a `languages.vim` file with language plugins
-* Setup a git config
-* Setup an install script for Arch-based distros
+Install scripts exist for MacOS, Ubuntu (or any Ubuntu based distros), and Arch (or Arch based distros). Just clone the repo and run `setup.sh {macos,ubuntu,arch}` to install. This should also stow all the configured configuration files. 
