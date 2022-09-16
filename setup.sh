@@ -3,9 +3,7 @@
 # Automatic setup script for Unix computers.
 # By Nick Musey
 
-usage="bash setup.sh {os} -- os is one of 'ubuntu', 'macos'"
-
-allOS=("ubuntu", "macos")
+usage="bash setup.sh {os} -- os is one of 'ubuntu', 'macos', 'arch'"
 
 # Install programs on Ubuntu
 if [[ "$1" = "ubuntu" ]]; then
@@ -35,6 +33,12 @@ elif [[ "$1" = "macos" ]]; then
     brew install python
     brew install --cask mos docker iterm2
     brew cleanup
+elif [[ "$1" = "arch" ]]; then 
+    sudo pacman -Syu
+    sudo pacman -S git zsh neovim stow ripgrep fzf exa bat curl docker docker-compose
+    sudo systemctl start docker.service
+    sudo systemctl enable docker.service
+    sudo usermog -aG docker $USER
 else
     echo $usage
     exit 1
@@ -53,6 +57,8 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 sudo chsh -s $(which zsh)
 stow zsh
 stow nvim
+rm ~/.gitconfig
+stow git
 
 # Clean up
 cd $HOME
