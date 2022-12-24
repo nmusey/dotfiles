@@ -12,6 +12,8 @@ nnoremap <leader>s :Files<CR>
 nnoremap <leader>g :GitGutterPreviewHunk<CR>
 
 nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>j :tabp<CR>
+nnoremap <leader>k :tabn<CR>
 
 " COC keybinds
 inoremap <silent><expr> <c-space> coc#refresh()
