@@ -58,6 +58,7 @@ stow zsh
 stow nvim
 rm ~/.gitconfig
 stow git
+stow tmux
 
 # Clean up
 cd $HOME
