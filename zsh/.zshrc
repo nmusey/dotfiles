@@ -5,13 +5,8 @@
 
 
 # Set some variables
-HYPHEN_INSENSITIVE="true"
-
-if [[ -n $SSH_CONNECTION ]]; then
-	export EDITOR='vim'
-else
-	export EDITOR='nvim'
-fi
+export HYPHEN_INSENSITIVE="true"
+export EDITOR='nvim'
 
 
 
@@ -38,10 +33,10 @@ alias pip='pip3'
 
 alias vim='nvim'
 
-alias ip='curl ifconfig.me'
-
 alias ls='exa'
 alias l='exa -al'
+
+alias clip='xclip -sel clip'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -67,4 +62,3 @@ fi
 if [[ -f /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
-eval "$(/opt/homebrew/bin/brew shellenv)"
