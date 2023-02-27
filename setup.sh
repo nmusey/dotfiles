@@ -41,15 +41,16 @@ else
     exit 1
 fi
 
-# Install nvm
+# Install nvm and node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+nvm install 18
 
 # Install vim plug and vim plugins
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-nvim +PlugInstall
+nvim --headless +PlugInstall +qa
 
 # Setup terminal envionment
 sudo chsh -s $(which zsh)
