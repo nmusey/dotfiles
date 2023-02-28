@@ -14,7 +14,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-commentary'
-Plug 'mg979/vim-visual-multi'
+Plug 'duane9/nvim-rg'
 
 " Autocompletion
 Plug 'rstacruz/vim-closer'

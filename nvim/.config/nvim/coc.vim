@@ -1,0 +1,9 @@
+let g:coc_global_extensions = [
+    \'coc-css',
+    \'coc-html',
+    \'coc-json',
+    \'coc-markdownlint',
+    \'coc-phpls',
+    \'coc-pyright',
+    \'coc-tsserver'
+\]

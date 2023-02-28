@@ -1,62 +1,52 @@
 let mapleader=" "
 
-" Basics
+" Tabs
+nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>j :tabp<CR>
+nnoremap <leader>k :tabn<CR>
+nnoremap <leader>J :tabm -<CR>
+nnoremap <leader>K :tabm +<CR>
+
+" Navigation between files
 nnoremap <leader>ft :NERDTreeToggle<CR>
 nnoremap <leader>fo :NERDTree<CR>
 nnoremap <leader>fq :NERDTreeClose<CR>
 nnoremap <leader>ff :NERDTreeFocus<CR>
-
+nnoremap <leader>ffc :NERDTreeFind<CR>
 nnoremap <leader>r :Rg<CR>
 nnoremap <leader>s :Files<CR>
 
-nnoremap <leader>g :GitGutterPreviewHunk<CR>
-
-nnoremap <leader>t :tabnew<CR>
-nnoremap <leader>j :tabp<CR>
-nnoremap <leader>k :tabn<CR>
-
-" COC keybinds
-inoremap <silent><expr> <c-space> coc#refresh()
-
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gt <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-nmap <leader>rn <Plug>(coc-rename)
-
-nnoremap <silent> K :call ShowDocumentation()<CR>
-
+" Navigation in file
+nmap <silent>gd <Plug>(coc-definition)
+nmap <silent>gt <Plug>(coc-type-definition)
+nmap <silent>gi <Plug>(coc-implementation)
+nmap <silent>gr <Plug>(coc-references)
 nmap <leader>E <Plug>(coc-diagnostic-prev)
 nmap <leader>e <Plug>(coc-diagnostic-next)
+nmap <silent><C-s> <Plug>(coc-range-select)
+xmap <silent><C-s> <Plug>(coc-range-select)
 
-" Formatting selected code.
-xmap <leader>pt  <Plug>(coc-format-selected)
-nmap <leader>pt  <Plug>(coc-format-selected)
+" Information
+nnoremap <silent>K :call ShowDocumentation()<CR>
+nnoremap <leader>g :GitGutterPreviewHunk<CR>
 
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+" COC keybinds
+inoremap <silent><expr> <C-j> coc#pum#visible() ? coc#pum#next() : coc#refresh
+inoremap <silent><expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : coc#refresh
+inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#pum#confirm() : coc#refresh
 
-" Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
+" Refactoring 
+nmap <leader>rn <Plug>(coc-rename)
+xmap <leader>pt <Plug>(coc-format-selected)
+nmap <leader>pt <Plug>(coc-format-selected)
+nmap <leader>ac <Plug>(coc-codeaction)
+nmap <leader>qf <Plug>(coc-fix-current)
+nmap <leader>re <Plug>(coc-codeaction-refactor)
+xmap <leader>r  <Plug>(coc-codeaction-refactor-selected)
+nmap <leader>r  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent><C-z> <Plug>(coc-codelens-action)
 
-" Remap keys for refactor code actions.
-nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
-xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
-nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
-
-" Run the Code Lens action on the current line.
-nmap <leader>cl  <Plug>(coc-codelens-action)
-
-" Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
-
+" Helper functions
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
@@ -65,20 +55,6 @@ function! ShowDocumentation()
   endif
 endfunction
 
-" Use <c-space> to trigger completion.
-if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
-else
-  inoremap <silent><expr> <c-@> coc#refresh()
-endif
-
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocActionAsync('format')
-
-" Add `:Fold` command to fold current buffer.
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
