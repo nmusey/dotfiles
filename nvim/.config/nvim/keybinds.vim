@@ -47,8 +47,8 @@ nmap <leader>pt <Plug>(coc-format-selected)
 nmap <leader>ac <Plug>(coc-codeaction)
 nmap <leader>qf <Plug>(coc-fix-current)
 nmap <leader>re <Plug>(coc-codeaction-refactor)
-xmap <leader>r  <Plug>(coc-codeaction-refactor-selected)
-nmap <leader>r  <Plug>(coc-codeaction-refactor-selected)
+xmap <leader>rf  <Plug>(coc-codeaction-refactor-selected)
+nmap <leader>rf  <Plug>(coc-codeaction-refactor-selected)
 nmap <silent><C-z> <Plug>(coc-codelens-action)
 
 " Helper functions
