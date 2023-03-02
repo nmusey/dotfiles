@@ -2,10 +2,15 @@ let mapleader=" "
 
 " Tabs
 nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>T :tabnew %<CR>
 nnoremap <leader>j :tabp<CR>
 nnoremap <leader>k :tabn<CR>
 nnoremap <leader>J :tabm -<CR>
 nnoremap <leader>K :tabm +<CR>
+
+" Panes
+nnoremap <leader>Y :vsplit<CR>
+nnoremap <leader>U :split<CR>
 
 " Navigation between files
 nnoremap <leader>ft :NERDTreeToggle<CR>
@@ -31,7 +36,7 @@ nnoremap <silent>K :call ShowDocumentation()<CR>
 nnoremap <leader>g :GitGutterPreviewHunk<CR>
 
 " COC keybinds
-inoremap <silent><expr> <C-j> coc#pum#visible() ? coc#pum#next() : coc#refresh
+inoremap <silent><expr> <C-j> coc#pum#visible() ? coc#pum#next(1) : coc#refresh
 inoremap <silent><expr> <C-k> coc#pum#visible() ? coc#pum#prev(1) : coc#refresh
 inoremap <silent><expr> <C-l> coc#pum#visible() ? coc#pum#confirm() : coc#refresh
 
