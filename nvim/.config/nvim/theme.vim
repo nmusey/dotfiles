@@ -26,5 +26,5 @@ set title
 " ----- Theme -----
 set termguicolors
 
-colorscheme gruvbox
+colorscheme everforest
 set background=dark

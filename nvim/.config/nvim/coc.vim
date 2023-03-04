@@ -3,7 +3,8 @@ let g:coc_global_extensions = [
     \'coc-html',
     \'coc-json',
     \'coc-markdownlint',
+    \'coc-omnisharp',
     \'coc-phpls',
     \'coc-pyright',
-    \'coc-tsserver'
+    \'coc-tsserver',
 \]

@@ -3,6 +3,7 @@ call plug#begin()
 
 " Theming
 Plug 'morhetz/gruvbox'
+Plug 'sainnhe/everforest'
 
 " Language support
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -27,6 +28,3 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 
 call plug#end()
-
-" CoC extensions
-let g:coc_global_extensions = ['coc-tsserver']

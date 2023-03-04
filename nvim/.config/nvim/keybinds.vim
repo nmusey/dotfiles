@@ -18,7 +18,8 @@ nnoremap <leader>fo :NERDTree<CR>
 nnoremap <leader>fq :NERDTreeClose<CR>
 nnoremap <leader>ff :NERDTreeFocus<CR>
 nnoremap <leader>ffc :NERDTreeFind<CR>
-nnoremap <leader>r :Rg<CR>
+nnoremap <leader>r :grep<CR>
+nnoremap <leader>R :grep <C-r><C-w><CR>
 nnoremap <leader>s :Files<CR>
 
 " Navigation in file
