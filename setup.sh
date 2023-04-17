@@ -5,7 +5,7 @@
 
 if [[ "$1" = "ubuntu" ]]; then
     sudo apt update
-    sudo apt install -y git zsh neovim stow ripgrep fzf exa bat curl tmux
+    sudo apt install -y git zsh stow ripgrep fzf exa bat curl tmux
     sudo apt upgrade -y
 
     # Docker is fun to install
@@ -26,13 +26,12 @@ elif [[ "$1" = "macos" ]]; then
 
     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> zsh/.zshrc
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    brew install git zsh neovim stow ripgrep fzf exa bat curl tmux
-    brew install python
+    brew install git zsh stow ripgrep fzf exa bat curl tmux python
     brew install --cask mos docker iterm2
     brew cleanup
 elif [[ "$1" = "arch" ]]; then 
     sudo pacman -Syu
-    sudo pacman -S git zsh neovim stow ripgrep fzf exa bat curl docker docker-compose tmux
+    sudo pacman -S git zsh stow ripgrep fzf exa bat curl docker docker-compose tmux
     sudo systemctl start docker.service
     sudo systemctl enable docker.service
     sudo usermog -aG docker $USER
@@ -47,10 +46,16 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 nvm install 18
 
-# Install vim plug and vim plugins
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-nvim --headless +PlugInstall +qa
+# Install neovim
+git clone https://github.com/neovim/neovim.git
+cd neovim
+make CMAKE_BUILD_TYPE=Release
+sudo make install
+cd ..
+rm -rf neovim
+
+# tmux plugin manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Setup terminal envionment
 sudo chsh -s $(which zsh)
