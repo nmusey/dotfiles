@@ -1,7 +1,7 @@
 -- Theme
 vim.opt.termguicolors = true
 vim.opt.background = 'dark'
-vim.cmd[[colorscheme everforest]]
+pcall(vim.cmd, 'colorscheme everforest')
 
 -- Indentation
 vim.opt.tabstop = 4
