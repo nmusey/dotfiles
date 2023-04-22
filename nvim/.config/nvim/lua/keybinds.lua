@@ -1,5 +1,7 @@
 vim.g.mapleader = ' '
 
+-- LSP keybinds are in plugins/lsp.lua in the on_lsp_attach function
+
 -- Tab Management
 vim.keymap.set('n', '<leader>t', '<cmd>tabnew<CR>')
 vim.keymap.set('n', '<leader>T', '<cmd>tab split<CR>')
@@ -26,17 +28,8 @@ vim.keymap.set('', '<leader>ft', '<cmd>NERDTreeToggle<CR>')
 vim.keymap.set('', '<leader>ff', '<cmd>NERDTreeFocus<CR>')
 vim.keymap.set('', '<leader>ffc', '<cmd>NERDTreeFind<CR>')
 
--- LSP 
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(args)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-    kim.keymap.set('n', 'gr', vim.lsp.buf.references, {})
-  end,
-})
-
 -- Telescope
-telescope = require 'telescope.builtin'
+local telescope = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>s', telescope.find_files, {})
 vim.keymap.set('n', '<leader>S', telescope.treesitter, {})
 vim.keymap.set('n', '<leader>r', telescope.grep_string, {})

@@ -9,21 +9,18 @@ local ensure_packer = function()
   return false
 end
 
+local packer_bootstrap = ensure_packer()
+local ok, packer = pcall(require, 'packer')
+if not ok then
+    return
+end
+
 vim.cmd([[
     augroup packer_user_config
         autocmd!
         autocmd BufWritePost plugins.lua source <afile> | PackerSync
     augroup end
 ]])
-
-
-local packer_bootstrap = ensure_packer()
-
-
-local ok, packer = pcall(require, 'packer')
-if not ok then
-	return
-end
 
 packer.startup(function(use)
 	use 'wbthomason/packer.nvim'
@@ -34,27 +31,21 @@ packer.startup(function(use)
     use 'rebelot/kanagawa.nvim'
 
     -- LSP
-    use 'neovim/nvim-lspconfig' 
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        requires = {
-              -- LSP Support
-              {'dundalek/lazy-lsp.nvim'},
-              {'williamboman/mason.nvim'},
-              {'williamboman/mason-lspconfig.nvim'},
+    use 'neovim/nvim-lspconfig'
+    use 'dundalek/lazy-lsp.nvim'
+    use {'williamboman/mason.nvim', run = ':MasonUpdate'}
+    use 'williamboman/mason-lspconfig.nvim'
 
               -- Autocompletion
-              {'hrsh7th/nvim-cmp'},
-              {'hrsh7th/cmp-buffer'},
-              {'hrsh7th/cmp-path'},
-              {'saadparwaiz1/cmp_luasnip'},
-              {'hrsh7th/cmp-nvim-lsp'},
-              {'hrsh7th/cmp-nvim-lua'},
-        }
-    }
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'saadparwaiz1/cmp_luasnip'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-nvim-lua'
 
 	-- General
-    use ({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-tree/nvim-web-devicons'
@@ -73,6 +64,9 @@ packer.startup(function(use)
     use 'tpope/vim-fugitive'
 
     if packer_bootstrap then
-        require('packer').sync()
+        packer.sync()
     end
 end)
+
+require('plugins/lsp')
+require('plugins/treesitter')
