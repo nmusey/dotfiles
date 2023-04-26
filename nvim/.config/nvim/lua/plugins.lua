@@ -36,13 +36,15 @@ packer.startup(function(use)
     use {'williamboman/mason.nvim', run = ':MasonUpdate'}
     use 'williamboman/mason-lspconfig.nvim'
 
-              -- Autocompletion
+    -- Autocompletion
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
-    use 'saadparwaiz1/cmp_luasnip'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-nvim-lua'
+    use 'dcampos/nvim-snippy'
+    use 'honza/vim-snippets'
+    use 'dcampos/cmp-snippy'
 
 	-- General
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
@@ -68,5 +70,6 @@ packer.startup(function(use)
     end
 end)
 
+require('plugins/autocomplete')
 require('plugins/lsp')
 require('plugins/treesitter')
