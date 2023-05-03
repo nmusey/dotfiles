@@ -1,22 +1,6 @@
 require('mason').setup()
 require('mason-lspconfig').setup({
     automatic_installation = true,
-    ensure_installed = {
-        'bashls',
-        'csharp_ls',
-        'cssls',
-        'docker_compose_language_service',
-        'dockerls',
-        'eslint',
-        'gopls',
-        'html',
-        'intelephense',
-        'jsonls',
-        'lua_ls',
-        'rust_analyzer',
-        'sqlls',
-        'tsserver',
-    }
 })
 
 local telescope = require('telescope.builtin')
