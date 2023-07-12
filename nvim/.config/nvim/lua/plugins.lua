@@ -35,6 +35,7 @@ packer.startup(function(use)
     use 'dundalek/lazy-lsp.nvim'
     use {'williamboman/mason.nvim', run = ':MasonUpdate'}
     use 'williamboman/mason-lspconfig.nvim'
+    use 'github/copilot.vim'
 
     -- Autocompletion
     use 'hrsh7th/nvim-cmp'
