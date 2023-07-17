@@ -39,3 +39,7 @@ vim.keymap.set('n', '<leader>R', telescope.git_files, {})
 vim.keymap.set('n', '<leader>g', '<cmd>GitGutterPreviewHunk<CR>')
 vim.keymap.set('n', '<leader>gn', '<cmd>GitGutterNextHunk<CR>')
 vim.keymap.set('n', '<leader>gN', '<cmd>GitGutterPrevHunk<CR>')
+
+-- Copilot
+vim.keymap.set('i', '<C-.>', '<Plug>(copilot-next)')
+vim.keymap.set('i', '<C-,>', '<Plug>(copilot-previous)')
