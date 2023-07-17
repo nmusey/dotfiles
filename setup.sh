@@ -29,12 +29,6 @@ elif [[ "$1" = "macos" ]]; then
     brew install git zsh stow ripgrep fzf exa bat curl tmux python
     brew install --cask mos docker iterm2
     brew cleanup
-elif [[ "$1" = "arch" ]]; then 
-    sudo pacman -Syu
-    sudo pacman -S git zsh stow ripgrep fzf exa bat curl docker docker-compose tmux
-    sudo systemctl start docker.service
-    sudo systemctl enable docker.service
-    sudo usermog -aG docker $USER
 else
     echo "bash setup.sh {os} -- os is one of 'ubuntu', 'macos', 'arch'"
     exit 1
