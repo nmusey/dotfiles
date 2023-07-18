@@ -9,5 +9,8 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:*' unstagedstr '*'
 zstyle ':vcs_info:*' enable git
 
-PROMPT='%n %F{green}λ%f%(?. .%F{red}!%f) '
+MODE_INDICATOR="%F{yellow}Δ%f"
+INSERT_MODE_INDICATOR="%F{green}Δ%f"
+
+PROMPT='%n $(vi_mode_prompt_info) %F{green}λ%f%(?. .%F{red}!%f) '
 RPROMPT='%F{green}%2~%f - %F{green}${vcs_info_msg_0_}%f'

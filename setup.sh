@@ -5,19 +5,26 @@
 
 if [[ "$1" = "ubuntu" ]]; then
     sudo apt update
-    sudo apt install -y git zsh stow ripgrep fzf exa bat curl tmux
     sudo apt upgrade -y
+    sudo apt install -y git zsh stow ripgrep fzf exa bat curl tmux fd-find xh ranger
 
-    # Docker is fun to install
+    # Install Docker
     sudo apt install ca-certificates gnupg lsb-release
     sudo mkdir -p /etc/apt/keyrings
-    sudo rm /etc/apt/keyrings/docker.gpg
+    sudo install -m 0755 -d /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo chmod a+r /etc/apt/keyrings/docker.gpg
+    echo \
+      "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+      "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
     sudo apt update
     sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
     sudo apt install -y python3-pip 
+
+    mkdir -p ~/.local/bin
+    ln -s /usr/bin/batcat ~/.local/bin/bat
 elif [[ "$1" = "macos" ]]; then
     xcode-select --install
     sudo xcodebuild -license accept
@@ -26,15 +33,16 @@ elif [[ "$1" = "macos" ]]; then
 
     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> zsh/.zshrc
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    brew install git zsh stow ripgrep fzf exa bat curl tmux python
+    brew install git zsh stow ripgrep fzf exa bat curl tmux python fd xh xclip ranger
     brew install --cask mos docker iterm2
     brew cleanup
 else
-    echo "bash setup.sh {os} -- os is one of 'ubuntu', 'macos', 'arch'"
+    echo "bash setup.sh {os} -- os is one of 'ubuntu', 'macos'"
     exit 1
 fi
 
 curl -L https://nixos.org/nix/install | sh
+curl -sfL https://raw.githubusercontent.com/ducaale/xh/master/install.sh | sh
 
 # Install nvm and node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash

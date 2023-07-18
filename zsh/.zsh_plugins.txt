@@ -7,3 +7,4 @@ walesmd/caniuse.plugin.zsh
 zpm-zsh/clipboard
 zpm-zsh/colorize
 pfahlr/zsh_plugin_loremipsum
+jeffreytse/zsh-vi-mode
