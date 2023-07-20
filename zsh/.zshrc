@@ -2,18 +2,12 @@
 #
 # By Nick Musey
 
-
-
 # Set some variables
 export HYPHEN_INSENSITIVE="true"
 export EDITOR='nvim'
 
-
-
 # Add my custom theme
 source ~/theme.zsh_theme
-
-
 
 # Load plugins with Antidote
 autoload -Uz compinit
@@ -22,10 +16,8 @@ compinit
 . ~/.antidote/antidote.zsh
 antidote load
 
-
-
 # Aliases and custom functions
-alias fixhd='sudo pkill -f fsck'
+alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on MacOS
 
 alias python='python3'
 alias py='python3'
@@ -45,19 +37,15 @@ alias ....='cd ../../..'
 alias g='git status'
 alias gd='git difftool'
 
-
 # Add path variables
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
-
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
 if [[ -f ~/local.zshrc ]]; then
     source ~/local.zshrc
 fi
-
 
 if [[ -f /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -70,3 +58,5 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+if [ -e /home/nick/.nix-profile/etc/profile.d/nix.sh ]; then . /home/nick/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

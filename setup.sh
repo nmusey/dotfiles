@@ -17,6 +17,9 @@ if [[ "$1" = "ubuntu" ]]; then
     sudo apt update
     sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
+    # Install neovim prereqs
+    sudo apt-get install ninja-build gettext cmake unzip curl
+
     sudo apt install -y python3-pip 
 elif [[ "$1" = "macos" ]]; then
     xcode-select --install
@@ -45,7 +48,8 @@ nvm install 18
 # Install neovim
 git clone https://github.com/neovim/neovim.git
 cd neovim
-make CMAKE_BUILD_TYPE=Release
+rm -rf build/  # clear the CMake cache
+make CMAKE_BUILD_TYPE=Release 
 sudo make install
 cd ..
 rm -rf neovim
