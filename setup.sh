@@ -18,8 +18,7 @@ if [[ "$1" = "ubuntu" ]]; then
     sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
     # Install neovim prereqs
-    sudo apt-get install ninja-build gettext cmake unzip curl
-
+    sudo apt install -y ninja-build gettext cmake unzip curl
     sudo apt install -y python3-pip 
 elif [[ "$1" = "macos" ]]; then
     xcode-select --install
