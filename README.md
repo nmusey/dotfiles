@@ -8,9 +8,16 @@ I'm using [Stow](https://www.gnu.org/software/stow/) to link all my dotfiles to 
 ## Installed and Configured Programs
 - `zsh`
 - `neovim`
-- `stow`
 - `tmux`
 - `git`
 
 ## Usage
-Install scripts exist for MacOS, Ubuntu (or any Ubuntu based distros), and Arch (or Arch based distros). Just clone the repo and run `setup.sh {macos,ubuntu,arch}` to install. This should also stow all the configured configuration files. 
+Install scripts exist for MacOS and Ubuntu (or any Ubuntu based distros). Just clone the repo and run `setup.sh {macos,ubuntu,arch}` to install. This should also stow all the configured configuration files. 
+
+For a manual install, `cd dotfiles` after cloning the repository, then run the following commands:
+```sh
+stow zsh 
+stow nvim
+stow tmux
+stow git
+```

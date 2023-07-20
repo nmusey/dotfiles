@@ -21,6 +21,8 @@ if [[ "$1" = "ubuntu" ]]; then
     sudo apt update
     sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
+    # Install neovim prereqs
+    sudo apt install -y ninja-build gettext cmake unzip curl
     sudo apt install -y python3-pip 
 
     mkdir -p ~/.local/bin
@@ -53,7 +55,8 @@ nvm install 18
 # Install neovim
 git clone https://github.com/neovim/neovim.git
 cd neovim
-make CMAKE_BUILD_TYPE=Release
+rm -rf build/  # clear the CMake cache
+make CMAKE_BUILD_TYPE=Release 
 sudo make install
 cd ..
 rm -rf neovim
@@ -62,7 +65,7 @@ rm -rf neovim
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # Setup terminal envionment
-sudo chsh -s $(which zsh)
+chsh -s $(which zsh)
 stow zsh
 stow nvim
 rm ~/.gitconfig

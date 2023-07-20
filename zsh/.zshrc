@@ -13,7 +13,7 @@ compinit
 antidote load
 
 # Aliases and custom functions
-alias fixhd='sudo pkill -f fsck' # For fixing issues with external hard drives on macos
+alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on MacOS
 
 alias python='python3'
 alias py='python3'
@@ -33,7 +33,6 @@ alias ....='cd ../../..'
 
 alias g='git status'
 alias gd='git difftool'
-
 
 # Add path variables
 export NVM_DIR="$HOME/.nvm"
