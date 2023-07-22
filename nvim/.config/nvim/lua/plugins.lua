@@ -59,6 +59,8 @@ packer.startup(function(use)
     use 'akinsho/bufferline.nvim'
     use 'mbbill/undotree'
     use 'kylechui/nvim-surround'
+    use 'nvim-tree/nvim-web-devicons'
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
     -- Git
     use 'lewis6991/gitsigns.nvim'
@@ -74,3 +76,4 @@ end)
 require('plugins/autocomplete')
 require('plugins/lsp')
 require('plugins/treesitter')
+require('plugins/telescope')
