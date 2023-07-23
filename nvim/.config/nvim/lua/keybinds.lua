@@ -33,14 +33,13 @@ local telescope = require 'telescope.builtin'
 vim.keymap.set('n', '<leader>s', telescope.find_files, {})
 vim.keymap.set('n', '<leader>S', telescope.treesitter, {})
 vim.keymap.set('n', '<leader>r', telescope.grep_string, {})
-vim.keymap.set('n', '<leader>R', telescope.git_files, {})
 
 -- Git
 vim.keymap.set('n', '<leader>gg', '<cmd>Git<CR>')
 vim.keymap.set('n', '<leader>g', '<cmd>GitGutterPreviewHunk<CR>')
-vim.keymap.set('n', '<leader>gn', '<cmd>GitGutterNextHunk<CR>')
-vim.keymap.set('n', '<leader>gN', '<cmd>GitGutterPrevHunk<CR>')
-vim.keymap.set('n', '<leader>gr', '<cmd>GitGutterRevertHunk<CR>')
+vim.keymap.set('n', '<leader>g[', '<cmd>GitGutterNextHunk<CR>')
+vim.keymap.set('n', '<leader>g]', '<cmd>GitGutterPrevHunk<CR>')
+vim.keymap.set('n', '<leader>gu', '<cmd>GitGutterUndoHunk<CR>')
 
 -- Copilot
 vim.keymap.set('i', '<C-.>', '<Plug>(copilot-next)')

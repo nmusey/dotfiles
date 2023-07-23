@@ -49,8 +49,6 @@ packer.startup(function(use)
 
 	-- General
     use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-    use 'nvim-lua/plenary.nvim'
-    use 'nvim-telescope/telescope.nvim'
     use 'nvim-tree/nvim-web-devicons'
 	use 'machakann/vim-highlightedyank'
 	use 'preservim/nerdtree'
@@ -59,7 +57,10 @@ packer.startup(function(use)
     use 'akinsho/bufferline.nvim'
     use 'mbbill/undotree'
     use 'kylechui/nvim-surround'
-    use 'nvim-tree/nvim-web-devicons'
+
+    -- Telescope
+    use 'nvim-lua/plenary.nvim'
+    use 'nvim-telescope/telescope.nvim'
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
     -- Git
