@@ -9,21 +9,22 @@ if [[ "$1" = "ubuntu" ]]; then
     sudo apt install -y git zsh stow ripgrep fzf exa bat curl tmux fd-find xh ranger
 
     # Install Docker
-    sudo apt install ca-certificates gnupg lsb-release
+    sudo apt install ca-certificates gnupg curl
     sudo mkdir -p /etc/apt/keyrings
     sudo install -m 0755 -d /etc/apt/keyrings
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
     sudo chmod a+r /etc/apt/keyrings/docker.gpg
+
     echo \
       "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
       "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
       sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
     sudo apt update
     sudo apt install -y docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
     # Install neovim prereqs
-    sudo apt install -y ninja-build gettext cmake unzip curl
-    sudo apt install -y python3-pip 
+    sudo apt install -y ninja-build gettext cmake unzip curl python3-pip
 
     mkdir -p ~/.local/bin
     ln -s /usr/bin/batcat ~/.local/bin/bat

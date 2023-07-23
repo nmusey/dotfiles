@@ -12,5 +12,16 @@ zstyle ':vcs_info:*' enable git
 MODE_INDICATOR="%F{yellow}Δ%f"
 INSERT_MODE_INDICATOR="%F{green}Δ%f"
 
-PROMPT='%n $(vi_mode_prompt_info) %F{green}λ%f%(?. .%F{red}!%f) '
+function vi_mode_indicator() {
+    local command_exists = $(command -v vi_mode_prompt_info)
+    local command_output = $vi_mode_prompt_info
+
+    if [[ $command_exists -ne 0 ]] && [[ $command_output == "" ]];
+        then return
+    fi
+    
+    return echo "$vi_mode_prompt_info ";
+}
+
+PROMPT='%n $vi_mode_indicator%F{green}λ%f%(?. .%F{red}!%f) '
 RPROMPT='%F{green}%2~%f - %F{green}${vcs_info_msg_0_}%f'
