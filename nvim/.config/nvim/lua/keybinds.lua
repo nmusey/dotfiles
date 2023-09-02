@@ -37,9 +37,9 @@ vim.keymap.set('n', '<leader>r', telescope.grep_string, {})
 -- Git
 vim.keymap.set('n', '<leader>gg', '<cmd>Git<CR>')
 vim.keymap.set('n', '<leader>g', '<cmd>GitGutterPreviewHunk<CR>')
-vim.keymap.set('n', '<leader>g[', '<cmd>GitGutterNextHunk<CR>')
-vim.keymap.set('n', '<leader>g]', '<cmd>GitGutterPrevHunk<CR>')
 vim.keymap.set('n', '<leader>gu', '<cmd>GitGutterUndoHunk<CR>')
+vim.keymap.set('n', '<leader>hn', '<cmd>GitGutterNextHunk<CR>')
+vim.keymap.set('n', '<leader>hp', '<cmd>GitGutterPrevHunk<CR>')
 
 -- Copilot
 vim.keymap.set('i', '<C-.>', '<Plug>(copilot-next)')

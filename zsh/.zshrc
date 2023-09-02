@@ -56,3 +56,5 @@ case ":$PATH:" in
 esac
 
 VI_KEYMAP=main
+
+[ -f "/Users/nicholasmusey/.ghcup/env" ] && source "/Users/nicholasmusey/.ghcup/env" # ghcup-env

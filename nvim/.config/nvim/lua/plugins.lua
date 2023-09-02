@@ -36,6 +36,12 @@ packer.startup(function(use)
     use {'williamboman/mason.nvim', run = ':MasonUpdate'}
     use 'williamboman/mason-lspconfig.nvim'
     use 'github/copilot.vim'
+    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+    use {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      after = 'nvim-treesitter',
+      requires = 'nvim-treesitter/nvim-treesitter',
+    }
 
     -- Autocompletion
     use 'hrsh7th/nvim-cmp'
@@ -48,7 +54,6 @@ packer.startup(function(use)
     use 'dcampos/cmp-snippy'
 
 	-- General
-    use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
     use 'nvim-tree/nvim-web-devicons'
 	use 'machakann/vim-highlightedyank'
 	use 'preservim/nerdtree'
@@ -57,6 +62,9 @@ packer.startup(function(use)
     use 'akinsho/bufferline.nvim'
     use 'mbbill/undotree'
     use 'kylechui/nvim-surround'
+
+    -- Debugging
+    use 'mfussenegger/nvim-dap' -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation for installing clients
 
     -- Telescope
     use 'nvim-lua/plenary.nvim'
