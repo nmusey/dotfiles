@@ -42,5 +42,5 @@ vim.keymap.set('n', '<leader>hn', '<cmd>GitGutterNextHunk<CR>')
 vim.keymap.set('n', '<leader>hp', '<cmd>GitGutterPrevHunk<CR>')
 
 -- Copilot
-vim.keymap.set('i', '<C-.>', '<Plug>(copilot-next)')
-vim.keymap.set('i', '<C-,>', '<Plug>(copilot-previous)')
+vim.keymap.set('i', '<C-n>', '<Plug>(copilot-next)')
+vim.keymap.set('i', '<C-p>', '<Plug>(copilot-previous)')

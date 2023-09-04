@@ -62,9 +62,13 @@ packer.startup(function(use)
     use 'akinsho/bufferline.nvim'
     use 'mbbill/undotree'
     use 'kylechui/nvim-surround'
-
-    -- Debugging
-    use 'mfussenegger/nvim-dap' -- https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation for installing clients
+    use {
+        'folke/noice.nvim',
+        requires = {
+            'MunifTanjim/nui.nvim',
+            'rcarriga/nvim-notify'
+        }
+    }
 
     -- Telescope
     use 'nvim-lua/plenary.nvim'
@@ -83,6 +87,8 @@ packer.startup(function(use)
 end)
 
 require('plugins/autocomplete')
+require('plugins/dap')
 require('plugins/lsp')
+require('plugins/noice')
 require('plugins/treesitter')
 require('plugins/telescope')
