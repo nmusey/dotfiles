@@ -87,7 +87,6 @@ packer.startup(function(use)
 end)
 
 require('plugins/autocomplete')
-require('plugins/dap')
 require('plugins/lsp')
 require('plugins/noice')
 require('plugins/treesitter')
