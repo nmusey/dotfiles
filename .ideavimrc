@@ -1,0 +1,43 @@
+let mapleader = " "
+
+set surround
+set commentary
+set showmode
+set scrolloff=5
+
+set ignorecase smartcase
+set number relativenumber
+
+set ideajoin
+
+nmap <leader>fp <Action>(MethodUp)
+nmap <leader>fn <Action>(MethodDown)
+
+nmap <leader>g <Action>(VcsShowCurrentChangeMarker)
+
+nmap gd <Action>(GotoTypeDeclaration)
+nmap gh <Action>(ShowErrorDescription)
+nmap gr <Action>(ShowUsages)
+
+nmap <leader>B <Action>(ToggleLineBreakpoint)
+nmap <leader>B <Action>(Refactorings.QuickListPopupAction)
+
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-l> <C-W>l
+map <C-h> <C-W>h
+vmap <leader>y "+y
+vmap <leader>d "+d
+nmap <leader>P "+P
+vnoremap <leader>p "_dP 
+nmap <Leader>v :vsplit<CR>
+nmap <Leader>h :split<CR>
+nnoremap J <Action>(NextTab)
+nnoremap K <Action>(PreviousTab)
+nmap <leader>t :(
+
+nmap <C-T> :action ActivateTerminalToolWindow<CR>
+nmap <C-f> :action ActivateProjectToolWindow<CR>
+
+nnoremap <leader>cf :action ReformatCode<CR>
+nnoremap <leader>c :action CommentByBlockComment<CR>
