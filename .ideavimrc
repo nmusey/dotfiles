@@ -35,8 +35,8 @@ map <C-l> <C-W>l
 map <C-h> <C-W>h
 nmap <leader>u :vsplit<CR>
 nmap <leader>i :split<CR>
-nnoremap J :action NextTab<CR>
-nnoremap K :action PreviousTab<CR>
+nnoremap K :action NextTab<CR>
+nnoremap J :action PreviousTab<CR>
 vnoremap J :m '>+1<CR>gv=gv'
 vnoremap K :m '<-2<CR>gv=gv'
 
