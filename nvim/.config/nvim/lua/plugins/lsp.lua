@@ -5,10 +5,12 @@ require('mason-lspconfig').setup({
 
 local telescope = require('telescope.builtin')
 local on_lsp_attach = function(args)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.bufnr })
+    vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { buffer = args.bufnr })
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+    vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, {})
     vim.keymap.set('n', 'gr', telescope.lsp_references, {})
     vim.keymap.set('n', '<leader>f', vim.lsp.buf.code_action, {})
+    vim.keymap.set('n', '<leader>fo', vim.lsp.buf.format, {})
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
 end
 

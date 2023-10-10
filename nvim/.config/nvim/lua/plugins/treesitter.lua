@@ -35,7 +35,7 @@ require 'nvim-treesitter.configs'.setup {
             border = 'none',
             floating_preview_opts = {},
             peek_definition_code = {
-                ['<leader>K'] = '@function.outer',
+                ['<leader>gh'] = '@function.outer',
             },
         },
     }
