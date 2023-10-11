@@ -17,7 +17,7 @@ vim.keymap.set("n", "<leader>qa", "<cmd>wqa!<CR>")
 vim.keymap.set("n", "<leader>qo", "<cmd>tabo<CR>")
 
 -- Pane Management
-vim.keymap.set('', '<leader>Y', '<cmd>vsplit<CR>')
+vim.keymap.set('', '<leader>V', '<cmd>vsplit<CR>')
 vim.keymap.set('', '<leader>H', '<cmd>split<CR>')
 vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-j>', '<C-w>j')
