@@ -23,6 +23,10 @@ vim.keymap.set('n', '<C-h>', '<C-w>h')
 vim.keymap.set('n', '<C-j>', '<C-w>j')
 vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
+vim.keymap.set('n', '<A-h>', '5<C-w>>')
+vim.keymap.set('n', '<A-j>', '5<C-w>-')
+vim.keymap.set('n', '<A-k>', '5<C-w>+')
+vim.keymap.set('n', '<A-l>', '5<C-w><')
 
 -- Visual Mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -47,7 +51,8 @@ vim.keymap.set('n', '<leader>S', telescope.treesitter, {})
 vim.keymap.set('n', '<leader>r', telescope.grep_string, {})
 
 -- Git
-vim.keymap.set('n', '<leader>gg', '<cmd>Git<CR>')
+vim.keymap.set('n', '<leader>gi', '<cmd>Git<CR>')
+vim.keymap.set('n', '<leader>gb', '<cmd>Git<CR>')
 vim.keymap.set('n', '<leader>h', '<cmd>GitGutterPreviewHunk<CR>')
 vim.keymap.set('n', '<leader>hu', '<cmd>GitGutterUndoHunk<CR>')
 vim.keymap.set('n', '<leader>hn', '<cmd>GitGutterNextHunk<CR>')
