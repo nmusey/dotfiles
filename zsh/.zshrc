@@ -5,28 +5,12 @@ export EDITOR='nvim'
 # Add my custom theme
 source ~/theme.zsh_theme
 
-# Load plugins with Antidote
-autoload -Uz compinit
-compinit
-[[ -e ~/.antidote ]] || git clone https://github.com/mattmc3/antidote.git ~/.antidote
-. ~/.antidote/antidote.zsh
-antidote load
-
 # Aliases and custom functions
 alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on MacOS
 
-alias python='python3'
-alias py='python3'
-alias pip='pip3'
-
-alias vim='nvim'
-
 alias ls='exa'
 alias l='exa -al'
-alias cat='bat --diff'
-alias clip='xclip -sel clip'
 
-alias ~='cd ~'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -34,27 +18,32 @@ alias ....='cd ../../..'
 alias g='git status'
 alias gd='git difftool'
 
-# Add path variables
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
 if [[ -f ~/local.zshrc ]]; then
     source ~/local.zshrc
 fi
 
+
+
+#################################################
+### Below here is for env variables for tools ###
+#################################################
+
+# Load plugins with Antidote
+autoload -Uz compinit
+compinit
+[[ -e ~/.antidote ]] || git clone https://github.com/mattmc3/antidote.git ~/.antidote
+. ~/.antidote/antidote.zsh
+antidote load
+
+# Add path variables
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Setup homebrew for macs
 if [[ -f /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# pnpm
-export PNPM_HOME="/home/nick/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-
 VI_KEYMAP=main
-
-[ -f "/Users/nicholasmusey/.ghcup/env" ] && source "/Users/nicholasmusey/.ghcup/env" # ghcup-env
