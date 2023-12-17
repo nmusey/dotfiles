@@ -87,7 +87,6 @@ packer.startup(function(use)
 end)
 
 require('plugins/autocomplete')
-require('plugins/dashboard')
 require('plugins/lsp')
 require('plugins/noice')
 require('plugins/nvim-surround')
