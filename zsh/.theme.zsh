@@ -24,4 +24,4 @@ function vi_mode_indicator() {
 }
 
 PROMPT='%n $vi_mode_indicator%F{green}λ%f%(?. .%F{red}!%f) '
-RPROMPT='%F{green}%2~%f - %F{green}${vcs_info_msg_0_}%f'
+RPROMPT='%F{blue}%D{%L:%M:%S}%f | %F{green}%2~%f - %F{green}${vcs_info_msg_0_}%f'

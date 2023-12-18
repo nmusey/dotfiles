@@ -3,7 +3,13 @@ export HYPHEN_INSENSITIVE="true"
 export EDITOR='nvim'
 
 # Add my custom theme
-source ~/theme.zsh_theme
+source ~/.theme.zsh
+
+# Setup zsh history
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export HISTCONTROL=ignoredups
+setopt EXTENDED_HISTORY
 
 # Aliases and custom functions
 alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on MacOS
@@ -11,19 +17,14 @@ alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on 
 alias ls='exa'
 alias l='exa -al'
 
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-
 alias g='git status'
 alias gd='git difftool'
+alias e='nvim'
 
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
-if [[ -f ~/local.zshrc ]]; then
-    source ~/local.zshrc
+if [[ -f $HOME/local.zshrc ]]; then
+    source $HOME/local.zshrc
 fi
-
-
 
 #################################################
 ### Below here is for env variables for tools ###
