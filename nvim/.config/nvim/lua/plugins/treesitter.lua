@@ -24,10 +24,10 @@ require 'nvim-treesitter.configs'.setup {
         move = {
             enable = true,
             goto_previous_start = {
-                ['<leader>pf'] = '@function.outer'
+                ['<leader>fp'] = '@function.outer'
             },
             goto_next_start = {
-                ['<leader>nf'] = '@function.outer'
+                ['<leader>fn'] = '@function.outer'
             }
         },
         lsp_interop = {
