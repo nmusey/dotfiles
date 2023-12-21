@@ -4,7 +4,17 @@ require 'nvim-treesitter.configs'.setup {
     auto_install = true,
     highlight = {
         enable = true,
-        additional_vim_regex_highlighting = false,
+        additional_vim_regex_highlighting = {'php'}
+    },
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            init_selection = "gu",
+            node_incremental = "gnu",
+            scope_incremental = "gsu",
+            node_decremental = "gnd",
+            scope_decremental = "gsd"
+        }
     },
     textobjects = {
         select = {

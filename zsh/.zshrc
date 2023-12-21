@@ -2,6 +2,9 @@
 export HYPHEN_INSENSITIVE="true"
 export EDITOR='nvim'
 
+export HISTFILE=~/.zsh_history
+setopt HIST_IGNORE_ALL_DUPS
+
 # Add my custom theme
 source ~/.theme.zsh
 
@@ -14,12 +17,17 @@ setopt EXTENDED_HISTORY
 # Aliases and custom functions
 alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on MacOS
 
-alias ls='exa'
-alias l='exa -al'
-
 alias g='git status'
 alias gd='git difftool'
+alias g='git status'
+alias gc='git commit -m'
+
 alias e='nvim'
+alias l='exa -hal'
+
+## Fuzzy find in history
+function h { history | awk '{$1=""; print}\' | fzf --tac | { read -r cmd; eval "$cmd"; } }
+function hr { history | awk '{$1=""; print}\' | fzf | { read -r cmd; eval "$cmd"; } }
 
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
 if [[ -f $HOME/local.zshrc ]]; then
@@ -45,6 +53,11 @@ export NVM_DIR="$HOME/.nvm"
 # Setup homebrew for macs
 if [[ -f /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+# Setup Go path
+if [[ -e /usr/local/go/bin/go ]]; then
+    export PATH=$PATH:/usr/local/go/bin
 fi
 
 VI_KEYMAP=main
