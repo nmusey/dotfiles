@@ -23,7 +23,7 @@ local on_lsp_attach = function(args)
     vim.keymap.set('n', '<leader>en', vim.diagnostic.goto_next)
 end
 
-local lsp_capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 
 require('mason-lspconfig').setup_handlers({
@@ -36,11 +36,17 @@ require('mason-lspconfig').setup_handlers({
 })
 
 local get_intelephense_key = function()
-    local f = assert(io.open(os.getenv('HOME') .. '/intelephense/license.txt'), 'rb')
+    local f = io.open(os.getenv('HOME') .. '/intelephense/license.txt', 'rb')
+
+    if f == nil then
+        return ''
+    end
+
     local key = f:read('*a')
     f:close()
     return string.gsub(key, '%s+', '')
 end
+
 lspconfig.intelephense.setup({
     on_attach = on_lsp_attach,
     capabilities = lsp_capabilities,
