@@ -60,4 +60,14 @@ if [[ -e /usr/local/go/bin/go ]]; then
     export PATH=$PATH:/usr/local/go/bin
 fi
 
+# Setup .NET Core path
+if [[ -e $HOME/.dotnet/tools ]]; then
+    export PATH=$PATH:$HOME/.dotnet/tools
+fi
+
+if command -v go &> /dev/null; then
+    export GOPATH=$(dirname $(which go))
+    export PATH=$PATH:$GOPATH:$GOPATH/bin
+fi
+
 VI_KEYMAP=main
