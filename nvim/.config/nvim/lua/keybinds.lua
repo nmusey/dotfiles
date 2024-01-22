@@ -1,5 +1,3 @@
-vim.g.mapleader = ' '
-
 -- Most keybinds are here but some plugin specifics are in the configuration file for that plugin.
 
 -- Tab Management

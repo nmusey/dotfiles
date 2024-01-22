@@ -1,26 +1,46 @@
-local telescope = require("telescope")
-local telescopeConfig = require("telescope.config")
-
--- Setup grep arguments for use in the config
-local vimgrep_arguments = { unpack(telescopeConfig.values.vimgrep_arguments) }
-table.insert(vimgrep_arguments, "--hidden")
-table.insert(vimgrep_arguments, "--trim")
-
-require('telescope').setup{
-	defaults = {
-        vimgrep_arguments = vimgrep_arguments,
-        file_ignore_patterns = {
-            ".git/*",
-            "**/.git/*",
+ return {
+     "nvim-telescope/telescope-ui-select.nvim",
+     {
+        "nvim-telescope/telescope.nvim",
+        dependencies = {
+             "nvim-lua/plenary.nvim",
+             "nvim-lua/popup.nvim",
+             "kyazdani42/nvim-web-devicons",
         },
-        color_devicons = true,
-    },
-    pickers = {
-        find_files = {
-            hidden = true,
-            no_ignore = true,
-            follow = true,
-        }
-    },
- }
- 
+        config = function()
+            local vimgrep_arguments = { unpack(require("telescope.config").values.vimgrep_arguments) }
+            table.insert(vimgrep_arguments, "--hidden")
+            table.insert(vimgrep_arguments, "--trim")
+
+            require('telescope').setup{
+                defaults = {
+                    vimgrep_arguments = vimgrep_arguments,
+                    file_ignore_patterns = {
+                        ".git/*",
+                        "**/.git/*",
+                    },
+                    color_devicons = true,
+                },
+                extensions = {
+                    ['ui-select'] = {
+                        require('telescope.themes').get_dropdown({
+                            winblend = 10,
+                            border = true,
+                            previewer = false,
+                            shorten_path = false,
+                        }),
+                    }
+                },
+                pickers = {
+                    find_files = {
+                        hidden = true,
+                        no_ignore = true,
+                        follow = true,
+                    }
+                },
+            }
+
+            require('telescope').load_extension('ui-select')
+        end,
+    }
+}
