@@ -6,7 +6,7 @@
 if [[ "$1" = "ubuntu" ]]; then
     sudo apt update
     sudo apt upgrade -y
-    sudo apt install -y git zsh stow ripgrep fzf exa bat curl tmux fd-find xh ranger
+    sudo apt install -y git zsh stow ripgrep fzf curl tmux i3 rofi
 
     # Install Docker
     sudo apt install ca-certificates gnupg curl
@@ -28,6 +28,9 @@ if [[ "$1" = "ubuntu" ]]; then
 
     mkdir -p ~/.local/bin
     ln -s /usr/bin/batcat ~/.local/bin/bat
+
+    cd ~/dotfiles
+    git clone https://github.com/adi1090x/rofi.git
 elif [[ "$1" = "macos" ]]; then
     xcode-select --install
     sudo xcodebuild -license accept
@@ -43,9 +46,6 @@ else
     echo "bash setup.sh {os} -- os is one of 'ubuntu', 'macos'"
     exit 1
 fi
-
-curl -L https://nixos.org/nix/install | sh
-curl -sfL https://raw.githubusercontent.com/ducaale/xh/master/install.sh | sh
 
 # Install nvm and node
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
@@ -72,6 +72,7 @@ stow nvim
 rm ~/.gitconfig
 stow git
 stow tmux
+stow i3
 
 # Clean up
 cd $HOME
