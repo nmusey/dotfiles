@@ -39,8 +39,9 @@ elif [[ "$1" = "macos" ]]; then
 
     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> zsh/.zshrc
     eval "$(/opt/homebrew/bin/brew shellenv)"
-    brew install git zsh stow ripgrep fzf exa bat curl tmux python fd xh xclip ranger
-    brew install --cask mos docker iterm2
+    brew tap homebrew/cask-fonts
+    brew install git zsh stow ripgrep fzf exa curl tmux wget
+    brew install --cask mos docker iterm2 
     brew cleanup
 else
     echo "bash setup.sh {os} -- os is one of 'ubuntu', 'macos'"
@@ -64,6 +65,11 @@ rm -rf neovim
 
 # tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# NerdFonts
+git clone --depth 1 https://github.com/ryanoasis/nerd-fonts
+cd nerd-fonts
+./install.sh CascadiaCode
 
 # Setup terminal envionment
 chsh -s $(which zsh)

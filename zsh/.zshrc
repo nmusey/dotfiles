@@ -71,3 +71,5 @@ if command -v go &> /dev/null; then
 fi
 
 VI_KEYMAP=main
+
+source .env
