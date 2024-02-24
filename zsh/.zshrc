@@ -23,7 +23,6 @@ alias g='git status'
 alias gc='git commit -m'
 
 alias e='nvim'
-alias l='exa -hal'
 
 ## Fuzzy find in history
 function h { history | awk '{$1=""; print}\' | fzf --tac | { read -r cmd; eval "$cmd"; } }
