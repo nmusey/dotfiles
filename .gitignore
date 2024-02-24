@@ -2,3 +2,7 @@ zsh/local.zshrc
 
 nvim/.config/coc
 nvim/.config/nvim/plugin
+
+.env
+
+nerd-fonts

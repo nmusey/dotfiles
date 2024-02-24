@@ -38,9 +38,9 @@ vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 vim.keymap.set({"n", "v"}, "<leader>dd", [["_dd]])
 
 -- Navigation
-vim.keymap.set('', '<leader>ft', '<cmd>NERDTreeToggle<CR>')
-vim.keymap.set('', '<leader>ff', '<cmd>NERDTreeFocus<CR>')
-vim.keymap.set('', '<leader>ffc', '<cmd>NERDTreeFind<CR>')
+vim.keymap.set('', '<leader>ft', '<cmd>NvimTreeToggle<CR>')
+vim.keymap.set('', '<leader>ff', '<cmd>NvimTreeFocus<CR>')
+vim.keymap.set('', '<leader>ffc', '<cmd>NvimTreeFindFile<CR>')
 
 -- Telescope
 local telescope = require 'telescope.builtin'
