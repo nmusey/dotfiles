@@ -40,8 +40,8 @@ elif [[ "$1" = "macos" ]]; then
     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> zsh/.zshrc
     eval "$(/opt/homebrew/bin/brew shellenv)"
     brew tap homebrew/cask-fonts
-    brew install git zsh stow ripgrep fzf exa curl tmux wget
-    brew install --cask mos docker iterm2 
+    brew install git zsh stow ripgrep fzf curl tmux wget
+    brew install --cask mos docker kitty
     brew cleanup
 else
     echo "bash setup.sh {os} -- os is one of 'ubuntu', 'macos'"
