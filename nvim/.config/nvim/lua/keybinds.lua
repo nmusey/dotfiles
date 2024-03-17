@@ -9,8 +9,8 @@ vim.keymap.set('n', '<leader>J', '<cmd>tabm -<CR>')
 vim.keymap.set('n', '<leader>K', '<cmd>tabm +<CR>')
 
 -- Buffer Management
-vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
-vim.keymap.set("n", "<leader>q", "<cmd>q<CR>")
+vim.keymap.set("n", "<leader>ww", "<cmd>w<CR>")
+vim.keymap.set("n", "<leader>qq", "<cmd>q<CR>")
 vim.keymap.set("n", "<leader>qa", "<cmd>wqa!<CR>")
 vim.keymap.set("n", "<leader>qo", "<cmd>tabo<CR>")
 
@@ -50,7 +50,7 @@ vim.keymap.set('n', '<leader>r', telescope.grep_string, {})
 
 -- Git
 vim.keymap.set('n', '<leader>gi', '<cmd>Git<CR>')
-vim.keymap.set('n', '<leader>gb', '<cmd>Git<CR>')
+vim.keymap.set('n', '<leader>gb', '<cmd>G blame<CR>')
 vim.keymap.set('n', '<leader>h', '<cmd>GitGutterPreviewHunk<CR>')
 vim.keymap.set('n', '<leader>hu', '<cmd>GitGutterUndoHunk<CR>')
 vim.keymap.set('n', '<leader>hn', '<cmd>GitGutterNextHunk<CR>')
