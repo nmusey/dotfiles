@@ -16,7 +16,6 @@ setopt EXTENDED_HISTORY
 
 # Aliases and custom functions
 alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on MacOS
-
 alias g='git status'
 alias gd='git difftool'
 alias g='git status'
@@ -70,5 +69,3 @@ if command -v go &> /dev/null; then
 fi
 
 VI_KEYMAP=main
-
-source .env
