@@ -18,6 +18,19 @@ vim.keymap.set("n", "<leader>qo", "<cmd>tabo<CR>")
 vim.keymap.set('', '<leader>V', '<cmd>vsplit<CR>')
 vim.keymap.set('', '<leader>H', '<cmd>split<CR>')
 
+-- Window Navigation
+vim.keymap.set('n', '<C-h>', '<C-w>h')
+vim.keymap.set('n', '<C-j>', '<C-w>j')
+vim.keymap.set('n', '<C-k>', '<C-w>k')
+vim.keymap.set('n', '<C-l>', '<C-w>l')
+
+-- Resize Windows
+vim.keymap.set('n', '<M-h>', '<cmd>resize +2<CR>')
+vim.keymap.set('n', '<M-l>', '<cmd>resize -2<CR>')
+vim.keymap.set('n', '<M-k>', '<cmd>vertical resize +2<CR>')
+vim.keymap.set('n', '<M-j>', '<cmd>vertical resize -2<CR>')
+
+
 -- Visual Mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
