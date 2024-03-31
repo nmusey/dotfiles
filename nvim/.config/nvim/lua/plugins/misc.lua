@@ -5,5 +5,6 @@ return {
     "kylechui/nvim-surround",
     "mbbill/undotree",
     "machakann/vim-highlightedyank",
-    "ggandor/leap.nvim"
+    "ggandor/leap.nvim",
+    "aserowy/tmux.nvim",
 }
