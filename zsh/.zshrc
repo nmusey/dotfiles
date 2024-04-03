@@ -2,9 +2,6 @@
 export HYPHEN_INSENSITIVE="true"
 export EDITOR='nvim'
 
-export HISTFILE=~/.zsh_history
-setopt HIST_IGNORE_ALL_DUPS
-
 # Add my custom theme
 source ~/.theme.zsh
 
@@ -13,19 +10,14 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
 export HISTCONTROL=ignoredups
 setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
 
 # Aliases and custom functions
 alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on MacOS
+
 alias g='git status'
 alias gd='git difftool'
-alias g='git status'
 alias gc='git commit -m'
-
-alias e='nvim'
-
-## Fuzzy find in history
-function h { history | awk '{$1=""; print}\' | fzf --tac | { read -r cmd; eval "$cmd"; } }
-function hr { history | awk '{$1=""; print}\' | fzf | { read -r cmd; eval "$cmd"; } }
 
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
 if [[ -f $HOME/local.zshrc ]]; then
