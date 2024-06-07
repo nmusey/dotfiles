@@ -17,7 +17,6 @@ return {
                         node_incremental = "gnu",
                         scope_incremental = "gsu",
                         node_decremental = "gnd",
-                        scope_decremental = "gsd"
                     }
                 },
                 indent = {
