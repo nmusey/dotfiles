@@ -7,4 +7,5 @@ return {
     "machakann/vim-highlightedyank",
     "ggandor/leap.nvim",
     "aserowy/tmux.nvim",
+    "jiangmiao/auto-pairs"
 }

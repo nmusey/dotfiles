@@ -2,13 +2,13 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         config = function()
-            require('nvim-treesitter').setup({
+            require('nvim-treesitter.configs').setup({
                 ensure_installed = 'all',
                 sync_install = false,
                 auto_install = true,
                 highlight = {
                     enable = true,
-                    additional_vim_regex_highlighting = {'php'}
+                    additional_vim_regex_highlighting = {'*'}
                 },
                 incremental_selection = {
                     enable = true,
@@ -19,6 +19,9 @@ return {
                         node_decremental = "gnd",
                         scope_decremental = "gsd"
                     }
+                },
+                indent = {
+                    enable = true
                 },
                 textobjects = {
                     select = {

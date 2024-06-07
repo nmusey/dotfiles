@@ -15,7 +15,7 @@ return {
                 vim.keymap.set('n', '<leader>f', vim.lsp.buf.code_action, {})
                 vim.keymap.set('n', '<leader>fo', vim.lsp.buf.format, {})
                 vim.keymap.set('n', '<leader>nn', vim.lsp.buf.rename, {})
-                vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+                vim.keymap.set('n', '<leader>ee', vim.diagnostic.open_float)
                 vim.keymap.set('n', '<leader>ep', vim.diagnostic.goto_prev)
                 vim.keymap.set('n', '<leader>en', vim.diagnostic.goto_next)
             end
