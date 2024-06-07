@@ -1,0 +1,19 @@
+window#waybar {
+    padding: 4px 8px;
+}
+
+#workspaces button {
+    color: #ffffff;
+}
+
+#workspaces button.active {
+    color: #4CAF50;
+}
+
+#workspaces button.urgent {
+    color: #D65348;
+}
+
+.module {
+    padding: 0 12px;
+}

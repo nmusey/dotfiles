@@ -31,6 +31,9 @@ if [[ "$1" = "ubuntu" ]]; then
 
     cd ~/dotfiles
     git clone https://github.com/adi1090x/rofi.git
+elif [[ "$1" = "arch" ]]; then 
+    yay -Syu base-devel man neovim zsh stow ripgrep fzf curl tmux hyprland fuzzel waybar hyprpaper ttf-cascadia-mono-nerd ttf-jetbrains-mono-nerd
+    stow hypr
 elif [[ "$1" = "macos" ]]; then
     xcode-select --install
     sudo xcodebuild -license accept
@@ -48,20 +51,24 @@ else
     exit 1
 fi
 
-# Install nvm and node
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-nvm install 18
+function install_nvm() {
+    # Install nvm and node
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+    nvm install 18
+}
 
-# Install neovim
-git clone https://github.com/neovim/neovim.git
-cd neovim
-rm -rf build/  # clear the CMake cache
-make CMAKE_BUILD_TYPE=Release 
-sudo make install
-cd ..
-rm -rf neovim
+function install_neovim() {
+    # Install neovim
+    git clone https://github.com/neovim/neovim.git
+    cd neovim
+    rm -rf build/  # clear the CMake cache
+    make CMAKE_BUILD_TYPE=Release 
+    sudo make install
+    cd ..
+    rm -rf neovim
+}
 
 # tmux plugin manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

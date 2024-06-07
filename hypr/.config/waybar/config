@@ -1,0 +1,74 @@
+{
+    "layer": "top",
+    "position": "top",
+    "output": "DP-2",
+
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "mpris",
+        "pulseaudio",
+        "memory",
+        "cpu",
+        "idle_inhibitor"
+    ],
+
+    "clock": {
+        "format": "{:%H:%M  %B %d, %Y}",
+        "tooltip-format": "{calendar}",
+        "calendar": {
+            "mode": "month",
+        }
+    },
+
+    "memory": {
+        "interval": 5,
+        "format": "RAM {}%"
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": "CPU {usage:2}%"
+    },
+
+    "idle_inhibitor": {
+        "format": "☕ {icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "pulseaudio": {
+        "format": "\udb81\udd7e {volume}%",
+        "format-muted": "\udb81\udf5f 0%",
+        "min": "0",
+        "max": "100",
+        "orientation": "horizontal"
+    },
+
+    "mpris": {
+        "format": "{title} by {artist}  \udb80\udc25  {album}",
+        "format-paused": "{status_icon} {title} by {artist}  \udb80\udc25  {album}",
+        "status-icons": {
+            "paused": "\uf04c"
+        }
+    },
+
+    "hyprland/workspaces": {
+        "format": "{name} {windows}",
+        "window-rewrite-default": "\udb84\udcac",
+        "window-rewrite": {
+            "class<kitty>": "\uf120",
+            "class<Spotify>": "\uf1bc",
+            "class<Brave-browser>": "\udb81\udd9f",
+            "class<steam>": "\udb81\udcd3"
+        }
+    },
+}
