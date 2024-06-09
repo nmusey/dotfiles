@@ -1,0 +1,12 @@
+#! /bin/bash
+
+if [[ -f "./install/os/$1" ]]; then
+    ./install/os/$1
+else
+    echo "bash setup.sh {os} -- os is one of:
+$(ls ./install/os)"
+    exit 1
+fi
+
+# Clean up
+cd $HOME

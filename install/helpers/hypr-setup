@@ -1,0 +1,25 @@
+#!/bin/bash
+
+yay -S --noconfirm \
+    linux-headers nvidia-dkms nvidia-utils lib32-nvidia-utils egl-wayland \
+    hyprland fuzzel waybar hyprpaper wayland ly
+
+sudo systemctl enable ly
+
+if ! grep -q "nvidia_drm.modeset=1" /boot/loader/entries/; then
+    for FILE in $(grep -l "options .*" /boot/loader/entries/* --exclude=\*-fallback\*); do
+        sed -iE 's/options (.*)/options \1 nvidia_drm.modeset=1 nvidia_drm.fbdev=1/' $FILE
+    done
+fi
+
+if ! grep -q "GBM_BACKEND" /etc/profile; then
+    echo "export GBM_BACKEND=nvidia-drm" | sudo tee -a /etc/profile
+    echo "export __GLX_VENDOR_LIBRARY_NAME=nvidia" | sudo tee -a /etc/profile
+fi
+
+MODULE_FILE=/etc/mkinitcpio.conf
+if ! grep -q "nvidia" $MODULE_FILE; then
+    sudo cp $MODULE_FILE $MODULE_FILE.bak
+    sudo sed -i -r -e 's/MODULES=\((.*)\)/MODULES=\(\1 nvidia nvidia_modeset nvidia_uvm nvidia_drm\)/' $MODULE_FILE 
+    sudo mkinitcpio -P
+fi

@@ -1,0 +1,12 @@
+#! /bin/bash
+
+if [ ! -e ~/.tmux/plugins/tpm ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
+chsh -s $(which zsh)
+stow zsh
+stow nvim
+rm ~/.gitconfig
+stow git
+stow tmux

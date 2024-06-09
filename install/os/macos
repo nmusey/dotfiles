@@ -1,0 +1,17 @@
+#! /bin/bash
+
+xcode-select --install
+sudo xcodebuild -license accept
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+brew tap homebrew/cask-fonts
+brew install git zsh stow ripgrep fzf curl tmux wget
+brew install --cask mos docker kitty
+brew cleanup
+
+../install-nvm-source
+../install-neovim-source
+../install-nerdfonts-source
+../stow-basics
