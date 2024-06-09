@@ -10,14 +10,10 @@ I'm using [Stow](https://www.gnu.org/software/stow/) to link all my dotfiles to 
 - `neovim`
 - `tmux`
 - `git`
+- `kitty`
+- A couple tiling window managers for Linux systems.
 
 ## Usage
-Install scripts exist for MacOS and Ubuntu (or any Ubuntu based distros). Just clone the repo and run `setup.sh {macos,ubuntu,arch}` to install. This should also stow all the configured configuration files. 
+To install, run `./setup [OS]` where the OS is `macos`, `ubuntu`, or `arch`.
 
-For a manual install, `cd dotfiles` after cloning the repository, then run the following commands:
-```sh
-stow zsh 
-stow nvim
-stow tmux
-stow git
-```
+To only use a single program, stow that directory. For example, `stow nvim` will stow neovim files.
