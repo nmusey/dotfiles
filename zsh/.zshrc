@@ -16,7 +16,6 @@ setopt HIST_IGNORE_ALL_DUPS
 alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on MacOS
 
 alias g='git status'
-alias gd='git difftool'
 alias gc='git commit -m'
 
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
@@ -46,19 +45,18 @@ if [[ -f /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Setup Go path
-if [[ -e /usr/local/go/bin/go ]]; then
-    export PATH=$PATH:/usr/local/go/bin
-fi
-
 # Setup .NET Core path
 if [[ -e $HOME/.dotnet/tools ]]; then
     export PATH=$PATH:$HOME/.dotnet/tools
 fi
 
+# Setup Go environment
+if [[ -e /usr/local/go/bin/go ]]; then
+    export PATH=$PATH:/usr/local/go/bin
+fi
 if command -v go &> /dev/null; then
-    export GOPATH=$(dirname $(which go))
-    export PATH=$PATH:$GOPATH:$GOPATH/bin
+    export GOPATH=~/.go/bin
+    export PATH=$PATH:$GOPATH
 fi
 
 VI_KEYMAP=main

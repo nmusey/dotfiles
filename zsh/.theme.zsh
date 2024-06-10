@@ -14,13 +14,16 @@ precmd() {
 
     local branchPrompt
     if [ -n "$vcs_info_msg_0_" ]; then 
-        branchPrompt="󰘬 $vcs_info_msg_0_" 
+        branchPrompt="$vcs_info_msg_0_" 
     else
-        branchPrompt='󱓌'
+        branchPrompt=''
     fi
 
     print -v 'psvar[1]' -Pr -- $branchPrompt
+    print ""
 }
+
+NEWLINE=$'\n'
 
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' formats "%b"
@@ -28,5 +31,10 @@ zstyle ':vcs_info:git:*' actionformats "(%a) %b"
 setopt prompt_subst
 
 
-PROMPT="%F{$BLUE}%D{%L:%M}%f %(?.%F{$GREEN}λ %f.%F{$RED}λ!%f) %F{$ORANGE}%f "
-RPROMPT="%F{$ORANGE}%2~%f %F{$BLUE}%n%f %F{$ORANGE}%v%f"
+PROMPT="%F{$ORANGE}%D{%L:%M}%f  %F{$BLUE}%n@%m%f   %F{$ORANGE}%2~%f   %F{$GREEN}%v%f$NEWLINE%(?.%F{$GREEN}λ %f.%F{$RED}λ!%f) "
+RPROMPT="$NEWLINE$NEWLINE"
+
+if command -v fastfetch &> /dev/null; then
+    print ""
+    fastfetch -l small --structure "DateTime:Break:Separator:Title:Separator:OS:PublicIP"
+fi
