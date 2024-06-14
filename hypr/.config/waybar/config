@@ -8,15 +8,15 @@
     ],
 
     "modules-center": [
-        "clock"
+        "mpris"
     ],
 
     "modules-right": [
-        "mpris",
         "pulseaudio",
         "memory",
         "cpu",
-        "idle_inhibitor"
+        "idle_inhibitor",
+        "clock"
     ],
 
     "clock": {

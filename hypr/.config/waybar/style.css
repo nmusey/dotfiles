@@ -1,5 +1,8 @@
 window#waybar {
     padding: 4px 8px;
+    
+    background-color: #363A3D;
+    color: #d1d1d1;
 }
 
 #workspaces button {
