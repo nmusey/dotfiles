@@ -16,7 +16,12 @@ setopt HIST_IGNORE_ALL_DUPS
 alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on MacOS
 
 alias g='git status'
-alias gc='git commit -m'
+
+function commit() {
+    local branch=$(git rev-parse --abbrev-ref HEAD)
+    local message="$branch $@"
+    git commit -m "$message"
+}
 
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
 if [[ -f $HOME/local.zshrc ]]; then
@@ -55,8 +60,8 @@ if [[ -e /usr/local/go/bin/go ]]; then
     export PATH=$PATH:/usr/local/go/bin
 fi
 if command -v go &> /dev/null; then
-    export GOPATH=~/.go/bin
-    export PATH=$PATH:$GOPATH
+    export GOPATH=~/.go/
+    export PATH=$PATH:$GOPATH/bin
 fi
 
 VI_KEYMAP=main

@@ -6,6 +6,6 @@ return {
     "mbbill/undotree",
     "machakann/vim-highlightedyank",
     "ggandor/leap.nvim",
-    "aserowy/tmux.nvim",
-    "jiangmiao/auto-pairs"
+    "jiangmiao/auto-pairs",
+    "github/copilot.vim",
 }

@@ -7,7 +7,7 @@ sudo xcodebuild -license accept
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 brew tap homebrew/cask-fonts
-brew install git zsh stow ripgrep fzf curl tmux wget
+brew install git zsh stow ripgrep fzf curl tmux wget ollama glow mods
 brew install --cask mos docker kitty
 brew cleanup
 
