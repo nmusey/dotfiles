@@ -40,9 +40,9 @@ vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 vim.keymap.set({"n", "v"}, "<leader>dd", [["_dd]])
 
 -- File tree
-vim.keymap.set('', '<leader>tt', '<cmd>NvimTreeToggle<CR>')
-vim.keymap.set('', '<leader>tf', '<cmd>NvimTreeFocus<CR>')
-vim.keymap.set('', '<leader>tc', '<cmd>NvimTreeFindFile<CR>')
+vim.keymap.set('n', '<leader>tt', '<cmd>NvimTreeToggle<CR>')
+vim.keymap.set('n', '<leader>tf', '<cmd>NvimTreeFocus<CR>')
+vim.keymap.set('n', '<leader>tc', '<cmd>NvimTreeFindFile<CR>')
 
 -- Telescope
 local telescope = require 'telescope.builtin'
@@ -52,6 +52,11 @@ vim.keymap.set('n', '<leader>fs', telescope.live_grep, {})
 vim.keymap.set('n', '<leader>bb', telescope.buffers, {})
 vim.keymap.set('n', '<leader>fc', telescope.grep_string, {})
 vim.keymap.set('n', '<leader>fm', telescope.marks, {})
+vim.keymap.set('n', '<leader>fri', telescope.lsp_incoming_calls, {})
+vim.keymap.set('n', '<leader>fro', telescope.lsp_outgoing_calls, {})
+vim.keymap.set('n', '<leader>fg', telescope.git_bcommits, {})
+vim.keymap.set('v', '<leader>fg', telescope.git_bcommits_range, {})
+vim.keymap.set('n', '<leader>fe', '<cmd>Telescope emoji<CR>')
 
 -- Git
 vim.keymap.set('n', '<leader>gi', '<cmd>Git<CR>')
