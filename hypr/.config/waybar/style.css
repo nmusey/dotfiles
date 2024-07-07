@@ -1,20 +1,22 @@
+@import url("file:///home/nick/.cache/wal/colors-waybar.css");
+
 window#waybar {
     padding: 4px 8px;
     
-    background-color: #363A3D;
-    color: #d1d1d1;
+    background-color: @background;
+    color: @foreground;
 }
 
 #workspaces button {
-    color: #ffffff;
+    color: @foreground;
 }
 
 #workspaces button.active {
-    color: #4CAF50;
+    color: @color3;
 }
 
 #workspaces button.urgent {
-    color: #D65348;
+    color: @color2;
 }
 
 .module {

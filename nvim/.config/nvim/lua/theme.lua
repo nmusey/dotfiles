@@ -1,7 +1,11 @@
 -- Theme
-vim.opt.termguicolors = true
+vim.opt.termguicolors = false
 vim.opt.background = 'dark'
 pcall(vim.cmd, 'colorscheme kanagawa')
+
+if (os.getenv("ARCHBTW")) then
+    pcall(vim.cmd, 'colorscheme wal')
+end
 
 -- Indentation
 vim.opt.tabstop = 4

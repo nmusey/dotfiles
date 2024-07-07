@@ -36,5 +36,5 @@ RPROMPT="$NEWLINE$NEWLINE"
 
 if command -v fastfetch &> /dev/null; then
     print ""
-    fastfetch -l small --structure "DateTime:Break:Separator:Title:Separator:OS:PublicIP"
+    fastfetch -l small --structure "DateTime:Separator:Title:Colors:Separator:OS:PublicIP"
 fi

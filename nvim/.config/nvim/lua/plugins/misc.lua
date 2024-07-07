@@ -8,4 +8,5 @@ return {
     "ggandor/leap.nvim",
     "jiangmiao/auto-pairs",
     "github/copilot.vim",
+    "dylanaraps/wal.vim"
 }
