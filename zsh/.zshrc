@@ -18,6 +18,8 @@ alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on 
 alias g='git status'
 alias gps='git push origin HEAD'
 alias gpl='git pull'
+alias gco='git checkout $(git branch -l | fzf)'
+alias gcb='git commit -m "$(git branch --show-current) $1';
 
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
 if [[ -f $HOME/.local.zshrc ]]; then
