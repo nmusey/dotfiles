@@ -43,7 +43,7 @@ return {
 
         require("nvim-tree").setup({
             view = {
-                side = "left"
+                side = "right"
             },
             filters = {
                 exclude = {

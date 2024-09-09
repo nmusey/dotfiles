@@ -26,13 +26,6 @@ fi
 ### Below here is for env variables for tools ###
 #################################################
 
-# Load plugins with Antidote
-autoload -Uz compinit
-compinit
-[[ -e ~/.antidote ]] || git clone https://github.com/mattmc3/antidote.git ~/.antidote
-. ~/.antidote/antidote.zsh
-antidote load
-
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit
 

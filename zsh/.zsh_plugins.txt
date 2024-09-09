@@ -1,2 +1,3 @@
 zpm-zsh/colorize
 jeffreytse/zsh-vi-mode
+zsh-users/zsh-autosuggestions

@@ -1,10 +1,12 @@
 -- Most keybinds are here but some plugin specifics are in the configuration file for that plugin.
 
 -- Tab Management
-vim.keymap.set('n', '<M-t>', '<cmd>tabnew<CR>')
-vim.keymap.set('n', '<M-T>', '<cmd>tab split<CR>')
-vim.keymap.set('n', '<C-n>', '<cmd>tabnext<CR>')
-vim.keymap.set('n', '<C-p>', '<cmd>tabprevious<CR>')
+vim.keymap.set('n', '<leader>ge', '<cmd>tabnew<CR>')
+vim.keymap.set('n', '<leader>gt', '<cmd>tab split<CR>')
+vim.keymap.set('n', '<leader>gv', '<cmd>vsplit<CR>')
+vim.keymap.set('n', '<leader>gh', '<cmd>split<CR>')
+vim.keymap.set('n', '<leader>gn', '<cmd>tabnext<CR>')
+vim.keymap.set('n', '<leader>gp', '<cmd>tabprevious<CR>')
 
 -- Buffer Management
 vim.keymap.set("n", "<leader>ww", "<cmd>w<CR>")
@@ -55,7 +57,7 @@ vim.keymap.set('n', '<leader>fm', telescope.marks, {})
 
 -- Git
 vim.keymap.set('n', '<leader>gi', '<cmd>Git<CR>')
-vim.keymap.set('n', '<leader>gb', '<cmd>G blame<CR>')
+vim.keymap.set('n', '<leader>gb', '<cmd>Git blame<CR>')
 vim.keymap.set('n', '<leader>hh', '<cmd>GitGutterPreviewHunk<CR>')
 vim.keymap.set('n', '<leader>hu', '<cmd>GitGutterUndoHunk<CR>')
 vim.keymap.set('n', '<leader>hn', '<cmd>GitGutterNextHunk<CR>')
@@ -64,3 +66,22 @@ vim.keymap.set('n', '<leader>hp', '<cmd>GitGutterPrevHunk<CR>')
 vim.keymap.set('n', '<leader>nd', '<cmd>Noice dismiss<CR>')
 vim.keymap.set('n', '<leader>ns', '<cmd>Noice<CR>')
 vim.keymap.set("c", "<C-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end)
+
+-- LSP
+local on_attach = function(args)
+    vim.diagnostic.config({
+        virtual_text = true
+    })
+
+    vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { buffer = args.bufnr })
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+    vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, {})
+    vim.keymap.set('n', 'gr', telescope.lsp_references, {})
+end
+
+vim.keymap.set('n', '<leader>fx', vim.lsp.buf.code_action, {})
+vim.keymap.set('n', '<leader>fo', vim.lsp.buf.format, {})
+vim.keymap.set('n', '<leader>nn', vim.lsp.buf.rename, {})
+vim.keymap.set('n', '<leader>ee', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>ep', vim.diagnostic.goto_prev)
+vim.keymap.set('n', '<leader>en', vim.diagnostic.goto_next)
