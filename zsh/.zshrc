@@ -16,6 +16,8 @@ setopt HIST_IGNORE_ALL_DUPS
 alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on MacOS
 
 alias g='git status'
+alias gps='git push origin HEAD'
+alias gpl='git pull'
 
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
 if [[ -f $HOME/.local.zshrc ]]; then

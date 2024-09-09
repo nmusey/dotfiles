@@ -56,11 +56,10 @@ vim.keymap.set('n', '<leader>fri', telescope.lsp_incoming_calls, {})
 vim.keymap.set('n', '<leader>fro', telescope.lsp_outgoing_calls, {})
 vim.keymap.set('n', '<leader>fg', telescope.git_bcommits, {})
 vim.keymap.set('v', '<leader>fg', telescope.git_bcommits_range, {})
-vim.keymap.set('n', '<leader>fe', '<cmd>Telescope emoji<CR>')
 
 -- Git
 vim.keymap.set('n', '<leader>gi', '<cmd>Git<CR>')
-vim.keymap.set('n', '<leader>gb', '<cmd>G blame<CR>')
+vim.keymap.set('n', '<leader>gb', '<cmd>Git blame<CR>')
 vim.keymap.set('n', '<leader>hh', '<cmd>GitGutterPreviewHunk<CR>')
 vim.keymap.set('n', '<leader>hu', '<cmd>GitGutterUndoHunk<CR>')
 vim.keymap.set('n', '<leader>hn', '<cmd>GitGutterNextHunk<CR>')
