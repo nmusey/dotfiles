@@ -12,8 +12,9 @@ yay --noconfirm -Syu \
     neovim zsh stow ripgrep fzf curl tmux openssh\
     ttf-cascadia-mono-nerd ttf-jetbrains-mono-nerd \
     go nodejs npm php composer\
-    brave-bin spotify-launcher obsidian \
-    spotify-tui \
+    brave-bin spotify-launcher obsidian zathura zathura-cb zathura-pdf-mupdf\
+    spotify-tui\
+
 
 bash ./install/helpers/stow-basics
 bash ./install/helpers/hypr-setup

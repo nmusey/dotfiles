@@ -57,13 +57,4 @@ return {
     {
         "dundalek/lazy-lsp.nvim",
     },
-    {
-        "nvim-treesitter/nvim-treesitter",
-    },
-    {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        dependencies = {
-            "nvim-treesitter/nvim-treesitter",
-        }
-    }
 }

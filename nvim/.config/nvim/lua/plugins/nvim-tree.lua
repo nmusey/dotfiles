@@ -43,11 +43,12 @@ return {
 
         require("nvim-tree").setup({
             view = {
-                side = "right"
+                side = "left"
             },
             filters = {
                 exclude = {
-                    "^.git$"
+                    "^.git$",
+                    "^node_modules",
                 }
             }
         })

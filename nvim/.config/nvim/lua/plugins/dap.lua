@@ -9,7 +9,6 @@ return {
         config = function()
             local dap, dapui = require("dap"), require("dapui")
 
-            -- Automaticall open DAPUI on breakpoints
             dap.listeners.before.attach.dapui_config = function()
               dapui.open()
             end
@@ -24,15 +23,16 @@ return {
             end
 
             -- Keymaps
-            vim.keymap.set("n", "<leader>db", "<cmd>lua require('dap').toggle_breakpoint()<CR>", { noremap = true })
-            vim.keymap.set("n", "<leader>dc", "<cmd>lua require('dap').continue()<CR>", { noremap = true })
-            vim.keymap.set("n", "<leader>dn", "<cmd>lua require('dap').step_over()<CR>", { noremap = true })
-            vim.keymap.set("n", "<leader>di", "<cmd>lua require('dap').step_into()<CR>", { noremap = true })
-            vim.keymap.set("n", "<leader>dp", "<cmd>lua require('dap').step_out()<CR>", { noremap = true })
-            vim.keymap.set("n", "<leader>dh", "<cmd>lua require('dap.ui.widgets').hover()<CR>", { noremap = true })
-            vim.keymap.set("n", "<leader>dh", "<cmd>lua require('dap.ui.widgets').preview()<CR>", { noremap = true })
-            vim.keymap.set("n", "<leader>dr", "<cmd>lua require('dap').repl.open()()<CR>", { noremap = true })
-            vim.keymap.set("n", "<leader>dq", "<cmd>lua require('dap').repl.exit()()<CR>", { noremap = true })
+            vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { noremap = true })
+            vim.keymap.set("n", "<leader>dq", dap.close, { noremap = true })
+            vim.keymap.set("n", "<leader>dc", dap.continue, { noremap = true })
+            vim.keymap.set("n", "<leader>dn", dap.step_over, { noremap = true })
+            vim.keymap.set("n", "<leader>di", dap.step_into, { noremap = true })
+            vim.keymap.set("n", "<leader>do", dap.step_out, { noremap = true })
+            vim.keymap.set("n", "<leader>dh", function() dapui.hover() end, { noremap = true })
+            vim.keymap.set("n", "<leader>dh", function() dapui.preview() end, { noremap = true })
+            vim.keymap.set("n", "<leader>dr", function() dap.repl.open() end, { noremap = true })
+            vim.keymap.set("n", "<leader>dx", function() dap.repl.exit() end, { noremap = true })
 
             -- Setup debuggers here
             require("dap-go").setup()

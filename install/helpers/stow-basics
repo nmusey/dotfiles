@@ -10,3 +10,4 @@ stow nvim
 rm ~/.gitconfig
 stow git
 stow tmux
+stow --target ~/.local/bin bin

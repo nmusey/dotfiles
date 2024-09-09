@@ -16,11 +16,10 @@ setopt HIST_IGNORE_ALL_DUPS
 alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on MacOS
 
 alias g='git status'
-alias gc='git commit -m'
 
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
-if [[ -f $HOME/local.zshrc ]]; then
-    source $HOME/local.zshrc
+if [[ -f $HOME/.local.zshrc ]]; then
+    source $HOME/.local.zshrc
 fi
 
 #################################################
@@ -33,6 +32,15 @@ compinit
 [[ -e ~/.antidote ]] || git clone https://github.com/mattmc3/antidote.git ~/.antidote
 . ~/.antidote/antidote.zsh
 antidote load
+
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
+
+if [[ ! -d ~/.local/bin ]]; then
+    mkdir -p ~/.local/bin
+fi
+export PATH=$PATH:~/.local/bin
+
 
 # Add path variables
 export NVM_DIR="$HOME/.nvm"
@@ -51,12 +59,12 @@ if [[ -e $HOME/.dotnet/tools ]]; then
 fi
 
 # Setup Go environment
-if [[ -e /usr/local/go/bin/go ]]; then
-    export PATH=$PATH:/usr/local/go/bin
-fi
 if command -v go &> /dev/null; then
-    export GOPATH=~/.go/bin
-    export PATH=$PATH:$GOPATH
+    export GOPATH=~/.go
+    export PATH=$PATH:~/.go/bin
 fi
 
-VI_KEYMAP=main
+if command -v wal &> /dev/null; then
+    (cat ~/.cache/wal/sequences &)
+    source ~/.cache/wal/colors-tty.sh
+fi

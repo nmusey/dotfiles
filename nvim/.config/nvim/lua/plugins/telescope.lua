@@ -16,8 +16,12 @@
                 defaults = {
                     vimgrep_arguments = vimgrep_arguments,
                     file_ignore_patterns = {
-                        ".git/*",
-                        "**/.git/*",
+                         ".git",
+                         "**/.git",
+                         "node_modules",
+                         "**/node_modules",
+                         "vendor",
+                         "**/vendor"
                     },
                     color_devicons = true,
                 },
