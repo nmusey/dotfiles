@@ -2,6 +2,11 @@ local on_attach = function(args)
     vim.diagnostic.config({
         virtual_text = true
     })
+
+    vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { buffer = args.bufnr })
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+    vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, {})
+    vim.keymap.set('n', 'gr', telescope.lsp_references, {})
 end
 
             
@@ -13,15 +18,6 @@ return {
             local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
             local on_lsp_attach = on_attach
             local lspconfig = require('lspconfig')
-
-            require('mason-lspconfig').setup_handlers({
-                function(server_name)
-                    lspconfig[server_name].setup({
-                        on_attach = on_lsp_attach,
-                        capabilities = lsp_capabilities,
-                    })
-                end,
-            })
 
             local get_intelephense_key = function()
                 local f = io.open(os.getenv('HOME') .. '/intelephense/license.txt', 'rb')
@@ -35,12 +31,19 @@ return {
                 return string.gsub(key, '%s+', '')
             end
 
-            lspconfig.intelephense.setup({
-                on_attach = on_lsp_attach,
-                capabilities = lsp_capabilities,
-                init_options = {
-                    licenceKey = get_intelephense_key()
-                }
+            require('mason-lspconfig').setup_handlers({
+                function(server_name)
+                    if server_name == "intelephense" then
+                        init_options = { licenceKey = get_intelephense_key() }
+                    else
+                        init_options = {}
+                    end
+                    lspconfig[server_name].setup({
+                        on_attach = on_lsp_attach,
+                        capabilities = lsp_capabilities,
+                        init_options = init_options,
+                    })
+                end,
             })
         end
     },

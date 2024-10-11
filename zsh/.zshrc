@@ -17,6 +17,10 @@ alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on 
 
 alias g='git status'
 
+function audio() {
+    pactl set-default-sink $(pactl list sinks | rg -oP 'Name: (.*)' --replace '$1' | fzf);
+}
+
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
 if [[ -f $HOME/.local.zshrc ]]; then
     source $HOME/.local.zshrc

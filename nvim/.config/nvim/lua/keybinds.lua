@@ -67,18 +67,6 @@ vim.keymap.set('n', '<leader>nd', '<cmd>Noice dismiss<CR>')
 vim.keymap.set('n', '<leader>ns', '<cmd>Noice<CR>')
 vim.keymap.set("c", "<C-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end)
 
--- LSP
-local on_attach = function(args)
-    vim.diagnostic.config({
-        virtual_text = true
-    })
-
-    vim.keymap.set('n', 'gh', vim.lsp.buf.hover, { buffer = args.bufnr })
-    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-    vim.keymap.set('n', 'gtd', vim.lsp.buf.type_definition, {})
-    vim.keymap.set('n', 'gr', telescope.lsp_references, {})
-end
-
 vim.keymap.set('n', '<leader>fx', vim.lsp.buf.code_action, {})
 vim.keymap.set('n', '<leader>fo', vim.lsp.buf.format, {})
 vim.keymap.set('n', '<leader>nn', vim.lsp.buf.rename, {})
