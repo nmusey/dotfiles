@@ -16,6 +16,10 @@ setopt HIST_IGNORE_ALL_DUPS
 alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on MacOS
 
 alias g='git status'
+alias gps='git push origin HEAD'
+alias gpl='git pull'
+alias gco='git checkout $(git branch -l | fzf)'
+alias gcb='git commit -m "$(git branch --show-current) $1';
 
 function audio() {
     pactl set-default-sink $(pactl list sinks | rg -oP 'Name: (.*)' --replace '$1' | fzf);

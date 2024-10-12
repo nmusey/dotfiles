@@ -7,5 +7,5 @@ return {
     "machakann/vim-highlightedyank",
     "ggandor/leap.nvim",
     "jiangmiao/auto-pairs",
-    "dylanaraps/wal.vim"
+    "AckslD/nvim-neoclip.lua",
 }
