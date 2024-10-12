@@ -24,15 +24,6 @@ return {
             local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
             local lspconfig = require('lspconfig')
 
-            require('mason-lspconfig').setup_handlers({
-                function(server_name)
-                    lspconfig[server_name].setup({
-                        on_attach = on_lsp_attach,
-                        capabilities = lsp_capabilities,
-                    })
-                end,
-            })
-
             local get_intelephense_key = function()
                 local f = io.open(os.getenv('HOME') .. '/intelephense/license.txt', 'rb')
 
@@ -45,12 +36,19 @@ return {
                 return string.gsub(key, '%s+', '')
             end
 
-            lspconfig.intelephense.setup({
-                on_attach = on_lsp_attach,
-                capabilities = lsp_capabilities,
-                init_options = {
-                    licenceKey = get_intelephense_key()
-                }
+            require('mason-lspconfig').setup_handlers({
+                function(server_name)
+                    if server_name == "intelephense" then
+                        init_options = { licenceKey = get_intelephense_key() }
+                    else
+                        init_options = {}
+                    end
+                    lspconfig[server_name].setup({
+                        on_attach = on_lsp_attach,
+                        capabilities = lsp_capabilities,
+                        init_options = init_options,
+                    })
+                end,
             })
         end
     },

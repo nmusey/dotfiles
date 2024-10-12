@@ -21,6 +21,10 @@ alias gpl='git pull'
 alias gco='git checkout $(git branch -l | fzf)'
 alias gcb='git commit -m "$(git branch --show-current) $1';
 
+function audio() {
+    pactl set-default-sink $(pactl list sinks | rg -oP 'Name: (.*)' --replace '$1' | fzf);
+}
+
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
 if [[ -f $HOME/.local.zshrc ]]; then
     source $HOME/.local.zshrc
@@ -29,13 +33,6 @@ fi
 #################################################
 ### Below here is for env variables for tools ###
 #################################################
-
-# Load plugins with Antidote
-autoload -Uz compinit
-compinit
-[[ -e ~/.antidote ]] || git clone https://github.com/mattmc3/antidote.git ~/.antidote
-. ~/.antidote/antidote.zsh
-antidote load
 
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit

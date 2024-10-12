@@ -1,4 +1,4 @@
-vim.g.mapleader = ' '
+vim.g.mapleader=' '
 
 require('theme')
 require('lazy-setup')

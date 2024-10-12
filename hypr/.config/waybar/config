@@ -68,7 +68,10 @@
             "class<kitty>": "\uf120",
             "class<Spotify>": "\uf1bc",
             "class<Brave-browser>": "\udb81\udd9f",
-            "class<steam>": "\udb81\udcd3"
+            "class<steam>": "\udb81\udcd3",
+            "class<firefox>": "\uf269",
+            "class<obsidian>": "\uf14e9",
+            "class<org.kde.dolphin>": "\uf114"
         }
     },
 }
