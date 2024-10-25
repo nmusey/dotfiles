@@ -13,7 +13,7 @@
 
     services.openssh = {
       enable = true;
-      settings.PasswordAuthentication = false;
+      settings.PasswordAuthentication = true;
       settings.KbdInteractiveAuthentication = false;
       settings.PermitRootLogin = "no";
     };

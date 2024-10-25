@@ -29,6 +29,7 @@
       mako
       dunst
       rofi-wayland-unwrapped
+      hyprshot
 
       xorg.libX11
       xorg.libXext
