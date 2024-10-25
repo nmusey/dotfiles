@@ -31,7 +31,15 @@
         steam-run
         obs-studio
         discord
+        google-chrome
+        qemu        
       ];
+    };
+
+    services.syncthing = {
+      enable = true;
+      openDefaultPorts = true;
+      user = "nick";
     };
   };
 }

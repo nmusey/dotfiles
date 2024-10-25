@@ -9,6 +9,7 @@ let
     protoc-gen-go
     cmake
     unityhub
+    elixir
   ];
 
   devtoolpkgs = with pkgs; [
