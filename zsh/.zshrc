@@ -25,6 +25,8 @@ function audio() {
     pactl set-default-sink $(pactl list sinks | rg -oP 'Name: (.*)' --replace '$1' | fzf);
 }
 
+alias nt='cd ~/notes && nvim'
+
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
 if [[ -f $HOME/.local.zshrc ]]; then
     source $HOME/.local.zshrc
