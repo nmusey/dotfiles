@@ -30,6 +30,7 @@ vim.opt.hlsearch = false
 
 -- Miscellaneous
 vim.opt.clipboard = 'unnamedplus'
+vim.api.nvim_set_option("clipboard", "unnamedplus")
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.title = true

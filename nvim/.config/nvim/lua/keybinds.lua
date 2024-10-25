@@ -4,7 +4,7 @@
 vim.keymap.set('n', '<leader>ge', '<cmd>tabnew<CR>')
 vim.keymap.set('n', '<leader>gt', '<cmd>tab split<CR>')
 vim.keymap.set('n', '<leader>gv', '<cmd>vsplit<CR>')
-vim.keymap.set('n', '<leader>gh', '<cmd>split<CR>')
+vim.keymap.set('n', '<leader>gs', '<cmd>split<CR>')
 vim.keymap.set('n', '<leader>gn', '<cmd>tabnext<CR>')
 vim.keymap.set('n', '<leader>gp', '<cmd>tabprevious<CR>')
 
@@ -13,10 +13,6 @@ vim.keymap.set("n", "<leader>ww", "<cmd>w<CR>")
 vim.keymap.set("n", "<leader>qq", "<cmd>close<CR>")
 vim.keymap.set("n", "<C-b>", "<cmd>bnext<CR>")
 vim.keymap.set("n", "<C-B>", "<cmd>bprevious<CR>")
-
--- Pane Management
-vim.keymap.set('n', '<leader>V', '<cmd>vsplit<CR>')
-vim.keymap.set('n', '<leader>H', '<cmd>split<CR>')
 
 -- Window Navigation
 vim.keymap.set('n', '<C-h>', '<C-w>h')
@@ -34,10 +30,7 @@ vim.keymap.set('n', '<M-j>', '<cmd>vertical resize -2<CR>')
 vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv")
 
--- Yank/Paste/Delete Settings
-vim.keymap.set("x", "<leader>p", [["_dP]])
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set({"n", "v"}, "<leader>yy", [["+yy]])
+-- Delete Settings
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 vim.keymap.set({"n", "v"}, "<leader>dd", [["_dd]])
 
