@@ -33,6 +33,7 @@
         discord
         google-chrome
         qemu        
+        playerctl
       ];
     };
 
