@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -24,10 +24,16 @@
       NIXOS_OZONE_WL = "1";
     };
 
+    boot.kernelModules = [ "i2c-dev" "i2c-piix4" ];
+    environment.variables = {
+      QT_QPA_PLATFORM = "wayland;xcb";
+    };
+
     ai.enable = true;
     personal.enable = true;
     developer.enable = true;
     gaming.enable = true;
     katipult.enable = true;
+    openrgb.enable = false;
   };
 }

@@ -10,6 +10,8 @@ let
     cmake
     unityhub
     elixir
+    lua
+    lua54Packages.luarocks
   ];
 
   devtoolpkgs = with pkgs; [
@@ -24,10 +26,10 @@ let
     docker
     docker-compose
     jq
-    neovim
     jetbrains-toolbox
     vscode
     bat
+    lsof
   ];
 in
 {
@@ -35,11 +37,8 @@ in
     developer.enable = lib.mkEnableOption "enables developer packages";
   };
 
-
   config = lib.mkIf config.developer.enable {
-    users.users.${config.username} = {
-      packages = devpkgs ++ devtoolpkgs;
-    };
+    environment.systemPackages = with pkgs; devpkgs ++ devtoolpkgs;
 
     virtualisation.docker = {
       enable = true;
@@ -53,7 +52,5 @@ in
       pkgs.platformio-core
       pkgs.openocd
     ];
-
-    programs.neovim.enable = true;
   };
 }

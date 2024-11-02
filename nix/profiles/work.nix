@@ -15,9 +15,7 @@
         firefox
         nerdfonts
         unzip
-        php
         intelephense
-        neovim
 
         php
         nginx

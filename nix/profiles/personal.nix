@@ -34,6 +34,7 @@
         google-chrome
         qemu        
         playerctl
+        anki-bin
       ];
     };
 
