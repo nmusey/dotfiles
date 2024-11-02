@@ -25,6 +25,14 @@ function audio() {
     pactl set-default-sink $(pactl list sinks | rg -oP 'Name: (.*)' --replace '$1' | fzf);
 }
 
+function ports() {
+    if [ -z "$1" ]; then 
+        lsof -i -n
+    else
+        lsof -i -n | rg "$1"
+    fi
+}
+
 alias nt='cd ~/notes && nvim'
 
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
