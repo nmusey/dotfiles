@@ -1,0 +1,34 @@
+# Define some common colors
+declare -A colors=(
+  ["Red"]="FF0000"
+  ["Green"]="00FF00"
+  ["Blue"]="0000FF"
+  ["Yellow"]="FFFF00"
+  ["Cyan"]="00FFFF"
+  ["Magenta"]="FF00FF"
+  ["White"]="FFFFFF"
+  ["Black"]="000000"
+)
+
+# Prompt the user to select a color using fzf
+color_name=$(printf "%s\n" "${!colors[@]}" | fzf --prompt="Select a color: ")
+if [ -z "$color_name" ]; then
+  echo "No color selected. Exiting."
+  exit 1
+fi
+
+# Get the RGB values for the selected color
+local rgb_values="${colors[$color_name]}"
+echo $rgb_values
+
+# Parse optional effect flag
+effect=${1:-"static"}
+
+# Set the color using openrgb
+if [ "$effect" == "static" ]; then
+  openrgb --color $rgb_values
+else
+  openrgb --mode "$effect" --color $rgb_values
+fi
+
+echo "Set color to $color_name ($rgb_values) with effect: $effect"
