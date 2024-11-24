@@ -79,3 +79,6 @@ if command -v wal &> /dev/null; then
     (cat ~/.cache/wal/sequences &)
     source ~/.cache/wal/colors-tty.sh
 fi
+
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH:/opt/homebrew/lib/ruby/gems/3.3.0/bin"
+eval "$(rbenv init -)"

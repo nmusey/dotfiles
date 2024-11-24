@@ -38,7 +38,7 @@
     },
 
     "idle_inhibitor": {
-        "format": "☕ {icon}",
+        "format": "{icon}",
         "format-icons": {
             "activated": "",
             "deactivated": ""
@@ -54,8 +54,8 @@
     },
 
     "mpris": {
-        "format": "{title} by {artist}  \udb80\udc25  {album}",
-        "format-paused": "{status_icon} {title} by {artist}  \udb80\udc25  {album}",
+        "format": "{title} by {artist}" 
+        "format-paused": "{status_icon} {title} by {artist}",
         "status-icons": {
             "paused": "\uf04c"
         }

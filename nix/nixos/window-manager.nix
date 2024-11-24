@@ -24,12 +24,11 @@
 
     environment.systemPackages = with pkgs; [
       waybar
-      fuzzel
       hyprpaper
       mako
-      dunst
       rofi-wayland-unwrapped
       hyprshot
+      bemoji
 
       xorg.libX11
       xorg.libXext
