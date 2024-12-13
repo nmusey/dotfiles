@@ -35,13 +35,13 @@ function ports() {
 
 alias nt='cd ~/notes && nvim'
 
-if command -v fzf &>/dev/null
+if command -v fzf &>/dev/null; then
     eval "$(fzf --zsh)"
     export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-    export FZF_DEFAULT_OPTS = "--height 50% --layout=default --border"
+    export FZF_DEFAULT_OPTS="--height 50% --layout=default --border"
 fi
 
-if command -v exa &>/dev/null
+if command -v exa &>/dev/null; then
     alias ls="exz --no-filesize --long --color=always --no-user"
 fi
 
