@@ -34,6 +34,12 @@ vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv")
 vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 vim.keymap.set({"n", "v"}, "<leader>dd", [["_dd]])
 
+vim.keymap.set("n", "y", '[["+Y]]')
+vim.keymap.set("v", "p", "_dp")
+
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
 -- File tree
 vim.keymap.set('n', '<leader>tt', '<cmd>NvimTreeToggle<CR>')
 vim.keymap.set('n', '<leader>tf', '<cmd>NvimTreeFocus<CR>')

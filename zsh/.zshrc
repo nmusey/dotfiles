@@ -12,12 +12,12 @@ export HISTCONTROL=ignoredups
 setopt EXTENDED_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 
+export LANG=en_US.UTF-8
+
 # Aliases and custom functions
 alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on MacOS
 
 alias g='git status'
-alias gps='git push origin HEAD'
-alias gpl='git pull'
 alias gco='git checkout $(git branch -l | fzf)'
 alias gcb='git commit -m "$(git branch --show-current) $1';
 
@@ -35,10 +35,26 @@ function ports() {
 
 alias nt='cd ~/notes && nvim'
 
+if command -v fzf &>/dev/null
+    eval "$(fzf --zsh)"
+    export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+    export FZF_DEFAULT_OPTS = "--height 50% --layout=default --border"
+fi
+
+if command -v exa &>/dev/null
+    alias ls="exz --no-filesize --long --color=always --no-user"
+fi
+
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
 if [[ -f $HOME/.local.zshrc ]]; then
     source $HOME/.local.zshrc
 fi
+
+# Local scripts
+if [[ ! -d ~/.local/bin ]]; then
+    mkdir -p ~/.local/bin
+fi
+export PATH=$PATH:~/.local/bin
 
 #################################################
 ### Below here is for env variables for tools ###
@@ -46,12 +62,6 @@ fi
 
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit
-
-if [[ ! -d ~/.local/bin ]]; then
-    mkdir -p ~/.local/bin
-fi
-export PATH=$PATH:~/.local/bin
-
 
 # Add path variables
 export NVM_DIR="$HOME/.nvm"
@@ -79,6 +89,3 @@ if command -v wal &> /dev/null; then
     (cat ~/.cache/wal/sequences &)
     source ~/.cache/wal/colors-tty.sh
 fi
-
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH:/opt/homebrew/lib/ruby/gems/3.3.0/bin"
-eval "$(rbenv init -)"
