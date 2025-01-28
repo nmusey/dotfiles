@@ -13,7 +13,7 @@
     services.minidlna.settings = {
       friendly_name = "tower";
       media_dir = [
-        "V,/dlna/vids"
+        "V,/ssd/movies"
       ];
 
       inotify = "yes";

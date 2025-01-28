@@ -10,6 +10,7 @@
 
     users.users.${config.username}.packages = with pkgs; [
       runelite
+      wine
     ];
 
     environment.systemPackages = with pkgs; [

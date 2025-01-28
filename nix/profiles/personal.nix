@@ -18,7 +18,6 @@
         wally-cli
         kitty
         firefox
-        nerdfonts
         unzip
         openrgb
         spotify
@@ -35,6 +34,7 @@
         qemu        
         playerctl
         anki-bin
+        zoom-us
       ];
     };
 

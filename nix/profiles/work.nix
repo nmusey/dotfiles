@@ -15,7 +15,6 @@
         firefox
         nerdfonts
         unzip
-        intelephense
 
         php
         nginx

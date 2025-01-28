@@ -7,6 +7,7 @@
         ./gaming.nix
         ./personal.nix
         ./server.nix
+        ./virtualization.nix
         ./work.nix
     ];
 

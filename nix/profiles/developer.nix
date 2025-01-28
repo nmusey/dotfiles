@@ -12,6 +12,8 @@ let
     elixir
     lua
     lua54Packages.luarocks
+    python3
+    SDL2
   ];
 
   devtoolpkgs = with pkgs; [
@@ -30,6 +32,7 @@ let
     vscode
     bat
     lsof
+    zellij
   ];
 in
 {
@@ -38,7 +41,7 @@ in
   };
 
   config = lib.mkIf config.developer.enable {
-    environment.systemPackages = with pkgs; devpkgs ++ devtoolpkgs;
+    environment.systemPackages = devpkgs ++ devtoolpkgs;
 
     virtualisation.docker = {
       enable = true;
@@ -51,6 +54,10 @@ in
     services.udev.packages = [
       pkgs.platformio-core
       pkgs.openocd
+    ];
+
+    fonts.packages = with pkgs; [ 
+      pkgs.nerd-fonts.hasklug
     ];
   };
 }

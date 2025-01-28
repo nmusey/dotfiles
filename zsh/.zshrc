@@ -27,9 +27,9 @@ function audio() {
 
 function ports() {
     if [ -z "$1" ]; then 
-        lsof -i -n
+        sudo lsof -i -n
     else
-        lsof -i -n | rg "$1"
+        sudo lsof -i -n | rg "$1"
     fi
 }
 
