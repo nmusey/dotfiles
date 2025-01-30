@@ -8,14 +8,15 @@ keybinds {
         bind "Ctrl f" { SwitchToMode "Search"; }
         bind "Ctrl o" { SwitchToMode "Session"; }
         bind "Ctrl s" { SwitchToMode "Scroll"; }
+        bind "Ctrl g" { SwitchToMode "Locked"; }
 
         bind "Ctrl h" { MoveFocus "Left"; }
         bind "Ctrl j" { MoveFocus "Down"; }
         bind "Ctrl k" { MoveFocus "Up"; }
         bind "Ctrl l" { MoveFocus "Right"; }
 
-        bind "Ctrl Shift K" { GoToNextTab; }
-        bind "Ctrl Shift J" { GoToPreviousTab; }
+        bind "Ctrl Shift k" { GoToNextTab; }
+        bind "Ctrl Shift j" { GoToPreviousTab; }
     }
 
     locked {

@@ -54,7 +54,7 @@
     },
 
     "mpris": {
-        "format": "{title} by {artist}" 
+        "format": "{title} by {artist}",
         "format-paused": "{status_icon} {title} by {artist}",
         "status-icons": {
             "paused": "\uf04c"
