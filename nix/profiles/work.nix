@@ -13,7 +13,6 @@
       packages = with pkgs; [
         kitty
         firefox
-        nerdfonts
         unzip
 
         php

@@ -12,7 +12,6 @@
         neovim
         ripgrep
         tmux
-        nerdfonts
       ];
     };
   };
