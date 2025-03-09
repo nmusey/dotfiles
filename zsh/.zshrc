@@ -6,13 +6,25 @@ export EDITOR='nvim'
 source ~/.theme.zsh
 
 # Setup zsh history
-export HISTFILE=~/.zsh_history
-export HISTSIZE=10000
+export HISTFILE="$XDG_CACHE_HOME/zsh_history"
+export HISTSIZE=1000000
+export SAVEHIST=1000000
 export HISTCONTROL=ignoredups
-setopt EXTENDED_HISTORY
-setopt HIST_IGNORE_ALL_DUPS
+setopt extended_history hist_ignore_all_dups append_history inc_append_history share_history
 
 export LANG=en_US.UTF-8
+
+# hotkeys
+bindkey "^a" beginning-of-line
+bindkey "^e" end-of-line
+bindkey "^k" kill-line
+bindkey "^j" backward-word
+bindkey "^k" forward-word
+bindkey "^H" backward-kill-word
+bindkey "^J" history-search-forward
+bindkey "^K" history-search-backward
+bindkey '^R' fzf-history-widget
+
 
 # Aliases and custom functions
 alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on MacOS
@@ -35,14 +47,33 @@ function ports() {
 
 alias nt='cd ~/notes && nvim'
 
+# This needs to go before the bat alias
+if command -v wal &> /dev/null; then
+    (cat ~/.cache/wal/sequences &)
+    source ~/.cache/wal/colors-tty.sh
+fi
+
 if command -v fzf &>/dev/null; then
-    eval "$(fzf --zsh)"
+    source <(fzf --zsh)
     export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
     export FZF_DEFAULT_OPTS="--height 50% --layout=default --border"
 fi
 
-if command -v exa &>/dev/null; then
-    alias ls="exz --no-filesize --long --color=always --no-user"
+if command -v eza &>/dev/null; then
+    alias ls="eza --oneline --long --color=always"
+fi
+
+if command -v zoxide &>/dev/null; then
+    eval "$(zoxide init zsh)"
+    alias cd="z"
+fi
+
+if command -v bat &>/dev/null; then
+    alias cat="bat"
+fi
+
+if command -v nvim &>/dev/null; then
+    export MANPAGER="nvim +Man!"
 fi
 
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
@@ -62,6 +93,7 @@ export PATH=$PATH:~/.local/bin
 
 fpath+=~/.zfunc
 autoload -Uz compinit && compinit
+autoload -U colors && colors
 
 # Add path variables
 export NVM_DIR="$HOME/.nvm"
@@ -85,7 +117,3 @@ if command -v go &> /dev/null; then
     export PATH=$PATH:~/.go/bin
 fi
 
-if command -v wal &> /dev/null; then
-    (cat ~/.cache/wal/sequences &)
-    source ~/.cache/wal/colors-tty.sh
-fi

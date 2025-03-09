@@ -24,17 +24,23 @@
         obsidian
         flameshot
         zathura
-        bitwarden-desktop
-        bitwarden-cli
         rsync
         steam-run
         obs-studio
         discord
         google-chrome
+        brave
         qemu        
         playerctl
         anki-bin
         zoom-us
+        alsa-utils
+        yazi
+        zoxide
+        pywal16
+        imagemagick
+        bat
+        eza
       ];
     };
 
@@ -43,5 +49,7 @@
       openDefaultPorts = true;
       user = "nick";
     };
+
+    services.flatpak.enable = true;
   };
 }
