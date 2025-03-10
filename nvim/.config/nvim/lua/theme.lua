@@ -1,7 +1,7 @@
 -- Theme
 vim.opt.termguicolors = false
 vim.opt.background = 'dark'
-pcall(vim.cmd, 'colorscheme kanagawa')
+
 
 -- Indentation
 vim.opt.tabstop = 4
