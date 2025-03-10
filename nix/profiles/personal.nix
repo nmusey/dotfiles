@@ -41,6 +41,7 @@
         imagemagick
         bat
         eza
+        neofetch
       ];
     };
 

@@ -1,19 +1,19 @@
-{ lib, ... }:
+{ config, lib, ... }:
 {
   options = {
     dlna.enable = lib.mkEnableOption "enable dlna streaming server";
   };
 
-  config = {
-    services.avahi.enable = true;
-    services.avahi.nssmdns4 = true;
+  config = lib.mkIf config.dlna.enable {
+    services.avahi.enable = config.dlna.enable;
+    services.avahi.nssmdns4 = config.dlna.enable;
 
-    services.minidlna.enable = true;
-    services.minidlna.openFirewall = true;
+    services.minidlna.enable = config.dlna.enable;
+    services.minidlna.openFirewall = config.dlna.enable;
     services.minidlna.settings = {
       friendly_name = "tower";
       media_dir = [
-        "V,/ssd/movies"
+        "V,~/Downloads/"
       ];
 
       inotify = "yes";
@@ -22,6 +22,7 @@
     };
 
     users.users.minidlna = {
+      isNormalUser = true;
       extraGroups =
         [ "users" "wheel" "minidlna" ];
     };

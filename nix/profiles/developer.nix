@@ -14,6 +14,10 @@ let
     lua54Packages.luarocks
     python3
     SDL2
+    php84
+    php84Packages.composer
+    dotnetCorePackages.dotnet_8.sdk
+    dotnet-ef
   ];
 
   devtoolpkgs = with pkgs; [
