@@ -4,9 +4,8 @@ return {
     {
         "AlphaTechnolog/pywal.nvim",
         config = function()
-            local pywal = require('pywal')
-            if pywal then
-                pywal.setup()
+            if io.open("~/.cache/wal/colors.vim" ,"r") ~= nil then
+                require("pywal").setup()
                 vim.cmd([[colorscheme pywal]])
             else
                 vim.cmd([[colorscheme kanagawa]])
