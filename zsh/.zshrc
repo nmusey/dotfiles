@@ -76,6 +76,17 @@ if command -v nvim &>/dev/null; then
     export MANPAGER="nvim +Man!"
 fi
 
+if command -v yazi &>/dev/null; then
+    function y() {
+        local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+        yazi "$@" --cwd-file="$tmp"
+        if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+            builtin cd -- "$cwd"
+        fi
+        rm -f -- "$tmp"
+    }
+fi
+
 # Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
 if [[ -f $HOME/.local.zshrc ]]; then
     source $HOME/.local.zshrc
