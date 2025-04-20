@@ -30,3 +30,5 @@ vim.api.nvim_set_option("clipboard", "unnamedplus")
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.title = true
+
+vim.opt.swapfile = false

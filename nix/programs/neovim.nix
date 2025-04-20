@@ -1,17 +1,4 @@
 { config, lib, pkgs, ... }:
-let
-  nvim = pkgs.neovim.overrideAttrs
-    (old: {
-      version = "git";
-      src = pkgs.fetchFromGitHub
-        {
-          owner = "neovim";
-          repo = "neovim";
-          rev = "v0.10.2";
-          sha256 = "sha256-+qjjelYMB3MyjaESfCaGoeBURUzSVh/50uxUqStxIfY=";
-        };
-    });
-in
 {
   options = {
     neovim.enable = lib.mkEnableOption "enable neovim";
@@ -21,9 +8,14 @@ in
     {
       users.users.${config.username} =
         {
-          packages = [ nvim ];
+          packages = with pkgs; [ 
+            vimPlugins.nvim-treesitter.withAllGrammars 
+            neovim
+          ];
         };
 
-      environment.systemPackages = [ nvim ];
+      environment.systemPackages = with pkgs; [ 
+        neovim
+      ];
     };
 }

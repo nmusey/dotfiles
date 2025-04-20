@@ -13,7 +13,7 @@
     services.minidlna.settings = {
       friendly_name = "tower";
       media_dir = [
-        "V,~/Downloads/"
+        "V,/home/minidlna/Downloads/"
       ];
 
       inotify = "yes";
@@ -22,7 +22,6 @@
     };
 
     users.users.minidlna = {
-      isNormalUser = true;
       extraGroups =
         [ "users" "wheel" "minidlna" ];
     };
