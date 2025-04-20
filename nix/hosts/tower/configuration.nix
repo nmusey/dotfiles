@@ -33,7 +33,6 @@
     personal.enable = true;
     developer.enable = true;
     gaming.enable = true;
-    katipult.enable = true;
     openrgb.enable = false;
   };
 }

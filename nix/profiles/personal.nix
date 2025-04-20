@@ -42,6 +42,7 @@
         bat
         eza
         neofetch
+        vlc
       ];
     };
 

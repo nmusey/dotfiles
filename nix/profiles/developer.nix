@@ -11,7 +11,6 @@ let
     unityhub
     elixir
     lua
-    lua54Packages.luarocks
     python3
     SDL2
     php84
