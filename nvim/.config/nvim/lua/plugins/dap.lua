@@ -82,10 +82,9 @@ return {
                     name = "Launch C program",
                     type = "gdb",  
                     request = "launch",
-                    -- program = function()
-                    --     return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-                    -- end,
-                    program = vim.fn.getcwd() .. "/dist/debug/mintos",
+                    program = function()
+                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                    end,
                     cwd = vim.fn.getcwd(),
                     stopOnEntry = true,
                     args = {}, 
