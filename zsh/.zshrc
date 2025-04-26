@@ -47,6 +47,27 @@ function ports() {
 
 alias nt='cd ~/notes && nvim'
 
+# Change cursor shape for different vi modes.
+function zle-keymap-select {
+  if [[ ${KEYMAP} == vicmd ]] ||
+     [[ $1 = 'block' ]]; then
+    echo -ne '\e[1 q'
+  elif [[ ${KEYMAP} == main ]] ||
+       [[ ${KEYMAP} == viins ]] ||
+       [[ ${KEYMAP} = '' ]] ||
+       [[ $1 = 'beam' ]]; then
+    echo -ne '\e[5 q'
+  fi
+}
+zle -N zle-keymap-select
+zle-line-init() {
+    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+    echo -ne "\e[5 q"
+}
+zle -N zle-line-init
+echo -ne '\e[5 q' # Use beam shape cursor on startup.
+preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+
 # This needs to go before the bat alias
 if command -v wal &> /dev/null; then
     (cat ~/.cache/wal/sequences &)
@@ -98,13 +119,19 @@ if [[ ! -d ~/.local/bin ]]; then
 fi
 export PATH=$PATH:~/.local/bin
 
+# Hotkeys
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+autoload -U colors && colors
+_comp_options+=(globdots)
+
 #################################################
 ### Below here is for env variables for tools ###
 #################################################
 
 fpath+=~/.zfunc
-autoload -Uz compinit && compinit
-autoload -U colors && colors
 
 # Add path variables
 export NVM_DIR="$HOME/.nvm"
