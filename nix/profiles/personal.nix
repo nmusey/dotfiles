@@ -10,6 +10,9 @@
       NIXPKGS_ALLOW_UNFREE = 1;
     };
 
+   virtualisation.virtualbox.host.enable = true;
+   virtualisation.virtualbox.host.enableExtensionPack = true;
+
     users.users.${config.username} = {
       isNormalUser = true;
       description = "Nick Musey";

@@ -17,6 +17,8 @@ let
     php84Packages.composer
     dotnetCorePackages.dotnet_8.sdk
     dotnet-ef
+    cargo
+    rustup
   ];
 
   devtoolpkgs = with pkgs; [

@@ -35,20 +35,21 @@ return {
                 return string.gsub(key, '%s+', '')
             end
 
-            require('mason-lspconfig').setup_handlers({
-                function(server_name)
-                    if server_name == "intelephense" then
-                        init_options = { licenceKey = get_intelephense_key() }
-                    else
-                        init_options = {}
-                    end
-                    lspconfig[server_name].setup({
-                        on_attach = on_lsp_attach,
-                        capabilities = lsp_capabilities,
-                        init_options = init_options,
-                    })
-                end,
-            })
+            -- require('mason-lspconfig').setup_handlers({
+            --     function(server_name)
+            --         if server_name == "intelephense" then
+            --             init_options = { licenceKey = get_intelephense_key() }
+            --         else
+            --             init_options = {}
+            --         end
+            --         lspconfig[server_name].setup({
+            --             on_attach = on_lsp_attach,
+            --             capabilities = lsp_capabilities,
+            --             init_options = init_options,
+            --         })
+            --     end,
+            -- })
+
         end
     },
     {

@@ -7,13 +7,15 @@
     config = {
         nixpkgs.config = {
             allowUnfree = true;
-            cudaSupport = true;
         };
-
 
         networking.firewall.allowedUDPPorts = [ 9943 9944 ];
 
-        services.xserver.videoDrivers = [ "nvidia" ];
+        hardware.nvidia = {
+            modesetting.enable = true;
+            powerManagement.enable = true;
+            nvidiaSettings = true;
+        };
 
         programs.alvr = {
             enable = true;
@@ -21,33 +23,30 @@
             package = pkgs.alvr;
         };
 
+        programs.nix-ld.enable = true;
+
         programs.steam = {
             enable = true;
             remotePlay.openFirewall = true;
             dedicatedServer.openFirewall = true;
         };
 
-        hardware.nvidia = {
-            modesetting.enable = true;
-            powerManagement.enable = true;
-            open = false;
-            nvidiaSettings = true;
-            # package = config.boot.kernelPackages.nvidiaPackages.stable;
-        };
-
-        xdg.portal = {
-            enable           = true;
-            xdgOpenUsePortal = true;
-        };
-
-        services.udev.packages = [
-            (pkgs.writeTextFile {
+        services.udev.packages = with pkgs; [
+            (writeTextFile {
                 name = "50-oculus.rules";
                 destination = "/etc/udev/rules.d/50-oculus.rules";
                 text = ''SUBSYSTEM=="usb", ATTR{idVendor}=="2833", ATTR{idProduct}=="0021", MODE="0666", OWNER="nick"'';
             })
-            pkgs.android-udev-rules
+            android-udev-rules
         ];
+
+        services.xserver.videoDrivers = [ "nvidia" ];
+
+        environment.variables = {
+            __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+            LIBVA_DRIVER_NAME = "nvidia";
+            QT_QPA_PLATFORM = "xcb";
+        };
 
         environment.systemPackages = with pkgs; [
             android-tools
@@ -57,6 +56,13 @@
             glxinfo
             pciutils
             cudatoolkit
+            vulkan-validation-layers
+            zenity
         ];
+
+        xdg.portal = {
+            enable           = true;
+            xdgOpenUsePortal = true;
+        };
     };
 }
