@@ -108,7 +108,7 @@ if command -v yazi &>/dev/null; then
     }
 fi
 
-# Add a local.zshrc file to overwrite these settings and add aliases on a per environment basis
+# Add a .local.zshrc file to overwrite these settings and add aliases on a per environment basis
 if [[ -f $HOME/.local.zshrc ]]; then
     source $HOME/.local.zshrc
 fi
@@ -117,7 +117,9 @@ fi
 if [[ ! -d ~/.local/bin ]]; then
     mkdir -p ~/.local/bin
 fi
+
 export PATH=$PATH:~/.local/bin
+export PATH=$PATH:/var/lib/snapd/snap/bin
 
 # Hotkeys
 autoload -Uz compinit

@@ -7,6 +7,3 @@ else
 $(ls ./install/os)"
     exit 1
 fi
-
-# Clean up
-cd $HOME

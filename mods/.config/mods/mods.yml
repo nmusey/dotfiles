@@ -1,5 +1,5 @@
 # Default model (gpt-3.5-turbo, gpt-4, ggml-gpt4all-j...).
-default-model: "llama"
+default-model: "gemma"
 # Text to append when using the -f flag.
 format-text:
   markdown: 'Format the response as markdown without enclosing backticks.'
@@ -7,6 +7,10 @@ format-text:
 # List of predefined system messages that can be used as roles.
 roles:
   "default": []
+  "voice": 
+    - Please output all answers in plaintext without any markdown.
+    - Please be succinct, so your answer could be spoken within 10-15 seconds maximum.
+    - Avoid lists that are confusing to be spoken
 # Ask for the response to be formatted as markdown unless otherwise set.
 format: false
 # System role to use.
@@ -50,3 +54,5 @@ apis:
         aliases: ["r1small", "r1s"]
       "llama3.2":
         aliases: ["llama"]
+      "gemma3:4b-it-qat":
+        aliases: ["gemma", "gemma3"]

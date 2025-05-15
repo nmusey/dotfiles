@@ -6,3 +6,5 @@ nvim/.config/nvim/plugin
 .env
 
 nerd-fonts
+
+bin/.local/var

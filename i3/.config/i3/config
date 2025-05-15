@@ -2,29 +2,46 @@
 # this file and re-run i3-config-wizard(1).
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 floating_modifier $mod
 
+exec --no-startup-id wal -c && wal -i ~/wallpapers/wallpaper.jpg
+exec --no-startup-id feh --bg-fill ~/wallpapers/wallpaper.jpg
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id nm-applet
 exec --no-startup-id picom -b
+exec --no-startup-id /usr/lib/pam_kwallet_init
 
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# TODO - Figure out screenshots
+set $menu rofi -show drun
+set $terminal kitty
+set $browser brave --password-store=basic
+set $music spotify
+set $notes obsidian
 
 # General binds
-bindsym $mod+Return exec kitty
-bindsym $mod+Shift+q kill
-bindsym $mod+d exec --no-startup-id "~/.config/rofi/launchers/type-6/launcher.sh"
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+s exec --no-startup-id "gnome-control-center"
+bindsym $mod+q kill
+bindsym $mod+c reload
+bindsym $mod+Shift+c restart
+bindsym $mod+Shift+x exec i3-msg exit 
+
+# Open programs
+bindsym $mod+t exec $terminal
+bindsym $mod+b exec $browser
+bindsym $mod+r exec $menu
+bindsym $mod+n exec $notes
+bindsym $mod+m exec $music
+
+# Notifications
+# bind = $mainMod, O, exec, makoctl history 
+# bind = $mainMod SHIFT, O, exec, makoctl dismiss --all
 
 # change focus
 bindsym $mod+h focus left
@@ -47,15 +64,13 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Mode binds
-bindsym $mod+b split h
-bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+v layout toggle split
+bindsym $mod+Shift+f floating toggle
 bindsym $mod+space focus mode_toggle
-bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # Workspace settings
 set $ws1 "1"
@@ -105,23 +120,16 @@ mode "resize" {
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
-    bindsym $mod+r mode "default"
+    bindsym $mod+shift+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+shift+r mode "resize"
 
 # Theme
 default_border pixel 2
 default_floating_border pixel 2
 hide_edge_borders smart
-exec_always feh --randomize --bg-fill ~/wallpapers/*
 font pango:monospace 8
-
-# Auto open applications on specific workspaces
-assign [class="Kitty"] $ws1
-assign [class=".*Brave.*"] $ws2
-assign [class="Spotify"] $ws8
-assign [class="Slack"] $ws9
 
 # i3 bar
 bar {

@@ -9,6 +9,8 @@
       packages = with pkgs; [
         ollama
         mods
+        espeak
+        piper-tts
       ];
     };
 

@@ -1,0 +1,15 @@
+#! /usr/bin/env bash
+
+VOICE="/home/nick/.local/var/en_GB-cori-high.onnx"
+
+if [ $# -eq 0 ]; then
+    while read -r line; do
+        input+=$line
+    done < /dev/stdin
+else
+    input="$@"
+fi
+
+echo $input | \
+piper --model "$VOICE" --output-raw | \
+aplay -q -r 22050 -f S16_LE -t raw - &> /dev/null
