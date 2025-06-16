@@ -18,6 +18,7 @@
       rofi-wayland-unwrapped
       hyprshot
       bemoji
+      pywal16
     ];
   };
 }

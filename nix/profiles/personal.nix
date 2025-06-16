@@ -40,12 +40,13 @@
         alsa-utils
         yazi
         zoxide
-        pywal16
         imagemagick
         bat
         eza
         neofetch
         vlc
+        freecad-wayland
+        cura-appimage
       ];
     };
 

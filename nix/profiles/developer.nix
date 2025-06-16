@@ -2,14 +2,13 @@
 let
   devpkgs = with pkgs; [
     go
-    nodejs
-    rustup
-    dotnet-sdk_8
+    delve
     protobuf
     protoc-gen-go
+    templ
+    nodejs
     cmake
     unityhub
-    elixir
     lua
     python3
     SDL2
@@ -19,6 +18,9 @@ let
     dotnet-ef
     cargo
     rustup
+    maven
+    jdk
+    ruby
   ];
 
   devtoolpkgs = with pkgs; [
@@ -38,6 +40,8 @@ let
     bat
     lsof
     zellij
+    code-cursor
+    windsurf
   ];
 in
 {
