@@ -1,11 +1,13 @@
-RED=#E67E80
-GREEN=#A7C080
-BLUE=#7FBBB3
-ORANGE=#E69875
-YELLOW=#DBBC7F
+color1=#A7C080
+color2=#7FBBB3
+color3=#E69875
+color4=#E67E80
+color5=#DBBC7F
 
-MODE_INDICATOR="%F{$YELLOW}Δ%f"
-INSERT_MODE_INDICATOR="%F{$GREEN}Δ%f"
+[[ -f "$HOME/.cache/wal/colors.sh" ]] && source "$HOME/.cache/wal/colors.sh"
+
+MODE_INDICATOR="%F{$color5}Δ%f"
+INSERT_MODE_INDICATOR="%F{$color2}Δ%f"
 
 autoload -Uz vcs_info
 precmd() {
@@ -31,10 +33,10 @@ zstyle ':vcs_info:git:*' actionformats "(%a) %b"
 setopt prompt_subst
 
 
-PROMPT="%F{$ORANGE}%D{%L:%M}%f  %F{$BLUE}%n@%m%f   %F{$ORANGE}%2~%f   %F{$GREEN}%v%f$NEWLINE%(?.%F{$GREEN}λ %f.%F{$RED}λ!%f) "
+PROMPT="%F{$color1}%D{%L:%M}%f  %F{$color3}%n@%m%f   %F{$color1}%2~%f   %F{$color2}%v%f$NEWLINE%(?.%F{$color2}λ %f.%F{$color4}λ!%f) "
 RPROMPT="$NEWLINE$NEWLINE"
 
 if command -v fastfetch &> /dev/null; then
     print ""
-    fastfetch -l small --structure "DateTime:Separator:Title:Colors:Separator:OS:PublicIP"
+    fastfetch -l small --structure "DateTime:Separator:Title:Colors:Separator:OS"
 fi
