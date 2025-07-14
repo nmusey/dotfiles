@@ -10,6 +10,7 @@ declare -A colors=(
   ["Magenta"]="FF00FF"
   ["White"]="FFFFFF"
   ["Black"]="000000"
+  ["Pywal"] = $color1
 )
 
 function selectColor {

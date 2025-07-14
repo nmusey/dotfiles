@@ -6,11 +6,13 @@ return {
             provider = "ollama",
             event = "VeryLazy",
             use_absolute_path = true,
-            ollama = {
-                endpoint = "http://127.0.0.1:11434",
-                model = "qwen2.5-coder:7b-instruct",
-                api_key_name="",
-                stream = true,
+            providers = {
+                ollama = {
+                    endpoint = "http://127.0.0.1:11434",
+                    model = "qwen2.5-coder:7b-instruct",
+                    api_key_name="",
+                    stream = true,
+                },
             },
             cursor_applying_provider = "ollama",
             behaviour = {

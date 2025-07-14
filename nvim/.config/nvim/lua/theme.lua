@@ -1,5 +1,5 @@
 -- Theme
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
 vim.opt.background = 'dark'
 
 
@@ -26,9 +26,20 @@ vim.opt.hlsearch = false
 
 -- Miscellaneous
 vim.opt.clipboard = 'unnamedplus'
-vim.api.nvim_set_option("clipboard", "unnamedplus")
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.title = true
 
 vim.opt.swapfile = false
+            
+-- Theme setup
+function pywal_theme()
+    local wal_theme_file = vim.fn.expand("~/.cache/wal/colors-wal.vim")
+    vim.cmd("source " .. wal_theme_file)
+    vim.cmd.colorscheme("pywal16")
+end
+
+if not pcall(pywal_theme) then
+    local default_theme = "gruvbox"
+    vim.cmd.colorscheme(default_theme)
+end

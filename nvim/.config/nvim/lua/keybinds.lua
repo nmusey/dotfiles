@@ -81,3 +81,5 @@ vim.keymap.set({'n', 'v'}, '<leader>ai', ':Gen<CR>')
 vim.keymap.set({'n', 'v'}, '<leader>aia', ':Gen Ask<CR>')
 vim.keymap.set({'n', 'v'}, '<leader>aig', ':Gen Generate<CR>')
 vim.keymap.set({'n', 'v'}, '<leader>aic', ':Gen Chat<CR>')
+
+vim.keymap.set("n", "<leader>ct", "<cmd>Telescope colorscheme<cr>", { desc = "Choose Theme" })

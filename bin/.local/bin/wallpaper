@@ -20,3 +20,9 @@ hyprctl dispatch exec "pkill -USR1 hyprpaper"
 hyprctl dispatch exec "hyprpaper"
 hyprctl reload
 pkill hyprpanel && hyprpanel &
+
+if command -v openrgb &>/dev/null && [[ -f ~/.cache/wal/colors.sh ]] ; then 
+    source ~/.cache/wal/colors.sh
+    echo ${color1:1}
+    openrgb --color ${color1:1}
+fi
