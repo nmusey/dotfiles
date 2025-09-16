@@ -14,15 +14,23 @@ selected=$(echo "$choices" | rofi -dmenu -p "Choose wallpaper")
 new_wall="$WALLPAPER_DIR/$selected"
 rm -f "$SYMLINK"
 ln -s "$new_wall" "$SYMLINK"
-wal -i "$SYMLINK"
+wal -i "$new_wall"
 
-hyprctl dispatch exec "pkill -USR1 hyprpaper"
+hyprctl dispatch exec "pkill hyprpaper && hyprpaper"
 hyprctl dispatch exec "hyprpaper"
 hyprctl reload
-pkill hyprpanel && hyprpanel &
+
+if command -v waybar &>/dev/null; then
+    pkill waybar;
+    waybar &
+fi
+
+if command -v hyprpanel &>/dev/null; then
+    pkill hyprpanel;
+    hyprpanel &
+fi
 
 if command -v openrgb &>/dev/null && [[ -f ~/.cache/wal/colors.sh ]] ; then 
     source ~/.cache/wal/colors.sh
-    echo ${color1:1}
     openrgb --color ${color1:1}
 fi
