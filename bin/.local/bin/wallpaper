@@ -14,7 +14,7 @@ selected=$(echo "$choices" | rofi -dmenu -p "Choose wallpaper")
 new_wall="$WALLPAPER_DIR/$selected"
 rm -f "$SYMLINK"
 ln -s "$new_wall" "$SYMLINK"
-wal -i "$new_wall"
+hellwal --neon-mode --check-contrast -i "$new_wall"
 
 hyprctl dispatch exec "pkill hyprpaper && hyprpaper"
 hyprctl dispatch exec "hyprpaper"
