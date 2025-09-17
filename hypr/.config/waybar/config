@@ -1,7 +1,6 @@
 {
     "layer": "top",
     "position": "top",
-    "output": "DP-2",
 
     "modules-left": [
         "hyprland/workspaces"
