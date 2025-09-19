@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+STATEFILE="/tmp/netvpn_prev"
+
+wifi_symbol() {
+    if nmcli -t -f DEVICE,STATE d | grep -qE 'connected'; then
+        if nmcli -t -f TYPE,STATE d | grep wifi | grep -q connected; then
+            echo ""
+        else
+            echo "󰈀" # ethernet
+        fi
+    else
+        echo "⚠"
+    fi
+}
+
+vpn_symbol() {
+    if nordvpn status | grep -q "Status: Connected"; then
+        echo "󰒄"
+    else
+        echo "󰀑"
+    fi
+}
+
+wifi_info() {
+    ssid=$(nmcli -t -f ACTIVE,SSID dev wifi | grep '^yes' | cut -d: -f2)
+    ip=$(nmcli -t -f IP4.ADDRESS dev show | grep -m1 IP4.ADDRESS | cut -d: -f2)
+
+    # Current counters (bytes)
+    rx_now=$(cat /sys/class/net/*/statistics/rx_bytes 2>/dev/null | awk '{s+=$1} END{print s+0}')
+    tx_now=$(cat /sys/class/net/*/statistics/tx_bytes 2>/dev/null | awk '{s+=$1} END{print s+0}')
+    now=$(date +%s)
+
+    rx_rate="N/A"
+    tx_rate="N/A"
+
+    if [[ -f "$STATEFILE" ]]; then
+        read rx_prev tx_prev t_prev < "$STATEFILE"
+        dt=$((now - t_prev))
+        if (( dt > 0 )); then
+            rx_rate=$(awk -v d=$dt -v n=$rx_now -v p=$rx_prev 'BEGIN {printf "%.2f", (n-p)/d/1024/1024}')
+            tx_rate=$(awk -v d=$dt -v n=$tx_now -v p=$tx_prev 'BEGIN {printf "%.2f", (n-p)/d/1024/1024}')
+        fi
+    fi
+
+    echo "$rx_now $tx_now $now" > "$STATEFILE"
+
+    echo -e "SSID: ${ssid:-N/A}\nIP: ${ip:-N/A}\nDown: ${rx_rate} MB/s\nUp: ${tx_rate} MB/s"
+}
+
+vpn_info() {
+    nordvpn status | grep -E "Status:|Server:|IP:"
+}
+
+status_json() {
+    net=$(wifi_symbol)
+    vpn=$(vpn_symbol)
+
+    tooltip=$(printf "%s\n---\n%s" "$(wifi_info)" "$(vpn_info)")
+
+    # Remove trailing newlines
+    tooltip=$(echo "$tooltip" | sed ':a;N;$!ba;s/\n*$//')
+
+    # Output JSON safely
+    jq -nc --arg text "$net $vpn" --arg tooltip "$tooltip" \
+        '{text:$text, tooltip:$tooltip}'
+}
+
+toggle_vpn() {
+    if nordvpn status | grep -q "Status: Connected"; then
+        nordvpn disconnect
+    else
+        nordvpn connect
+    fi
+}
+
+case "$1" in
+    -j) status_json ;;
+    -t) toggle_vpn ;;
+    *) echo "Usage: $0 [-j | -t]"; exit 1 ;;
+esac

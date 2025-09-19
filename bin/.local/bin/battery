@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+BAT="/sys/class/power_supply/BAT0"
+[ ! -d "$BAT" ] && exit 0
+
+capacity=$(cat "$BAT/capacity")
+status=$(cat "$BAT/status")
+
+# Choose icon
+if [ "$capacity" -le 15 ]; then icon=""; color="#FF5555"
+elif [ "$capacity" -le 30 ]; then icon=""; color="#F1FA8C"
+elif [ "$capacity" -le 50 ]; then icon=""; color="#F1FA8C"
+elif [ "$capacity" -le 75 ]; then icon=""; color="#50FA7B"
+else icon=""; color="#50FA7B"; fi
+
+[ "$status" = "Charging" ] && icon=" $icon"
+
+# Tooltip
+tooltip=""
+power_now=$(cat "$BAT/power_now" 2>/dev/null || echo 0)
+energy_now=$(cat "$BAT/energy_now" 2>/dev/null || echo 0)
+if [ "$status" = "Discharging" ] && [ "$energy_now" -gt 0 ] && [ "$power_now" -gt 0 ]; then
+    time_hr=$(awk "BEGIN {printf \"%.2f\", $energy_now/$power_now}")
+    hours=$(awk "BEGIN {printf \"%d\", $time_hr}")
+    mins=$(awk "BEGIN {printf \"%02d\", ($time_hr - $hours)*60}")
+    tooltip="Time remaining: $hours:$mins"
+elif [ "$status" = "Charging" ]; then
+    tooltip="Charging..."
+else
+    tooltip="Full"
+fi
+
+# Output for Waybar
+# Enable markup so span color works
+echo "<span foreground=\"$color\">$icon  $capacity%</span>"
+echo "$tooltip"

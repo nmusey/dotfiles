@@ -3,6 +3,7 @@
     "position": "top",
 
     "modules-left": [
+        "clock",
         "hyprland/workspaces"
     ],
 
@@ -11,62 +12,37 @@
     ],
 
     "modules-right": [
+        "custom/netinfo",
+        "custom/battery",
         "pulseaudio",
         "memory",
-        "cpu",
-        "idle_inhibitor",
-        "clock"
+        "cpu"
     ],
 
     "clock": {
         "format": "{:%H:%M  %B %d, %Y}",
         "tooltip-format": "{calendar}",
-        "calendar": {
-            "mode": "month",
-        },
+        "calendar": {"mode": "month"},
         "on-click": "obsidian"
     },
 
-    "memory": {
-        "interval": 5,
-        "format": "MEM {}%",
-        "on-click": "top -o +%MEM"
+    "custom/battery": {
+        "exec": "/home/nick/.local/bin/battery",
+        "interval": 10,
+        "markup": "pango"
+    },
+
+    "custom/netinfo": {
+        "exec":"/home/nick/.local/bin/netinfo -j",
+        "on-click":"/home/nick/.local/bin/netinfo -t",
+        "return-type":"json",
+        "interval": 1
     },
 
     "cpu": {
-        "interval": 5,
-        "format": "CPU {usage:2}%",
-        "on-click": "top"
-    },
-
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        }
-    },
-
-    "pulseaudio": {
-        "format": "\udb81\udd7e {volume}%",
-        "format-muted": "\udb81\udf5f 0%",
-        "min": "0",
-        "max": "100",
-        "orientation": "horizontal",
-        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
-        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
-        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-    },
-
-    "mpris": {
-        "format": "{title} by {artist}",
-        "format-paused": "{status_icon} {title} by {artist}",
-        "status-icons": {
-            "paused": "\uf04c"
-        },
-        "on-click": "playerctl play-pause",
-        "on-double-click": "playerctl next",
-        "on-triple-click": "playerctl prev"
+        "interval":10,
+        "format":"  {usage:2}%",
+        "on-click":"top"
     },
 
     "hyprland/workspaces": {
@@ -82,4 +58,29 @@
             "class<org.kde.dolphin>": "\uf114"
         }
     },
+
+    "memory": {
+        "interval":10,"format":"   {}%",
+        "on-click":"top -o +%MEM"
+    },
+
+    "mpris": {
+        "format": "{title} by {artist}",
+        "format-paused": "{status_icon} {title} by {artist}",
+        "status-icons": {"paused": "\uf04c"},
+        "on-click": "playerctl play-pause",
+        "on-double-click": "playerctl next",
+        "on-triple-click": "playerctl prev"
+    },
+
+    "pulseaudio": {
+        "format": "\udb81\udd7e",
+        "format-muted": "\udb81\udf5f",
+        "tooltip-format": "{volume}%",
+        "min":"0","max":"100",
+        "orientation":"horizontal",
+        "on-click":"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up":"wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down":"wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    }
 }
