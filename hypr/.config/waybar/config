@@ -55,7 +55,13 @@
             "class<steam>": "\udb81\udcd3",
             "class<firefox>": "\uf269",
             "class<obsidian>": "\uf14e9",
-            "class<org.kde.dolphin>": "\uf114"
+            "class<Obsidian>": "\uf14e9",
+            "class<Obsidian.AppImage>": "\uf14e9",
+            "class<obsidian.AppImage>": "\uf14e9",
+            "class<com.obsidian.Obsidian>": "\uf14e9",
+            "class<Code>": "\uf121",
+            "class<discord>": "\uf392",
+            "class<Discord>": "\uf392"
         }
     },
 
