@@ -23,7 +23,13 @@
         ovmf.packages = [ pkgs.OVMFFull.fd ];
       };
     };
+
     spiceUSBRedirection.enable = true;
+
+    virtualbox.host = {
+        enable = true;
+        enableExtensionPack = true;
+    };
   };
 
   services.spice-vdagentd.enable = true;
