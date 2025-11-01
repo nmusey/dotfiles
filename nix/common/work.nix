@@ -11,10 +11,6 @@
 
     users.users.${config.username} = {
       packages = with pkgs; [
-        kitty
-        firefox
-        unzip
-
         php
         nginx
         phpPackages.composer

@@ -12,7 +12,6 @@
     ],
 
     "modules-right": [
-        "custom/netinfo",
         "custom/battery",
         "pulseaudio",
         "memory",

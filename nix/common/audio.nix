@@ -5,13 +5,21 @@
   };
 
   config = lib.mkIf config.audio.enable {
-    services.pulseaudio.enable = false;
     security.rtkit.enable = true;
+
+    services.pulseaudio.enable = false;
+
     services.pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+
+    environment.systemPackages = with pkgs; [
+        alsa-utils
+        playerctl
+        pulseaudio
+    ];
   };
 }

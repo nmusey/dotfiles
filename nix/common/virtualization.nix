@@ -2,7 +2,7 @@
 {
   programs.dconf.enable = true;
   
-  users.users.${config.username}.extraGroups = [ "libvirtd" ];
+  users.users.nick.extraGroups = [ "libvirtd" ];
   
   environment.systemPackages = with pkgs; [
     virt-manager
@@ -23,7 +23,13 @@
         ovmf.packages = [ pkgs.OVMFFull.fd ];
       };
     };
+
     spiceUSBRedirection.enable = true;
+
+    virtualbox.host = {
+        enable = true;
+        enableExtensionPack = true;
+    };
   };
 
   services.spice-vdagentd.enable = true;
