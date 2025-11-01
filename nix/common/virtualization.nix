@@ -2,7 +2,7 @@
 {
   programs.dconf.enable = true;
   
-  users.users.${config.username}.extraGroups = [ "libvirtd" ];
+  users.users.nick.extraGroups = [ "libvirtd" ];
   
   environment.systemPackages = with pkgs; [
     virt-manager

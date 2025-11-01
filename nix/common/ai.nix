@@ -5,17 +5,17 @@
     };
 
     config = lib.mkIf config.ai.enable {
-        environment.systemPackages = {
-            packages = with pkgs; [
-                ollama
-                mods
-                opencode
-            ];
-        };
+        environment.systemPackages = with pkgs; [
+            ollama
+            mods
+            opencode
+        ];
 
         services.ollama = {
             enable = true;
             acceleration = "cuda";
         };
+
+        services.open-webui.enable = true;
     };
 }

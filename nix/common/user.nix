@@ -1,10 +1,44 @@
-{ lib, ... }:
+{ config, lib, pkgs, ... }:
 {
-  options = {
-    username = lib.mkOption {
-      type = lib.types.str;
-      description = "username for default user";
-      default = "nick";
+    options = {
+        user.enable = lib.mkEnableOption "enable Nick's custom environment";
     };
-  };
+
+    config = lib.mkIf config.user.enable {
+        users.users.nick = {
+            isNormalUser = true;
+            shell = pkgs.zsh;
+            extraGroups = [ "wheel" "networkmanager" "docker" ];
+
+            packages = with pkgs; [
+                firefox
+                brave
+                spotify
+                obsidian
+                flameshot
+                zathura
+                rsync
+                steam-run
+                obs-studio
+                discord
+                anki-bin
+                zoom-us
+                vlc
+                cura-appimage
+                kitty
+                hellwal
+                pywal16
+                imagemagick
+                wl-clipboard
+            ];
+        };
+
+        # services.syncthing = {
+        #     enable = true;
+        #     openDefaultPorts = true;
+        #     user = "nick";
+        # };
+
+        services.flatpak.enable = true;
+    };
 }

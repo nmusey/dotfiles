@@ -1,38 +1,29 @@
-{ ... }:
+{ config, ... }:
 {
   imports = [
-    ./hardware-configuration.nix
-    ../../_module.nix
+     ../../common/include.nix
   ];
 
-  config = {
-    boot = {
-      loader = {
-        systemd-boot.enable = true;
-        efi.canTouchEfiVariables = true;
-      };
-    };
+    config = {
+        networking.hostName = "fool";
 
-    networking.hostName = "fool";
-    hardware = {
-      graphics.enable = true;
-      keyboard.zsa.enable = true;
-    };
+        hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
+    
+        ai.enable = true;
+        audio.enable = true;
+        developer.enable = true;
+        networking.enable = true;
+        nvidia.enable = true;
+        settings.enable = true;
+        user.enable = true;
+        
+        git.enable = true;
+        neovim.enable = true;
+        zsh.enable = true;
 
-    environment.sessionVariables = {
-      WLR_NO_HARDWARE_CURSORS = "1";
-      NIXOS_OZONE_WL = "1";
+        bluetooth.enable = true;
+        docker.enable = true;
+        niri.enable = true;
+        ssh.enable = true;
     };
-
-    boot.kernelModules = [ "i2c-dev" "i2c-piix4" ];
-    environment.variables = {
-      QT_QPA_PLATFORM = "wayland;xcb";
-    };
-
-    ai.enable = true;
-    personal.enable = true;
-    developer.enable = true;
-    gaming.enable = false;
-    openrgb.enable = false;
-  };
 }

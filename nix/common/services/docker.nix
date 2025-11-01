@@ -7,18 +7,13 @@
     config = lib.mkIf config.docker.enable {
         virtualisation.docker = {
             enable = true;
-            compose = {
-                enable = true;
-            };
-
             rootless = {
                 enable = true;
-                setSocketVariables = true;
             };
         };
 
 
-        systemPackages = with pkgs; [
+        environment.systemPackages = with pkgs; [
             docker
             docker-compose
         ];

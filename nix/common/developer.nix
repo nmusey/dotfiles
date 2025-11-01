@@ -4,7 +4,7 @@
         developer.enable = lib.mkEnableOption "enable developer packages";
     };
 
-    config = lib.mkIf config.lua.enable {
+    config = lib.mkIf config.developer.enable {
         environment.systemPackages = with pkgs; [
             ripgrep
             fzf
@@ -16,6 +16,7 @@
             jq
             bat
             lsof
+            killall
         ];
 
 

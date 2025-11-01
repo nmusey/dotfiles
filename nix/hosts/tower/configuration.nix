@@ -1,15 +1,13 @@
 { ... }:
 {
   imports = [
-    ./hardware-configuration.nix
-    ../../_module.nix
+    ../../common/include.nix
   ];
 
     config = {
         networking.hostName = "tower";
-        hardware = {
-            graphics.enable = true;
-        };
+
+        hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
         environment.sessionVariables = {
           WLR_NO_HARDWARE_CURSORS = "1";
