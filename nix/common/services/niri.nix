@@ -6,6 +6,7 @@
 
     config = {
         programs.niri.enable = true;
+        services.xserver.enable = true;
 
         environment.systemPackages = with pkgs; [
             waybar
@@ -15,6 +16,7 @@
             hyprshot
             bemoji
             hyprpaper
+            xwayland-satellite
         ];
     };
 }
