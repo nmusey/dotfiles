@@ -621,7 +621,8 @@ binds {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "hyprpaper"
+spawn-at-startup "swww-daemon"
+spawn-at-startup "swww img ~/Wallpapers/wallpaper"
 spawn-at-startup "wal -c; wal --cols16 -i ~/Wallpapers/wallpaper.jpg -o ~/.config/wal16/hooks/fuzzel.sh"
 spawn-at-startup "waybar"
 

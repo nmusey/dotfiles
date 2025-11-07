@@ -26,11 +26,11 @@
                 vlc
                 cura-appimage
                 kitty
-                hellwal
                 pywal16
                 imagemagick
                 wl-clipboard
                 unzip
+                yazi
             ];
         };
 
@@ -38,7 +38,6 @@
         services.syncthing = {
             enable = true;
             openDefaultPorts = true;
-            user = "nick";
         };
 
         services.flatpak.enable = true;

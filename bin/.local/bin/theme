@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+wallpaper="/home/nick/Wallpapers/wallpaper"
+
+wal -c
+wal --cols16 -i $wallpaper -o ~/.config/wal/hooks/fuzzel.sh
+
+swww img $wallpaper
+
+if command -v waybar &>/dev/null; then
+    pkill waybar;
+    waybar &
+fi
+
+if command -v openrgb &>/dev/null && [[ -f ~/.cache/wal/colors.sh ]] ; then 
+    source ~/.cache/wal/colors.sh
+    openrgb --color ${color1:1}
+fi

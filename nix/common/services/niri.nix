@@ -17,6 +17,8 @@
             bemoji
             hyprpaper
             xwayland-satellite
+            swww
+            eww
         ];
     };
 }

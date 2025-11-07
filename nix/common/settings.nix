@@ -10,5 +10,7 @@
         };
       
         nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+        services.envfs.enable = true;
     };
 }
