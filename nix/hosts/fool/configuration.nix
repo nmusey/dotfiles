@@ -22,6 +22,12 @@
         neovim.enable = true;
         zsh.enable = true;
 
+        dotnet.enable = true;
+        go.enable = true;
+        javascript.enable = true;
+        lua.enable = true;
+        rust.enable = true;
+
         bluetooth.enable = true;
         docker.enable = true;
         niri.enable = true;

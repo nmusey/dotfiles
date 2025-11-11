@@ -9,10 +9,6 @@
             nodejs
             yarn
             typescript
-            eslint
-            prettier
-            ts-node
-            nodemon
             npm-check-updates
         ];
     };

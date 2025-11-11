@@ -31,6 +31,7 @@
                 wl-clipboard
                 unzip
                 yazi
+                calibre
             ];
         };
 

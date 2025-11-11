@@ -1,3 +1,4 @@
 return {
-    'elkowar/yuck.vim'
+    'elkowar/yuck.vim',
+    'seblyng/roslyn.nvim'
 }

@@ -23,33 +23,38 @@ return {
             local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
             local lspconfig = require('lspconfig')
 
-            local get_intelephense_key = function()
-                local f = io.open(os.getenv('HOME') .. '/intelephense/license.txt', 'rb')
+            vim.lsp.config("roslyn", {
+                on_attach = on_lsp_attach,
+                capabilities = lsp_capabilities,
+            })
 
-                if f == nil then
-                    return ''
-                end
+            vim.lsp.enable("roslyn")
 
-                local key = f:read('*a')
-                f:close()
-                return string.gsub(key, '%s+', '')
-            end
-
-            -- require('mason-lspconfig').setup_handlers({
-            --     function(server_name)
-            --         if server_name == "intelephense" then
-            --             init_options = { licenceKey = get_intelephense_key() }
-            --         else
-            --             init_options = {}
-            --         end
-            --         lspconfig[server_name].setup({
-            --             on_attach = on_lsp_attach,
-            --             capabilities = lsp_capabilities,
-            --             init_options = init_options,
-            --         })
+            -- vim.lsp.config("roslyn", {
+            --     on_attach = function()
             --     end,
+            --     settings = {
+            --         ["csharp|inlay_hints"] = {
+            --             csharp_enable_inlay_hints_for_implicit_object_creation = true,
+            --             csharp_enable_inlay_hints_for_implicit_variable_types = true,
+            --         },
+            --         ["csharp|code_lens"] = {
+            --             dotnet_enable_references_code_lens = true,
+            --         },
+            --     },
             -- })
 
+            -- local get_intelephense_key = function()
+            --     local f = io.open(os.getenv('HOME') .. '/.intelephense/license.txt', 'rb')
+
+            --     if f == nil then
+            --         return ''
+            --     end
+
+            --     local key = f:read('*a')
+            --     f:close()
+            --     return string.gsub(key, '%s+', '')
+            -- end
         end
     },
     {
