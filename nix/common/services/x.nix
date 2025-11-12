@@ -6,10 +6,6 @@
 
     config = lib.mkIf config.x.enable {
         services.xserver.enable = true;
-        services.displayManager.ly = {
-            enable = true;
-        };
-
         services.xserver.xkb = {
           layout = "us";
           variant = "";

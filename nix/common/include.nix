@@ -11,7 +11,6 @@
         ./nvidia.nix
         ./settings.nix
         ./user.nix
-        ./virtualization.nix
         ./work.nix
 
         ./dev/dotnet.nix

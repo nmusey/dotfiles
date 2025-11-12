@@ -7,8 +7,8 @@
     config = {
         programs.niri.enable = true;
         services.xserver.enable = true;
-
         environment.systemPackages = with pkgs; [
+            niri
             waybar
             swaybg
             mako

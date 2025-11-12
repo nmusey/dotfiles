@@ -32,13 +32,14 @@
                 unzip
                 yazi
                 calibre
+                openrgb
             ];
         };
 
         programs.localsend.enable = true;
         services.syncthing = {
             enable = true;
-            openDefaultPorts = true;
+            user = "nick";
         };
 
         services.flatpak.enable = true;

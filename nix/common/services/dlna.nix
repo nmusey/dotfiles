@@ -13,7 +13,7 @@
     services.minidlna.settings = {
       friendly_name = "tower";
       media_dir = [
-        "V,/home/minidlna/Downloads/"
+        "V,/srv/minidlna/Videos/"
       ];
 
       inotify = "yes";
@@ -23,9 +23,14 @@
 
     users.users.minidlna = {
       extraGroups =
-        [ "users" "wheel" "minidlna" ];
+        [ "wheel" "minidlna" ];
     };
 
+    systemd.tmpfiles.rules = [
+        "d /srv/minidlna/           0777 minidlna users -"
+        "d /srv/minidlna/Videos/    0777 minidlna users -"
+    ];
+    
     networking.firewall.allowedTCPPorts = [ 139 445 8096 ];
     networking.firewall.allowedUDPPorts = [ 137 138 1900 ];
   };
