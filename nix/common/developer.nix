@@ -17,6 +17,8 @@
             bat
             lsof
             killall
+            opencode
+            emacs
         ];
 
 

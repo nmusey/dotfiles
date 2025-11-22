@@ -33,6 +33,8 @@
                 yazi
                 calibre
                 openrgb
+                yazi
+                vscode
             ];
         };
 

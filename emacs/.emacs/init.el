@@ -1,0 +1,48 @@
+(global-display-line-numbers-mode t)
+(setq indent-tabs-mode nil)
+(setq make-backup-files nil)
+
+;; Injstall package managers
+(require 'package)
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("gnu" . "https://elpa.gnu.org/packages/")))
+
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+;; Evil mode
+(use-package evil
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  (setq evil-want-C-u-scroll t)
+  :config
+  (evil-mode 1))
+
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
+;; General (keybinds)
+(use-package general
+  :after evil
+  :config
+  (general-create-definer my/leader-keys
+			  :keymaps '(normal insert visual emacs)
+			  :prefix "SPC"
+			  :global-prefix "C-SPC"))
+
+(my/leader-keys
+   "ff" '(find-file :which-key "find file")
+   "ww" '(save-buffer :which-key "save file"))
+
+(use-package gruvbox-theme
+   :config
+   (load-theme 'gruvbox-dark-medium t))

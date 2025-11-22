@@ -28,6 +28,9 @@
         settings.enable = true;
         user.enable = true;
 
+        javascript.enable = true;
+        dotnet.enable = true;
+
         git.enable = true;
         neovim.enable = true;
         zsh.enable = true;
