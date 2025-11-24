@@ -35,6 +35,9 @@
                 openrgb
                 yazi
                 vscode
+                libreoffice-qt
+                hunspell
+                hunspellDicts.en_US
             ];
         };
 

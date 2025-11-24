@@ -20,6 +20,7 @@
         ./dev/rust.nix
 
         ./programs/git.nix
+        ./programs/kanata.nix
         ./programs/neovim.nix
         ./programs/openrgb.nix
         ./programs/zsh.nix

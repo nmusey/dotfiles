@@ -18,6 +18,7 @@
             lsof
             killall
             opencode
+            python3
             emacs
         ];
 
