@@ -6,12 +6,12 @@
         ./boot.nix
         ./developer.nix
         ./gaming.nix
-        ./moonlander.nix
         ./networking.nix
         ./nvidia.nix
         ./settings.nix
         ./user.nix
         ./work.nix
+        ./zsa.nix
 
         ./dev/dotnet.nix
         ./dev/go.nix

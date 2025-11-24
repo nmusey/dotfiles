@@ -27,6 +27,7 @@
         nvidia.enable = true;
         settings.enable = true;
         user.enable = true;
+        zsa.enable = true;
 
         javascript.enable = true;
         dotnet.enable = true;

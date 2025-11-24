@@ -39,11 +39,6 @@
         };
 
         programs.localsend.enable = true;
-        services.syncthing = {
-            enable = true;
-            user = "nick";
-        };
-
         services.flatpak.enable = true;
     };
 }

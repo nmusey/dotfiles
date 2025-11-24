@@ -17,6 +17,7 @@
         nvidia.enable = true;
         settings.enable = true;
         user.enable = true;
+        zsa.enable = true;
         
         git.enable = true;
         neovim.enable = true;
