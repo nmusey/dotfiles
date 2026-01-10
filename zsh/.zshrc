@@ -157,3 +157,6 @@ if command -v go &> /dev/null; then
     export PATH=$PATH:~/.go/bin
 fi
 
+if [ -d $HOME/.config/emacs/bin/emacs-zsh.sh ]; then
+    export PATH="$PATH:$HOME/.config/emacs/bin"
+fi
