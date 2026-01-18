@@ -31,12 +31,14 @@
 
         javascript.enable = true;
         dotnet.enable = true;
+        rust.enable = true;
 
         git.enable = true;
         neovim.enable = true;
         zsh.enable = true;
 
         bluetooth.enable = true;
+        dlna.enable = false;
         docker.enable = true;
         niri.enable = true;
         ssh.enable = true;
