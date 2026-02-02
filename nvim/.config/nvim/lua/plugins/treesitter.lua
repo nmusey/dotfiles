@@ -1,8 +1,10 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
+        branch = "main",
+        main = 'nvim-treesitter.config',
         config = function()
-            require('nvim-treesitter.configs').setup({
+            require('nvim-treesitter.config').setup({
                 sync_install = true,
                 auto_install = true,
                 highlight = {
@@ -54,7 +56,4 @@ return {
             })
         end
     },
-    {
-        "nvim-treesitter/nvim-treesitter-textobjects"
-    }
 }
