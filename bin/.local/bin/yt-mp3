@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: yt-mp3 <video-url>"
+    exit 1
+fi
+
+yt-dlp \
+    --extract-audio \
+    --audio-format mp3 \
+    --audio-quality 320K \
+    --embed-metadata \
+    --embed-thumbnail \
+    --output "%(title)s.%(ext)s" \
+    "$1"

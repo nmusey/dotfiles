@@ -5,24 +5,16 @@ layout {
     background-color "transparent"
 
     focus-ring {
-<<<<<<< HEAD
         active-color   "#9ecafc"
         inactive-color "#8c9199"
-=======
-        active-color   "#8fcff3"
-        inactive-color "#8a9297"
->>>>>>> 4890571 (Hyprland updates)
+        active-color   "#d2c972"
+        inactive-color "#949181"
         urgent-color   "#ffb4ab"
     }
 
     border {
-<<<<<<< HEAD
         active-color   "#9ecafc"
         inactive-color "#8c9199"
-=======
-        active-color   "#8fcff3"
-        inactive-color "#8a9297"
->>>>>>> 4890571 (Hyprland updates)
         urgent-color   "#ffb4ab"
     }
 
@@ -31,32 +23,18 @@ layout {
     }
 
     tab-indicator {
-<<<<<<< HEAD
         active-color   "#9ecafc"
         inactive-color "#8c9199"
-=======
-        active-color   "#8fcff3"
-        inactive-color "#8a9297"
->>>>>>> 4890571 (Hyprland updates)
         urgent-color   "#ffb4ab"
     }
 
     insert-hint {
-<<<<<<< HEAD
-        color "#9ecafc80"
-=======
-        color "#8fcff380"
->>>>>>> 4890571 (Hyprland updates)
+        color "#d2c97280"
     }
 }
 
 recent-windows {
     highlight {
-<<<<<<< HEAD
-        active-color   "#154974"
-=======
-        active-color   "#004c68"
->>>>>>> 4890571 (Hyprland updates)
         urgent-color   "#ffb4ab"
     }
 }
