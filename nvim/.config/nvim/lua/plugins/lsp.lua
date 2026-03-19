@@ -23,41 +23,27 @@ return {
             local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
             local lspconfig = require('lspconfig')
 
-            vim.lsp.config("roslyn", {
+            local get_intelephense_key = function()
+                local f = io.open(os.getenv('HOME') .. '/.intelephense/license.txt', 'rb')
+
+                if f == nil then
+                    return ''
+                end
+
+                local key = f:read('*a')
+                f:close()
+                return string.gsub(key, '%s+', '')
+            end
+
+            vim.lsp.config("intelephense", {
                 on_attach = on_lsp_attach,
                 capabilities = lsp_capabilities,
+                settings = {
+                    intelephense = {
+                        licenseKey = get_intelephense_key(),
+                    }
+                },
             })
-
-            vim.lsp.enable("roslyn")
-
-            -- vim.lsp.config("roslyn", {
-            --     on_attach = function()
-            --     end,
-            --     settings = {
-            --         ["csharp|inlay_hints"] = {
-            --             csharp_enable_inlay_hints_for_implicit_object_creation = true,
-            --             csharp_enable_inlay_hints_for_implicit_variable_types = true,
-            --         },
-            --         ["csharp|code_lens"] = {
-            --             dotnet_enable_references_code_lens = true,
-            --         },
-            --     },
-            -- })
-
-            -- local get_intelephense_key = function()
-            --     local f = io.open(os.getenv('HOME') .. '/.intelephense/license.txt', 'rb')
-
-            --     if f == nil then
-            --         return ''
-            --     end
-
-            --     local key = f:read('*a')
-            --     f:close()
-            --     return string.gsub(key, '%s+', '')
-            -- end
         end
-    },
-    {
-        "dundalek/lazy-lsp.nvim",
     },
 }

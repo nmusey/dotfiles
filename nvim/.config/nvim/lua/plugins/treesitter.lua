@@ -4,7 +4,7 @@ return {
         branch = "main",
         main = 'nvim-treesitter.configs',
         config = function()
-            require('nvim-treesitter.configs').setup({
+            require('nvim-treesitter.config').setup({
                 sync_install = true,
                 auto_install = true,
                 highlight = {
