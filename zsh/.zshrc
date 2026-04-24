@@ -160,3 +160,18 @@ fi
 if [ -d $HOME/.config/emacs/bin/emacs-zsh.sh ]; then
     export PATH="$PATH:$HOME/.config/emacs/bin"
 fi
+
+# Ctrl+T: open or create tmux session for current directory (outside tmux)
+if [ -f "$HOME/dotfiles/bin/tmux-session-by-dir" ]; then
+  tmux_session_by_dir_widget() {
+    # Only trigger outside tmux
+    if [ -n "${TMUX:-}" ]; then
+      return 0
+    fi
+    "$HOME/dotfiles/bin/tmux-session-by-dir" "$PWD"
+    # restore prompt if needed
+    zle reset-prompt 2>/dev/null || true
+  }
+  zle -N tmux_session_by_dir_widget
+  bindkey '^T' tmux_session_by_dir_widget
+fi

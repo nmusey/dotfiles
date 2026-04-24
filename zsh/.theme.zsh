@@ -4,7 +4,11 @@ color3=#E69875
 color4=#E67E80
 color5=#DBBC7F
 
-[[ -f "$HOME/.cache/wal/colors.sh" ]] && source "$HOME/.cache/wal/colors.sh"
+if [[ -f "$HOME/.cache/wal/colors.sh" ]]; then
+    set -a  # export all variables defined below to child processes
+    source "$HOME/.cache/wal/colors.sh"
+    set +a
+fi
 
 MODE_INDICATOR="%F{$color5}Δ%f"
 INSERT_MODE_INDICATOR="%F{$color2}Δ%f"

@@ -33,13 +33,25 @@ vim.opt.title = true
 vim.opt.swapfile = false
             
 -- Theme setup
-function pywal_theme()
+local function pywal_theme()
     local wal_theme_file = vim.fn.expand("~/.cache/wal/colors-wal.vim")
     vim.cmd("source " .. wal_theme_file)
     vim.cmd.colorscheme("pywal16")
 end
 
 if not pcall(pywal_theme) then
-    local default_theme = "gruvbox"
-    vim.cmd.colorscheme(default_theme)
+    vim.cmd.colorscheme("gruvbox")
+end
+
+-- Reload theme when pywal regenerates its colours
+if not _G._pywal_watcher then
+    local uv = vim.uv or vim.loop
+    _G._pywal_watcher = uv.new_fs_event()
+    _G._pywal_watcher:start(
+        vim.fn.expand("~/.cache/wal/colors-wal.vim"),
+        {},
+        vim.schedule_wrap(function()
+            pcall(pywal_theme)
+        end)
+    )
 end

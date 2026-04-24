@@ -2,7 +2,7 @@ return {
     "sainnhe/everforest",
     "morhetz/gruvbox",
     "rebelot/kanagawa.nvim",
-    'uZer/pywal16.nvim',
+    { 'uZer/pywal16.nvim', priority = 1000 },
     {
         "goolord/alpha-nvim",
         dependencies = { 'nvim-tree/nvim-web-devicons' },
