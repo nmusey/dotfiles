@@ -1,6 +1,11 @@
 vim.g.mapleader=' '
 
-require('lazy-setup')
 require('theme')
 require('keybinds')
-require('close_tab')
+
+require('plugins.ui')
+require('plugins.lsp')
+require('plugins.oil')
+require('plugins.telescope')
+require('plugins.surround')
+require('plugins.treesitter')

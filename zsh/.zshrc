@@ -138,8 +138,8 @@ fpath+=~/.zfunc
 # Add path variables
 export NVM_DIR="$HOME/.nvm"
 unset PREFIX
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
+    [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
 
 # Setup homebrew for macs
 if [[ -f /opt/homebrew/bin/brew ]]; then
@@ -175,3 +175,11 @@ if [ -f "$HOME/dotfiles/bin/tmux-session-by-dir" ]; then
   zle -N tmux_session_by_dir_widget
   bindkey '^T' tmux_session_by_dir_widget
 fi
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/nmusey/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+
+export RIPGREP_CONFIG_PATH=~/.config/ripgrep/.ripgreprc
+

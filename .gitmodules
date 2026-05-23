@@ -1,6 +1,0 @@
-[submodule "rofi"]
-	path = rofi
-	url = https://github.com/adi1090x/rofi
-[submodule "hypr/rofi"]
-	path = hypr/rofi
-	url = https://github.com/adi1090x/rofi
