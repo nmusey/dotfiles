@@ -7,10 +7,10 @@ source ~/.theme.zsh
 
 # Setup zsh history
 export HISTFILE="$XDG_CACHE_HOME/zsh_history"
-export HISTSIZE=1000000
-export SAVEHIST=1000000
+export HISTSIZE=100000
+export SAVEHIST=100000
 export HISTCONTROL=ignoredups
-setopt extended_history hist_ignore_all_dups append_history inc_append_history share_history
+setopt EXTENDED_HISTORY HIST_IGNORE_ALL_DUPS APPEND_HISTORY INC_APPEND_HISTORY SHARE_HISTORY
 
 export LANG=en_US.UTF-8
 
@@ -25,27 +25,13 @@ bindkey "^J" history-search-forward
 bindkey "^K" history-search-backward
 bindkey '^R' fzf-history-widget
 
-
-# Aliases and custom functions
-alias fixhd='sudo pkill -f fsck' # Needed to fix improperly unmounted drives on MacOS
-
 alias g='git status'
 alias gco='git checkout $(git branch -l | fzf)'
 alias gcb='git commit -m "$(git branch --show-current) $1';
 
-function audio() {
-    pactl set-default-sink $(pactl list sinks | rg -oP 'Name: (.*)' --replace '$1' | fzf);
+func tmuxs() {
+    tmux list-sessions -F "#{session_name}: #{session_path} (#{session_windows} windows)"
 }
-
-function ports() {
-    if [ -z "$1" ]; then 
-        sudo lsof -i -n
-    else
-        sudo lsof -i -n | rg "$1"
-    fi
-}
-
-alias nt='cd ~/notes && nvim'
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -108,47 +94,29 @@ if command -v yazi &>/dev/null; then
     }
 fi
 
+if command -v rg &>/dev/null; then
+    export RIPGREP_CONFIG_PATH=~/.config/ripgrep/.ripgreprc
+fi
+
 # Add a .local.zshrc file to overwrite these settings and add aliases on a per environment basis
 if [[ -f $HOME/.local.zshrc ]]; then
     source $HOME/.local.zshrc
 fi
 
 # Local scripts
-if [[ ! -d ~/.local/bin ]]; then
+if [[ -d ~/.local/bin ]]; then
     mkdir -p ~/.local/bin
 fi
 
 export PATH=$PATH:~/.local/bin
-export PATH=$PATH:/var/lib/snapd/snap/bin
-
-# Hotkeys
-autoload -Uz compinit
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-compinit
-autoload -U colors && colors
-_comp_options+=(globdots)
 
 #################################################
 ### Below here is for env variables for tools ###
 #################################################
 
-fpath+=~/.zfunc
-
-# Add path variables
-export NVM_DIR="$HOME/.nvm"
-unset PREFIX
-    [ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" # This loads nvm
-    [ -s "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$HOMEBREW_PREFIX/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
-
 # Setup homebrew for macs
 if [[ -f /opt/homebrew/bin/brew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
-# Setup .NET Core path
-if [[ -e $HOME/.dotnet/tools ]]; then
-    export PATH=$PATH:$HOME/.dotnet/tools
 fi
 
 # Setup Go environment
@@ -156,30 +124,4 @@ if command -v go &> /dev/null; then
     export GOPATH=~/.go
     export PATH=$PATH:~/.go/bin
 fi
-
-if [ -d $HOME/.config/emacs/bin/emacs-zsh.sh ]; then
-    export PATH="$PATH:$HOME/.config/emacs/bin"
-fi
-
-# Ctrl+T: open or create tmux session for current directory (outside tmux)
-if [ -f "$HOME/dotfiles/bin/tmux-session-by-dir" ]; then
-  tmux_session_by_dir_widget() {
-    # Only trigger outside tmux
-    if [ -n "${TMUX:-}" ]; then
-      return 0
-    fi
-    "$HOME/dotfiles/bin/tmux-session-by-dir" "$PWD"
-    # restore prompt if needed
-    zle reset-prompt 2>/dev/null || true
-  }
-  zle -N tmux_session_by_dir_widget
-  bindkey '^T' tmux_session_by_dir_widget
-fi
-
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/nmusey/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-
-export RIPGREP_CONFIG_PATH=~/.config/ripgrep/.ripgreprc
 
