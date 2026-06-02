@@ -29,8 +29,22 @@ alias g='git status'
 alias gco='git checkout $(git branch -l | fzf)'
 alias gcb='git commit -m "$(git branch --show-current) $1';
 
-func tmuxs() {
-    tmux list-sessions -F "#{session_name}: #{session_path} (#{session_windows} windows)"
+func t() {
+    if [[ $1 == 'ls' || $1 == 'l' ]]; then
+        tmux list-sessions -F "#{session_name}: #{session_path} (#{session_windows} windows)";
+    fi
+
+    if [[ $1 == 'new' || $1 == 'n' ]]; then
+        tmux new-session; #TODO check if session exists in this path and attach
+    fi
+
+    if [[ $1 == 'edit' || $1 == 'e' ]]; then
+        echo "Not implemented yet: need to figure out how to pass multiple windows to tmux" #TODO
+    fi
+
+    if [[$1 == 'attach' || $1 == 'a' ]]; then
+        tmux attach -t $2;
+    fi
 }
 
 # Change cursor shape for different vi modes.

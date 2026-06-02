@@ -30,9 +30,6 @@ local bindings = {
     ["shift + l"] = hl.dsp.window.move("right"),
 }
 
-local resize_bindings = {
-}
-
 for i = 1,9 do
     bindings[tostring(i)] = hl.dsp.focus(i)
     bindings["shift + " .. tostring(i)] = hl.dsp.window.move(i)
