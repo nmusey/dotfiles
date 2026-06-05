@@ -5,7 +5,7 @@ local bindings = {
     ["n"]         = hl.dsp.exec_cmd("obsidian"),
     ["p"]         = hl.dsp.exec_cmd("hyprshot -m region"),
 
-    ["shift + w"] = hl.dsp.exec_cmd("~/.local/bin/waywall"),
+    ["SHIFT + w"] = hl.dsp.exec_cmd("~/.local/bin/waywall"),
 
     ["e"]         = hl.dsp.window.fullscreen(),
     ["f"]         = hl.dsp.window.float(),
@@ -13,26 +13,26 @@ local bindings = {
     ["r"]         = hl.dsp.submap("resize"),
     ["w"]         = hl.dsp.layout("colresize"),
 
-    ["shift + x"] = hl.dsp.exec_cmd("hyprshutdown"),
-    ["shift + p"] = hl.dsp.window.pin(),
-    ["shift + r"] = hl.dsp.exec_cmd("hyperctl reload"),
+    ["SHIFT + x"] = hl.dsp.exec_cmd("hyprshutdown"),
+    ["SHIFT + p"] = hl.dsp.window.pin(),
+    ["SHIFT + r"] = hl.dsp.exec_cmd("hyperctl reload"),
 
-    ["h"]         = hl.dsp.focus("left"),
-    ["j"]         = hl.dsp.focus("down"),
-    ["k"]         = hl.dsp.focus("up"),
-    ["l"]         = hl.dsp.focus("right"),
-    ["u"]         = hl.dsp.focus("prev"),
-    ["o"]         = hl.dsp.focus("next"),
+    ["h"]         = hl.dsp.focus({ direction = "left" }),
+    ["j"]         = hl.dsp.focus({ direction = "down" }),
+    ["k"]         = hl.dsp.focus({ direction = "up" }),
+    ["l"]         = hl.dsp.focus({ direction = "right" }),
+    -- ["u"]         = hl.dsp.focus("prev"),
+    -- ["o"]         = hl.dsp.focus("next"),
 
-    ["shift + h"] = hl.dsp.window.move("left"),
-    ["shift + j"] = hl.dsp.window.move("down"),
-    ["shift + k"] = hl.dsp.window.move("up"),
-    ["shift + l"] = hl.dsp.window.move("right"),
+    ["SHIFT + h"] = hl.dsp.window.move({ direction = "left" }),
+    ["SHIFT + j"] = hl.dsp.window.move({ direction = "down" }),
+    ["SHIFT + k"] = hl.dsp.window.move({ direction = "up" }),
+    ["SHIFT + l"] = hl.dsp.window.move({ direction = "right" }),
 }
 
 for i = 1,9 do
-    bindings[tostring(i)] = hl.dsp.focus(i)
-    bindings["shift + " .. tostring(i)] = hl.dsp.window.move(i)
+    bindings[tostring(i)] = hl.dsp.focus({ workspace=tostring(i) })
+    bindings["SHIFT + " .. tostring(i)] = hl.dsp.window.move({ workspace=tostring(i) })
 end
 
 local mouse_binds = {
