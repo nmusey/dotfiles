@@ -7,14 +7,12 @@
     config = {
         networking.hostName = "fool";
 
-        hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
-    
-        ai.enable = true;
+        ai.enable = false;
         audio.enable = true;
         developer.enable = true;
-        gaming.enable = true;
+        gaming.enable = false;
         networking.enable = true;
-        nvidia.enable = true;
+        nvidia.enable = false;
         settings.enable = true;
         user.enable = true;
         zsa.enable = true;
@@ -31,7 +29,8 @@
 
         bluetooth.enable = true;
         docker.enable = true;
-        niri.enable = true;
+        hyprland.enable = true;
+        niri.enable = false;
         ssh.enable = true;
     };
 }
