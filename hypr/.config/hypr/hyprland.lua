@@ -21,8 +21,6 @@ local bindings = {
     ["j"]         = hl.dsp.focus({ direction = "down" }),
     ["k"]         = hl.dsp.focus({ direction = "up" }),
     ["l"]         = hl.dsp.focus({ direction = "right" }),
-    -- ["u"]         = hl.dsp.focus("prev"),
-    -- ["o"]         = hl.dsp.focus("next"),
 
     ["SHIFT + h"] = hl.dsp.window.move({ direction = "left" }),
     ["SHIFT + j"] = hl.dsp.window.move({ direction = "down" }),
