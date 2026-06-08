@@ -12,13 +12,13 @@
     };
 
     environment.systemPackages = with pkgs; [
-      waybar
       hyprpaper
       mako
-      rofi-wayland-unwrapped
+      fuzzel
       hyprshot
       bemoji
       pywal16
+      ambxst
     ];
   };
 }
