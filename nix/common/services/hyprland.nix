@@ -18,7 +18,6 @@
       hyprshot
       bemoji
       pywal16
-      ambxst
     ];
   };
 }
