@@ -42,8 +42,8 @@ func t() {
         echo "Not implemented yet: need to figure out how to pass multiple windows to tmux" #TODO
     fi
 
-    if [[$1 == 'attach' || $1 == 'a' ]]; then
-        tmux attach -t $2;
+    if [[ $1 == 'attach' || $1 == 'a' ]]; then
+        tmux attach-session -t $2;
     fi
 }
 
@@ -123,10 +123,6 @@ if [[ -d ~/.local/bin ]]; then
 fi
 
 export PATH=$PATH:~/.local/bin
-
-#################################################
-### Below here is for env variables for tools ###
-#################################################
 
 # Setup homebrew for macs
 if [[ -f /opt/homebrew/bin/brew ]]; then
