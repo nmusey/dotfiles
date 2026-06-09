@@ -54,7 +54,7 @@ hl.config({
 
         border_size = 2,
         col = {
-            active_border = "#33ccffee #00ff99ee",
+            active_border = "#33ccffee",
             inactive_border = "#595959aa",
         },
 
@@ -98,11 +98,6 @@ hl.config({
             enabled = true,
             range = 4,
         },
-
-        animations = {
-            enabled = true,
-            workspace_wraparound = true,
-        },
     },
 
     xwayland = {
@@ -117,7 +112,6 @@ hl.config({
 
     misc = {
         disable_hyprland_logo = true,
-        display_splash_rendering = false,
     },
 })
 
@@ -134,3 +128,12 @@ hl.monitor({
     position = "auto-center-up",
     scale = 1,
 })
+
+hl.on("hyprland.start", function()
+    hl.exec_cmd("wal -c && wal -i ~/Pictures/Wallpapers/wallpaper.jpg")
+    hl.exec_cmd("hyprpaper")
+    hl.exec_cmd("systemctl --user start hyprpolkitagent")
+    hl.exec_cmd("wayclip")
+    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+    hl.exec_cmd("waybar &")
+end)
