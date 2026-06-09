@@ -1,9 +1,10 @@
 local bindings = {
     ["space"]     = hl.dsp.exec_cmd("fuzzel"),
-    ["t"]         = hl.dsp.exec_cmd("wezterm"),
-    ["m"]         = hl.dsp.exec_cmd("spotify --enable-features=UseOzonePlatform --ozoen-platform=wayland"),
+    ["b"]         = hl.dsp.exec_cmd("zen-browser"),
+    ["m"]         = hl.dsp.exec_cmd("spotify --enable-features=UseOzonePlatform --ozone-platform=wayland"),
     ["n"]         = hl.dsp.exec_cmd("obsidian"),
     ["p"]         = hl.dsp.exec_cmd("hyprshot -m region"),
+    ["t"]         = hl.dsp.exec_cmd("kitty"),
 
     ["SHIFT + w"] = hl.dsp.exec_cmd("~/.local/bin/waywall"),
 
@@ -130,10 +131,10 @@ hl.monitor({
 })
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("wal -c && wal -i ~/Pictures/Wallpapers/wallpaper.jpg")
-    hl.exec_cmd("hyprpaper")
-    hl.exec_cmd("systemctl --user start hyprpolkitagent")
-    hl.exec_cmd("wayclip")
-    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-    hl.exec_cmd("waybar &")
+    hl.dsp.exec_cmd("wal -c && wal -i ~/Pictures/Wallpapers/wallpaper.jpg")
+    hl.dsp.exec_cmd("hyprpaper")
+    hl.dsp.exec_cmd("systemctl --user start hyprpolkitagent")
+    hl.dsp.exec_cmd("wayclip")
+    hl.dsp.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+    hl.dsp.exec_cmd("waybar &")
 end)

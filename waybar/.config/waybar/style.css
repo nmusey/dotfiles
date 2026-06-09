@@ -1,0 +1,27 @@
+@import url("file:///home/nick/.cache/wal/colors-waybar.css");
+
+window#waybar {
+    padding: 4px 8px;
+    
+    background-color: transparent;
+    color: @foreground;
+}
+
+#workspaces button {
+    color: @foreground;
+}
+
+#workspaces button.active {
+    color: @color3;
+}
+
+#workspaces button.urgent {
+    color: @color2;
+}
+
+.module {
+    padding: 0 12px;
+    margin: 4px 8px;
+    border-radius: 8px;
+    background-color: @background;
+}
