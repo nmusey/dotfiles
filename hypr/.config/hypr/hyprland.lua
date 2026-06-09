@@ -69,6 +69,10 @@ hl.config({
         layout = "dwindle",
     },
 
+    cursor = {
+        default_monitor = "DP-2",
+    },
+
     decoration = {
         rounding = 8,
 
@@ -116,6 +120,7 @@ hl.config({
     },
 })
 
+hl.workspace_rule({ workspace = "1", monitor = "DP-2", default = true })
 hl.monitor({
     output = "DP-2",
     mode = "2560x1440@165",
@@ -126,7 +131,7 @@ hl.monitor({
 hl.monitor({
     output = "DP-1",
     mode = "1920x1080@60",
-    position = "auto-center-up",
+    position = "auto-up",
     scale = 1,
 })
 
