@@ -19,6 +19,7 @@
         ./dev/lua.nix
         ./dev/rust.nix
 
+        ./programs/desktop.nix
         ./programs/git.nix
         ./programs/kanata.nix
         ./programs/neovim.nix

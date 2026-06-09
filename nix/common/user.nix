@@ -11,31 +11,14 @@
             extraGroups = [ "wheel" "networkmanager" "docker" ];
 
             packages = with pkgs; [
-                firefox
-                brave
-                spotify
-                obsidian
                 flameshot
                 zathura
                 rsync
-                steam-run
-                obs-studio
-                discord
-                anki-bin
-                zoom-us
-                vlc
-                cura-appimage
                 kitty
-                pywal16
                 imagemagick
                 wl-clipboard
                 unzip
                 yazi
-                calibre
-                openrgb
-                yazi
-                vscode
-                libreoffice-qt
                 hunspell
                 hunspellDicts.en_US
             ];
