@@ -17,6 +17,7 @@
         user.enable = true;
         zsa.enable = false;
         
+        desktop.enable = false;
         git.enable = true;
         neovim.enable = true;
         zsh.enable = true;

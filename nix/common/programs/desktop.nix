@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, ... }:
 {
     options = {
         desktop.enable = lib.mkEnableOption "Enable various desktop applications";
