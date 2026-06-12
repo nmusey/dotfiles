@@ -10,16 +10,21 @@ if [[ -f "$HOME/.cache/wal/colors.sh" ]]; then
     set +a
 fi
 
-STATUS_INDICATOR="%(?.%F{$color1}>%f.%F{$color3}>%f)"
+lbracket='«'
+rbracket='»'
+separator=' - '
+final='=>'
+
+STATUS_INDICATOR="%(?.%F{$color1}$final%f.%F{$color3}$final%f)"
 NEWLINE=$'\n'
 
 git_prompt() {
     local branch
     branch=$(git branch --show-current 2>/dev/null)
-    [[ -n $branch ]] && echo "[%F{$color3}$branch%f]"
+    [[ -n $branch ]] && echo "$separator$lbracket%F{$color1}$branch%f$rbracket"
 }
 
 setopt prompt_subst
 export TRANSIENT_RPROMPT=true
-export PROMPT='[%F{$color2}%2~%f] $STATUS_INDICATOR '
-export RPROMPT='$(git_prompt) %F{$color1}%n%f@%F{$color1}%m%f'
+export PROMPT=' $lbracket%F{$color2}%2~%f$rbracket$(git_prompt) $STATUS_INDICATOR '
+export RPROMPT='$lbracket%F{$color2}%n%f@%F{$color3}%m%f$rbracket'
