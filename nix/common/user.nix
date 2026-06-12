@@ -8,7 +8,7 @@
         users.users.nick = {
             isNormalUser = true;
             shell = pkgs.zsh;
-            extraGroups = [ "wheel" "networkmanager" "docker" ];
+            extraGroups = [ "wheel" "networkmanager" "docker" "audio" ];
 
             packages = with pkgs; [
                 vim
@@ -23,6 +23,7 @@
                 hunspell
                 hunspellDicts.en_US
                 waypipe
+                brave
             ];
         };
 

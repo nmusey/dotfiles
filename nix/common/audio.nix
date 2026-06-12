@@ -12,12 +12,18 @@
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+      jack.enable = true;
+      wireplumber = {
+          enable = true;
+          package = pkgs.wireplumber;
+      };
     };
+
 
     environment.systemPackages = with pkgs; [
         alsa-utils
         playerctl
-        pulseaudio
+        pavucontrol
     ];
   };
 }
