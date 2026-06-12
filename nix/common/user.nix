@@ -11,6 +11,7 @@
             extraGroups = [ "wheel" "networkmanager" "docker" ];
 
             packages = with pkgs; [
+                vim
                 flameshot
                 zathura
                 rsync
@@ -21,10 +22,11 @@
                 yazi
                 hunspell
                 hunspellDicts.en_US
+                waypipe
             ];
         };
 
-        programs.localsend.enable = true;
+        xdg.portal.enable = true;
         services.flatpak.enable = true;
     };
 }

@@ -6,8 +6,6 @@
 
     config = lib.mkIf config.dotnet.enable {
         environment.systemPackages = with pkgs; [
-            dotnet-sdk_9
-            dotnet-ef
             roslyn-ls
         ];
     };

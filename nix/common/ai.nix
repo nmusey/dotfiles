@@ -6,16 +6,7 @@
 
     config = lib.mkIf config.ai.enable {
         environment.systemPackages = with pkgs; [
-            ollama
-            mods
-            opencode
+            ollama-cuda
         ];
-
-        services.ollama = {
-            enable = true;
-            acceleration = "cuda";
-        };
-
-        services.open-webui.enable = true;
     };
 }

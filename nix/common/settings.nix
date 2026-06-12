@@ -1,6 +1,6 @@
 { config, lib, ... }:
 {
-    options.settings.enable = lib.mkEnableOption "Enable some NixOS settings";
+    options.settings.enable = lib.mkEnableOption "Enable some miscellaneous NixOS settings";
     
     config = {
         programs.nix-ld.enable = true;

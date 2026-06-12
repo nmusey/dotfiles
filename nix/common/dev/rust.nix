@@ -10,7 +10,6 @@
             rust-analyzer
             rustfmt
             rustup
-            rustlings
         ];
     };
 }

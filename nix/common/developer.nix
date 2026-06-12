@@ -17,14 +17,11 @@
             bat
             lsof
             killall
-            opencode
-            python3
-            emacs
+            lazygit
         ];
 
-
         fonts.packages = with pkgs; [ 
-            pkgs.nerd-fonts.hasklug
+            nerd-fonts.hasklug
         ];
     };
 }

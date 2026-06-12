@@ -11,12 +11,20 @@
       xwayland.enable = true;
     };
 
+    services.displayManager.ly = {
+      enable = true;
+      settings = {
+        animation = "matrix";
+      };
+    };
+
     environment.systemPackages = with pkgs; [
       hyprpaper
       mako
       fuzzel
       hyprshot
       bemoji
+      waybar
       pywal16
     ];
   };

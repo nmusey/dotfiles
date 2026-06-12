@@ -5,7 +5,6 @@
     };
 
     config = {
-        programs.niri.enable = true;
         services.xserver.enable = true;
         environment.systemPackages = with pkgs; [
             niri
@@ -16,8 +15,7 @@
             hyprshot
             bemoji
             hyprpaper
-            xwayland-satellite
-            swww
+            awww
             eww
         ];
     };
