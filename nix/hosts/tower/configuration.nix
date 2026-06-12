@@ -1,18 +1,27 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 {
   imports = [
     ../../common/include.nix
-    ../../common/programs/flake-programs.nix
   ];
 
   config = {
     networking.hostName = "tower";
 
+    nixpkgs.config.allowUnfree = true;
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     system.stateVersion = "26.05";
 
-    environment.systemPackages = [ pkgs.ntfs3g ];
+    environment.systemPackages = with pkgs; [ 
+        ntfs3g 
+        inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    ];
+
+    services.nordvpn = {
+        enable = true;
+        users = ["nick"];
+    };
+
     environment.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
@@ -24,8 +33,6 @@
 
     boot.kernelModules = [ "i2c-dev" "i2c-piix4" ];
     boot.supportedFilesystems = [ "ntfs" ];
-
-    flake-programs.enable = true;
 
     ai.enable = true;
     audio.enable = true;

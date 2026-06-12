@@ -125,25 +125,25 @@
     "nordvpn-amd64-deb": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-AfVDD/9ASErvgcG590/O+l7jeIeAv+PQkOvkRX8wC7I=",
+        "narHash": "sha256-BJh73GjyI7RI7TSvAUkiF4rYx5+XO49Qw5q0vpFeGSk=",
         "type": "file",
-        "url": "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_4.2.0_amd64.deb"
+        "url": "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_5.0.0_amd64.deb"
       },
       "original": {
         "type": "file",
-        "url": "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_4.2.0_amd64.deb"
+        "url": "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_5.0.0_amd64.deb"
       }
     },
     "nordvpn-arm64-deb": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-YweSq0QV+rMNWvvWw6RN0XbsvGeZVIUlJo3z+l+f79w=",
+        "narHash": "sha256-F4Q5c0JCXTnc74W3orvoZG8l10ZSZdNHvj8ahUzFLs0=",
         "type": "file",
-        "url": "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_4.2.0_arm64.deb"
+        "url": "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_5.0.0_arm64.deb"
       },
       "original": {
         "type": "file",
-        "url": "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_4.2.0_arm64.deb"
+        "url": "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_5.0.0_arm64.deb"
       }
     },
     "nordvpn-flake": {
@@ -155,15 +155,15 @@
         "nordvpn-arm64-deb": "nordvpn-arm64-deb"
       },
       "locked": {
-        "lastModified": 1764175314,
-        "narHash": "sha256-fe3+VYJb5poUyrlyLe9GCgTggkxPo/JvXZ4EGroIY10=",
-        "owner": "connerohnesorge",
+        "lastModified": 1781299301,
+        "narHash": "sha256-x+IskUo47YLWalnSTNcJzldLNGAReHwyHSOmMlBm97o=",
+        "owner": "nmusey",
         "repo": "nordvpn-flake",
-        "rev": "97d3e39957c207af6b732f2b290763404041f36e",
+        "rev": "7ec575c638a5a816d5c9fe24ef42ca7b9dc088ff",
         "type": "github"
       },
       "original": {
-        "owner": "connerohnesorge",
+        "owner": "nmusey",
         "repo": "nordvpn-flake",
         "type": "github"
       }
