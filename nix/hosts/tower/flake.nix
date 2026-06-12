@@ -3,6 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+
+    zen-browser.url = "github:youwen5/zen-browser-flake";
+    nordvpn-flake.url = "github:connerohnesorge/nordvpn-flake";
   };
 
   outputs = { self, nixpkgs, ... }: {

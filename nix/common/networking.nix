@@ -7,9 +7,9 @@
   config = lib.mkIf config.networking.enable {
     networking.networkmanager.enable = true;
     networking.nameservers = [
-        "10.0.0.124"
-        "1.1.1.1"
+        "192.168.0.123"
         "8.8.8.8"
+        "1.1.1.1"
     ];
 
     time.timeZone = "America/Vancouver";

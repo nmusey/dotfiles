@@ -2,6 +2,7 @@
 {
   imports = [
     ../../common/include.nix
+    ../../common/programs/flake-programs.nix
   ];
 
   config = {
@@ -23,6 +24,8 @@
 
     boot.kernelModules = [ "i2c-dev" "i2c-piix4" ];
     boot.supportedFilesystems = [ "ntfs" ];
+
+    flake-programs.enable = true;
 
     ai.enable = true;
     audio.enable = true;
