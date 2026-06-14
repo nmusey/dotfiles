@@ -4,7 +4,7 @@ local bindings = {
     ["m"]         = hl.dsp.exec_cmd("spotify --enable-features=UseOzonePlatform --ozone-platform=wayland"),
     ["n"]         = hl.dsp.exec_cmd("obsidian"),
     ["p"]         = hl.dsp.exec_cmd("hyprshot -m region"),
-    ["t"]         = hl.dsp.exec_cmd("kitty"),
+    ["t"]         = hl.dsp.exec_cmd("ghostty"),
 
     ["SHIFT + w"] = hl.dsp.exec_cmd("~/.local/bin/waywall"),
 
@@ -29,9 +29,9 @@ local bindings = {
     ["SHIFT + l"] = hl.dsp.window.move({ direction = "right" }),
 }
 
-for i = 1,9 do
-    bindings[tostring(i)] = hl.dsp.focus({ workspace=tostring(i) })
-    bindings["SHIFT + " .. tostring(i)] = hl.dsp.window.move({ workspace=tostring(i) })
+for i = 1, 9 do
+    bindings[tostring(i)] = hl.dsp.focus({ workspace = tostring(i) })
+    bindings["SHIFT + " .. tostring(i)] = hl.dsp.window.move({ workspace = tostring(i) })
 end
 
 local mouse_binds = {
@@ -48,8 +48,66 @@ for button, action in pairs(mouse_binds) do
     hl.bind(mod .. " + " .. button, action, { mouse = true })
 end
 
+hl.bind("SUPER + TAB", function()
+    local layouts     = { "dwindle", "scrolling", "monocle" }
+    local workspace   = hl.get_active_workspace()
+	if hl.get_active_special_workspace() then
+		workspace = hl.get_active_special_workspace()
+	end
+
+    local next_layout = "dwindle"
+
+    if not workspace then
+        return
+    end
+
+    for i = 1, #layouts do
+        if layouts[i] == workspace.tiled_layout then
+            local next_layout_idx = (i % #layouts) + 1
+            next_layout = layouts[next_layout_idx]
+            break
+        end
+    end
+
+	if workspace.special then
+		hl.workspace_rule({ workspace = tostring(workspace.name), layout = next_layout })
+	else
+		hl.workspace_rule({ workspace = tostring(workspace.id), layout = next_layout })
+	end
+end)
+
+local function layout_bind(bind_table)
+    return function ()
+        local workspace = hl.get_active_special_workspace() or
+                          hl.get_active_workspace()
+
+        if not workspace then
+            return
+        end
+
+        local layout = workspace.tiled_layout
+        if bind_table[layout] then
+            hl.dispatch(bind_table[layout])
+        end
+    end
+end
+
+hl.bind("SUPER + A", layout_bind({
+    scrolling = hl.dsp.layout("swapcol l"),  -- Scrolling: swap column with left one
+    dwindle   = hl.dsp.layout("swapsplit"),  -- Dwindle: swap window split 
+    monocle   = hl.dsp.layout("cycleprev"),  -- Monocle and master: cycle prev window
+    master    = hl.dsp.layout("cycleprev"),
+}))
+
+hl.bind("SUPER + D", layout_bind({
+    scrolling = hl.dsp.layout("swapcol r"),   -- Scrolling: swap column with right one
+    dwindle   = hl.dsp.layout("togglesplit"), -- Dwindle: toggle window split 
+    monocle   = hl.dsp.layout("cyclenext"),   -- Monocle and master: cycle next window
+    master    = hl.dsp.layout("cyclenext"),
+}))
+
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true } )
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
 
 hl.config({
     general = {
@@ -108,8 +166,16 @@ hl.config({
         },
     },
 
+    scrolling = {
+        fullscreen_on_one_column = true
+    },
+
     xwayland = {
         enabled = true,
+    },
+
+    input = {
+        natural_scroll = true,
     },
 
     ecosystem = {
@@ -149,6 +215,6 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("waybar &")
 end)
 
-hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")   
-hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'")   
+hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
+hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'")
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
