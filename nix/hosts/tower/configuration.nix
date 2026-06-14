@@ -37,6 +37,7 @@
     ai.enable = true;
     audio.enable = true;
     developer.enable = true;
+    desktop.enable = true;
     gaming.enable = true;
     networking.enable = true;
     nvidia.enable = true;

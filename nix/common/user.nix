@@ -15,7 +15,7 @@
                 flameshot
                 zathura
                 rsync
-                kitty
+                ghostty
                 imagemagick
                 wl-clipboard
                 unzip

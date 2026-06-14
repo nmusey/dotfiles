@@ -8,13 +8,17 @@
         environment.systemPackages = with pkgs; [
             ripgrep
             fzf
+            bat
+            fd
+            eza
+            btop
+            htop
             tmux
             stow
             wget
             curl
             openssh
             jq
-            bat
             lsof
             killall
             lazygit
