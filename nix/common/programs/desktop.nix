@@ -18,6 +18,7 @@
             openrgb
             vscode
             libreoffice-qt
+            qbittorrent
         ];
     };
 }

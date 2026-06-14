@@ -1,6 +1,6 @@
 local bindings = {
     ["space"]     = hl.dsp.exec_cmd("fuzzel"),
-    ["b"]         = hl.dsp.exec_cmd("zen-browser"),
+    ["b"]         = hl.dsp.exec_cmd("zen"),
     ["m"]         = hl.dsp.exec_cmd("spotify --enable-features=UseOzonePlatform --ozone-platform=wayland"),
     ["n"]         = hl.dsp.exec_cmd("obsidian"),
     ["p"]         = hl.dsp.exec_cmd("hyprshot -m region"),
@@ -49,7 +49,7 @@ for button, action in pairs(mouse_binds) do
 end
 
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
-hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { locked = true } )
+hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true } )
 
 hl.config({
     general = {
@@ -124,6 +124,8 @@ hl.config({
 })
 
 hl.workspace_rule({ workspace = "1", monitor = "DP-2", default = true })
+hl.workspace_rule({ workspace = "9", monitor = "DP-1", default = true })
+
 hl.monitor({
     output = "DP-2",
     mode = "2560x1440@165",
@@ -146,3 +148,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     hl.exec_cmd("waybar &")
 end)
+
+hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")   
+hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'")   
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")

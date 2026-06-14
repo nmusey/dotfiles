@@ -26,6 +26,8 @@
       bemoji
       waybar
       pywal16
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-hyprland
     ];
   };
 }
