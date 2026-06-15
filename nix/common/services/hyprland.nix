@@ -20,9 +20,10 @@
 
     environment.systemPackages = with pkgs; [
       hyprpaper
+      hyprshot
+      hyprshutdown
       mako
       fuzzel
-      hyprshot
       bemoji
       waybar
       pywal16

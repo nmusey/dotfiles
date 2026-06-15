@@ -5,8 +5,15 @@
     };
 
     config = lib.mkIf config.gaming.enable {
-        programs.steam.enable = true;
-        programs.steam.gamescopeSession.enable = true;
+        programs.steam = {
+            enable = true;
+            gamescopeSession.enable = true;
+        };
+
+        programs.gamescope = {
+            enable = true;
+            capSysNice = true;
+        };
 
         environment.systemPackages = with pkgs; [
             lutris

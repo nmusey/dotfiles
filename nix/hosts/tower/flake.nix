@@ -2,7 +2,7 @@
   description = "Flake for my personal desktop (tower)";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     zen-browser.url = "github:youwen5/zen-browser-flake";
     nordvpn-flake.url = "github:nmusey/nordvpn-flake";

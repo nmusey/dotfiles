@@ -6,7 +6,7 @@ local bindings = {
     ["p"]         = hl.dsp.exec_cmd("hyprshot -m region"),
     ["t"]         = hl.dsp.exec_cmd("ghostty"),
 
-    ["SHIFT + w"] = hl.dsp.exec_cmd("~/.local/bin/waywall"),
+    ["SHIFT + w"] = hl.dsp.exec_cmd("waypaper change"),
 
     ["e"]         = hl.dsp.window.fullscreen(),
     ["f"]         = hl.dsp.window.float(),
@@ -217,4 +217,6 @@ end)
 
 hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
 hl.exec_cmd("gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3'")
+
 hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+hl.env("HYPRSHOT_DIR", "~/Pictures/Screenshots")
