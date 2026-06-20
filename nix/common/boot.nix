@@ -5,6 +5,9 @@
         efi.canTouchEfiVariables = true;
         timeout = 0;
     };
+
+    hardware.enableRedistributableFirmware = true;
+    hardware.enableAllFirmware = true;
     
     boot.plymouth = {
           enable = true;
@@ -18,6 +21,7 @@
 
     boot.consoleLogLevel = 0;
     boot.initrd.verbose = false;
+    boot.kernelModules = [ "iwlwifi" "iwlmvm "]; 
     boot.kernelParams = [
         "quiet"
         "splash"

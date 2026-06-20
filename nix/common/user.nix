@@ -23,7 +23,6 @@
                 hunspell
                 hunspellDicts.en_US
                 waypipe
-                brave
             ];
         };
 

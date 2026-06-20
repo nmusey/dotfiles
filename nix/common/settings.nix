@@ -16,7 +16,5 @@
         services.upower.enable = true;
         system.autoUpgrade.enable = true;
         system.autoUpgrade.channel = "https://channels.nixos.org/nixos-unstable";
-        hardware.enableAllFirmware = true;
-        hardware.enableRedistributableFirmware = true;
     };
 }

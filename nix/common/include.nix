@@ -13,6 +13,7 @@
         ./work.nix
         ./zsa.nix
 
+        ./dev/c.nix
         ./dev/dotnet.nix
         ./dev/go.nix
         ./dev/javascript.nix

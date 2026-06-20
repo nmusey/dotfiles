@@ -45,6 +45,7 @@
     user.enable = true;
     zsa.enable = true;
 
+    c.enable = true;
     go.enable = true;
     javascript.enable = true;
     lua.enable = true;
