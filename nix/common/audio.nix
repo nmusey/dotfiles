@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   options = {
     audio.enable = lib.mkEnableOption "enable audio";
@@ -14,16 +19,15 @@
       pulse.enable = true;
       jack.enable = true;
       wireplumber = {
-          enable = true;
-          package = pkgs.wireplumber;
+        enable = true;
+        package = pkgs.wireplumber;
       };
     };
 
-
     environment.systemPackages = with pkgs; [
-        alsa-utils
-        playerctl
-        pavucontrol
+      alsa-utils
+      playerctl
+      pavucontrol
     ];
   };
 }

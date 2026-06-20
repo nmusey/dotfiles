@@ -8,16 +8,17 @@
     nordvpn-flake.url = "github:nmusey/nordvpn-flake";
   };
 
-  outputs = { self, nixpkgs, ... } @inputs: 
-  {
-    nixosConfigurations.tower = nixpkgs.lib.nixosSystem {
+  outputs =
+    { self, nixpkgs, ... }@inputs:
+    {
+      nixosConfigurations.tower = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
-            ./hardware-configuration.nix
-            ./configuration.nix
-            inputs.nordvpn-flake.nixosModules.default
+          ./hardware-configuration.nix
+          ./configuration.nix
+          inputs.nordvpn-flake.nixosModules.default
         ];
+      };
     };
-  };
 }

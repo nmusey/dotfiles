@@ -1,31 +1,36 @@
-{ config, pkgs, lib, ... }:
 {
-    options = {
-        developer.enable = lib.mkEnableOption "enable developer packages";
-    };
+  config,
+  pkgs,
+  lib,
+  ...
+}:
+{
+  options = {
+    developer.enable = lib.mkEnableOption "enable developer packages";
+  };
 
-    config = lib.mkIf config.developer.enable {
-        environment.systemPackages = with pkgs; [
-            ripgrep
-            fzf
-            bat
-            fd
-            eza
-            btop
-            htop
-            tmux
-            stow
-            wget
-            curl
-            openssh
-            jq
-            lsof
-            killall
-            lazygit
-        ];
+  config = lib.mkIf config.developer.enable {
+    environment.systemPackages = with pkgs; [
+      ripgrep
+      fzf
+      bat
+      fd
+      eza
+      btop
+      htop
+      tmux
+      stow
+      wget
+      curl
+      openssh
+      jq
+      lsof
+      killall
+      lazygit
+    ];
 
-        fonts.packages = with pkgs; [ 
-            nerd-fonts.hasklug
-        ];
-    };
+    fonts.packages = with pkgs; [
+      nerd-fonts.hasklug
+    ];
+  };
 }

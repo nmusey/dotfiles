@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 {
   imports = [
     ../../common/include.nix
@@ -12,14 +17,14 @@
 
     system.stateVersion = "26.05";
 
-    environment.systemPackages = with pkgs; [ 
-        ntfs3g 
-        inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    environment.systemPackages = with pkgs; [
+      ntfs3g
+      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     services.nordvpn = {
-        enable = true;
-        users = ["nick"];
+      enable = true;
+      users = [ "nick" ];
     };
 
     environment.sessionVariables = {
@@ -31,7 +36,10 @@
       QT_QPA_PLATFORM = "wayland;xcb";
     };
 
-    boot.kernelModules = [ "i2c-dev" "i2c-piix4" ];
+    boot.kernelModules = [
+      "i2c-dev"
+      "i2c-piix4"
+    ];
     boot.supportedFilesystems = [ "ntfs" ];
 
     ai.enable = true;
