@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     zen-browser.url = "github:youwen5/zen-browser-flake";
-    nordvpn-flake.url = "github:nmusey/nordvpn-flake";
+    nordvpn-flake.url = "github:Triforcey/nordvpn-nix";
   };
 
   outputs =
@@ -17,7 +17,7 @@
         modules = [
           ./hardware-configuration.nix
           ./configuration.nix
-          inputs.nordvpn-flake.nixosModules.default
+          inputs.nordvpn-flake.nixosModules
         ];
       };
     };

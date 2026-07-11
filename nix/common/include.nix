@@ -20,6 +20,7 @@
     ./dev/lua.nix
     ./dev/nix.nix
     ./dev/rust.nix
+    ./dev/zig.nix
 
     ./programs/desktop.nix
     ./programs/git.nix

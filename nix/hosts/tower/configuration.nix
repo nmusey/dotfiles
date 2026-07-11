@@ -58,6 +58,7 @@
     javascript.enable = true;
     lua.enable = true;
     rust.enable = true;
+    zig.enable = true;
 
     git.enable = true;
     neovim.enable = true;
