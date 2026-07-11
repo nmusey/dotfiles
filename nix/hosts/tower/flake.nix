@@ -9,15 +9,15 @@
   };
 
   outputs =
-    { self, nixpkgs, ... }@inputs:
+    { self, nixpkgs, nordvpn-flake, ... }@inputs:
     {
       nixosConfigurations.tower = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
         modules = [
           ./hardware-configuration.nix
+          nordvpn-flake.nixosModules.default
           ./configuration.nix
-          inputs.nordvpn-flake.nixosModules
         ];
       };
     };
