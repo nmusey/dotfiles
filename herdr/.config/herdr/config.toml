@@ -1,0 +1,17 @@
+[keys]
+# Prefix: Ctrl-a instead of the default Ctrl-b
+prefix = "ctrl+a"
+
+# V -> split side by side (left/right), H -> split stacked (top/bottom)
+split_vertical = "prefix+shift+v"
+split_horizontal = "prefix+shift+h"
+
+# Pane navigation (h/j/k/l) already matches herdr's defaults: prefix+h/j/k/l
+
+# Ctrl-x closes the tab, Ctrl-Shift-x closes the whole workspace
+close_tab = "prefix+ctrl+x"
+close_workspace = "prefix+ctrl+shift+x"
+
+[ui]
+mouse_capture = true
+copy_on_select = true
