@@ -27,6 +27,7 @@
       lsof
       killall
       lazygit
+      claude-code
     ];
 
     fonts.packages = with pkgs; [

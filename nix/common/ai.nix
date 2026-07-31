@@ -11,7 +11,7 @@
 
   config = lib.mkIf config.ai.enable {
     environment.systemPackages = with pkgs; [
-      ollama-cuda
+      ollama-vulkan
     ];
   };
 }

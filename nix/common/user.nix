@@ -18,6 +18,7 @@
         "networkmanager"
         "docker"
         "audio"
+        "nordvpn"
       ];
 
       packages = with pkgs; [
@@ -38,5 +39,6 @@
 
     xdg.portal.enable = true;
     services.flatpak.enable = true;
+    services.nordvpn.enable = true;
   };
 }

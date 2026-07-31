@@ -16,10 +16,12 @@
     ./dev/c.nix
     ./dev/dotnet.nix
     ./dev/go.nix
+    ./dev/godot.nix
     ./dev/javascript.nix
     ./dev/lua.nix
     ./dev/nix.nix
     ./dev/rust.nix
+    ./dev/unity.nix
     ./dev/zig.nix
 
     ./programs/desktop.nix

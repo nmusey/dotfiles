@@ -22,11 +22,6 @@
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
-    services.nordvpn = {
-      enable = true;
-      users = [ "nick" ];
-    };
-
     environment.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
@@ -55,9 +50,11 @@
 
     c.enable = true;
     go.enable = true;
+    godot.enable = true;
     javascript.enable = true;
     lua.enable = true;
     rust.enable = true;
+    unity.enable = true;
     zig.enable = true;
 
     git.enable = true;
