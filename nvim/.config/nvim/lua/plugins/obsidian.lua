@@ -2,10 +2,11 @@ return {
     'obsidian-nvim/obsidian.nvim',
     config = function()
         require('obsidian').setup({
+            legacy_commands = false,
             workspaces = {
                 {
                     name = 'vault',
-                    path = '~/vault',
+                    path = '~/Documents/nick-vault',
                 }
             },
             daily_notes = {
