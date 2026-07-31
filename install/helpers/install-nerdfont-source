@@ -1,7 +1,0 @@
-#! /bin/bash
-
-git clone --depth 1 https://github.com/ryanoasis/nerd-fonts
-    cd nerd-fonts
-    ./install.sh CascadiaCode
-    cd ..
-    rm -rf nerd-fonts

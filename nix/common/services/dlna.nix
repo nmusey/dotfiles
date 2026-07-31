@@ -13,25 +13,35 @@
     services.minidlna.settings = {
       friendly_name = "tower";
       media_dir = [
-        "V,/srv/minidlna/Videos/"
+        "V,/.mv"
       ];
 
       inotify = "yes";
       log_level = "info";
-      announceInterval = 05;
+      notify_interval = 1;
     };
 
     users.users.minidlna = {
-      extraGroups =
-        [ "wheel" "minidlna" ];
+      extraGroups = [
+        "wheel"
+        "minidlna"
+      ];
     };
 
     systemd.tmpfiles.rules = [
-        "d /srv/minidlna/           0777 minidlna users -"
-        "d /srv/minidlna/Videos/    0777 minidlna users -"
+      "d /srv/minidlna/           0777 minidlna users -"
+      "d /srv/minidlna/Videos/    0777 minidlna users -"
     ];
-    
-    networking.firewall.allowedTCPPorts = [ 139 445 8096 ];
-    networking.firewall.allowedUDPPorts = [ 137 138 1900 ];
+
+    networking.firewall.allowedTCPPorts = [
+      139
+      445
+      8096
+    ];
+    networking.firewall.allowedUDPPorts = [
+      137
+      138
+      1900
+    ];
   };
 }

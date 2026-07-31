@@ -1,37 +1,36 @@
 { config, ... }:
 {
   imports = [
-     ../../common/include.nix
+    ../../common/include.nix
   ];
 
-    config = {
-        networking.hostName = "fool";
+  config = {
+    networking.hostName = "fool";
 
-        hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.production;
-    
-        ai.enable = true;
-        audio.enable = true;
-        developer.enable = true;
-        gaming.enable = true;
-        networking.enable = true;
-        nvidia.enable = true;
-        settings.enable = true;
-        user.enable = true;
-        zsa.enable = true;
-        
-        git.enable = true;
-        neovim.enable = true;
-        zsh.enable = true;
+    ai.enable = false;
+    audio.enable = true;
+    developer.enable = true;
+    gaming.enable = false;
+    networking.enable = true;
+    nvidia.enable = false;
+    settings.enable = true;
+    user.enable = true;
+    zsa.enable = true;
 
-        dotnet.enable = true;
-        go.enable = true;
-        javascript.enable = true;
-        lua.enable = true;
-        rust.enable = true;
+    git.enable = true;
+    neovim.enable = true;
+    zsh.enable = true;
 
-        bluetooth.enable = true;
-        docker.enable = true;
-        niri.enable = true;
-        ssh.enable = true;
-    };
+    dotnet.enable = true;
+    go.enable = true;
+    javascript.enable = true;
+    lua.enable = true;
+    rust.enable = true;
+
+    bluetooth.enable = true;
+    docker.enable = true;
+    hyprland.enable = true;
+    niri.enable = false;
+    ssh.enable = true;
+  };
 }

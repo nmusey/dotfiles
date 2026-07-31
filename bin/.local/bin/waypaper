@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+wallpapers="/home/nick/Pictures/Wallpapers"
+symlink="$wallpapers/wallpaper.jpg"
+
+if [[ $1 = "change" ]]; then 
+    choices=$(find "$wallpapers" -maxdepth 1 -type f \
+      \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.gif" \) \
+      -exec basename {} \;)
+
+    selected=$(echo $choices | sed "s/ /\n/g" | fuzzel --dmenu)
+    [ -z "$selected" ] && exit 1
+
+    rm $symlink
+    ln -s $selected $symlink
+fi
+
+wal -c
+wal --cols16 -i $symlink -o fuzzel-retheme
+
+if command -v hyprpaper &>/dev/null; then
+    pkill hyprpaper
+    hyprpaper & disown
+fi
+
+if command -v waybar &>/dev/null; then
+    pkill waybar
+    waybar & disown
+fi
+
+if command -v openrgb &>/dev/null && [[ -f ~/.cache/wal/colors.sh ]] ; then 
+    source ~/.cache/wal/colors.sh
+    openrgb --color ${color1:1}
+fi

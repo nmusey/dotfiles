@@ -1,0 +1,34 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+       "type": "small",
+       "source": "arch"
+    },
+    "display": {
+        "separator": " ",
+        "key": {
+            "type": "both-2",
+            "width": 32
+        }
+    },
+    "modules": [
+        "title",
+
+        "separator",
+        "os",
+        "kernel",
+
+        "separator",
+        "publicip",
+        "localip",
+
+        "separator",
+        "weather",
+
+        "separator",
+        {
+            "type": "colors",
+            "symbol": "circle"
+        }
+    ]
+}

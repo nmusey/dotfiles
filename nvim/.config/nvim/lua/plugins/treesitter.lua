@@ -1,59 +1,31 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        branch = "main",
-        main = 'nvim-treesitter.configs',
+        build = ":TSUpdate",
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
         config = function()
-            require('nvim-treesitter.config').setup({
-                sync_install = true,
-                auto_install = true,
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = {'*'}
-                },
-                incremental_selection = {
-                    enable = true,
-                    keymaps = {
-                        init_selection = "gu",
-                        node_incremental = "gnu",
-                        scope_incremental = "gsu",
-                        node_decremental = "gnd",
-                    }
-                },
-                indent = {
-                    enable = true
-                },
-                textobjects = {
-                    select = {
-                        enable = true,
-                        include_surrounding_whitespace = true,
-                        lookahead = true,
-
-                        keymaps = {
-                            ['af'] = '@function.outer',
-                            ['if'] = '@function.inner',
-                            ['ac'] = '@class.outer',
-                            ['ic'] = '@class.inner',
-                            ['as'] = '@scope.outer',
-                            ['is'] = '@scope.inner',
-                        }
-                    },
-                    move = {
-                        enable = true,
-                        goto_previous_start = {
-                            ['<leader>fp'] = '@function.outer'
-                        },
-                        goto_next_start = {
-                            ['<leader>fn'] = '@function.outer'
-                        }
-                    },
-                    lsp_interop = {
-                        enable = true,
-                        border = 'none',
-                        floating_preview_opts = {},
-                    },
+            require('nvim-treesitter-textobjects').setup({
+                select = {
+                    lookahead = true,
                 }
             })
-        end
+
+            local select = require('nvim-treesitter-textobjects.select')
+            vim.keymap.set({'x', 'o'}, '<leader>fo', function() select.select_textobject('@function.outer', 'textobjects') end)
+            vim.keymap.set({'x', 'o'}, '<leader>fi', function() select.select_textobject('@function.inner', 'textobjects') end)
+            vim.keymap.set({'x', 'o'}, '<leader>co', function() select.select_textobject('@class.outer', 'textobjects') end)
+            vim.keymap.set({'x', 'o'}, '<leader>ci', function() select.select_textobject('@class.inner', 'textobjects') end)
+
+            local move = require('nvim-treesitter-textobjects.move')
+            vim.keymap.set({'n', 'x', 'o'}, '<leader>fn', function() move.goto_next_start('@function.outer', 'textobjects') end)
+            vim.keymap.set({'n', 'x', 'o'}, '<leader>fp', function() move.goto_previous_start('@function.outer', 'textobjects') end)
+
+            local ts_repeat_move = require('nvim-treesitter-textobjects.repeatable_move')
+            vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
+            vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
+        end,
     },
 }

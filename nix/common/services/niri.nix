@@ -1,24 +1,27 @@
-{ config, lib, pkgs, ... }:
 {
-    options = {
-        niri.enable = lib.mkEnableOption "Enable niri as a window manager";
-    };
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  options = {
+    niri.enable = lib.mkEnableOption "Enable niri as a window manager";
+  };
 
-    config = {
-        programs.niri.enable = true;
-        services.xserver.enable = true;
-        environment.systemPackages = with pkgs; [
-            niri
-            waybar
-            swaybg
-            mako
-            fuzzel
-            hyprshot
-            bemoji
-            hyprpaper
-            xwayland-satellite
-            swww
-            eww
-        ];
-    };
+  config = {
+    services.xserver.enable = true;
+    environment.systemPackages = with pkgs; [
+      niri
+      waybar
+      swaybg
+      mako
+      fuzzel
+      hyprshot
+      bemoji
+      hyprpaper
+      awww
+      eww
+    ];
+  };
 }

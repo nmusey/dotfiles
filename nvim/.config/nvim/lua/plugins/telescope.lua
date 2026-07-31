@@ -1,50 +1,38 @@
- return {
-     "nvim-telescope/telescope-ui-select.nvim",
-     {
+return {
+    {
         "nvim-telescope/telescope.nvim",
         dependencies = {
-             "nvim-lua/plenary.nvim",
-             "nvim-lua/popup.nvim",
-             "kyazdani42/nvim-web-devicons",
+            "nvim-lua/plenary.nvim",
         },
         config = function()
-            local vimgrep_arguments = { unpack(require("telescope.config").values.vimgrep_arguments) }
-            table.insert(vimgrep_arguments, "--hidden")
-            table.insert(vimgrep_arguments, "--trim")
+            local telescope = require('telescope')
 
-            require('telescope').setup{
+            telescope.setup({
                 defaults = {
-                    vimgrep_arguments = vimgrep_arguments,
-                    file_ignore_patterns = {
-                         ".git",
-                         "**/.git",
-                         "node_modules",
-                         "**/node_modules",
-                         "vendor",
-                         "**/vendor"
+                    mappings = {
+                        n = {
+                            ['<C-w'] = telescope.delete_buffer
+                        },
+                        i = {
+                            ['<C-h>'] = 'which_key',
+                            ['<C-w>'] = telescope.delete_buffer
+                        }
                     },
-                    color_devicons = true,
                 },
-                extensions = {
-                    ['ui-select'] = {
-                        require('telescope.themes').get_dropdown({
-                            winblend = 10,
-                            border = true,
-                            previewer = false,
-                            shorten_path = false,
-                        }),
-                    }
-                },
-                pickers = {
-                    find_files = {
-                        hidden = true,
-                        no_ignore = true,
-                        follow = true,
-                    }
-                },
-            }
+            })
 
-            require('telescope').load_extension('ui-select')
+            local pickers = require('telescope.builtin')
+            vim.keymap.set('n', '<leader>ff', pickers.find_files, {})
+            vim.keymap.set('n', '<leader>fi', pickers.treesitter, {})
+            vim.keymap.set('n', '<leader>fs', pickers.live_grep, {})
+            vim.keymap.set('n', '<leader>bb', pickers.buffers, {})
+            vim.keymap.set('n', '<leader>fc', pickers.grep_string, {})
+            vim.keymap.set('n', '<leader>fm', pickers.marks, {})
+            vim.keymap.set('n', '<leader>fri', pickers.lsp_incoming_calls, {})
+            vim.keymap.set('n', '<leader>fro', pickers.lsp_outgoing_calls, {})
+            vim.keymap.set('n', '<leader>fg', pickers.git_bcommits, {})
+            vim.keymap.set('v', '<leader>fg', pickers.git_bcommits_range, {})
+            vim.keymap.set('n', 'gr', pickers.lsp_references, {})
         end,
     }
 }
