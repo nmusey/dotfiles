@@ -36,6 +36,7 @@
       "i2c-piix4"
     ];
     boot.supportedFilesystems = [ "ntfs" ];
+    boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
     ai.enable = true;
     audio.enable = true;
