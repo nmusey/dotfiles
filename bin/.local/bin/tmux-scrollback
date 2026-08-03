@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Dump the current pane's full scrollback into a temp file and open it in
+# nvim, in a floating popup that closes itself when nvim exits.
+set -euo pipefail
+
+file=$(mktemp --suffix=".log" "${TMPDIR:-/tmp}/tmux-scrollback.XXXXXX")
+tmux capture-pane -pJS - > "$file"
+tmux display-popup -E -w 90% -h 90% "nvim -c 'normal! G' '$file'"

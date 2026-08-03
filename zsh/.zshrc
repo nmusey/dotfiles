@@ -25,27 +25,9 @@ bindkey "^J" history-search-forward
 bindkey "^K" history-search-backward
 bindkey '^R' fzf-history-widget
 
+alias t='tmux-dev'
 alias g='git status'
 alias gco='git checkout $(git branch -l | fzf)'
-alias gcb='git commit -m "$(git branch --show-current) $1';
-
-func t() {
-    if [[ $1 == 'ls' || $1 == 'l' ]]; then
-        tmux list-sessions -F "#{session_name}: #{session_path} (#{session_windows} windows)";
-    fi
-
-    if [[ $1 == 'new' || $1 == 'n' ]]; then
-        tmux new-session; #TODO check if session exists in this path and attach
-    fi
-
-    if [[ $1 == 'edit' || $1 == 'e' ]]; then
-        echo "Not implemented yet: need to figure out how to pass multiple windows to tmux" #TODO
-    fi
-
-    if [[ $1 == 'attach' || $1 == 'a' ]]; then
-        tmux attach-session -t $2;
-    fi
-}
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -70,7 +52,7 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # This needs to go before the bat alias
 if command -v wal &> /dev/null; then
-    (cat ~/.cache/wal/sequences &)
+    (command cat ~/.cache/wal/sequences &)
     source ~/.cache/wal/colors-tty.sh
 fi
 

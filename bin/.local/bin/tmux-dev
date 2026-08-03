@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Start (or attach to) a tmux session with the usual 5-window layout:
+# 1 scratch, 2 nvim, 3 claude, 4 runner, 5 lazygit
+set -euo pipefail
+
+session="${1:-$(basename "$PWD")}"
+
+if ! tmux has-session -t "$session" 2>/dev/null; then
+    tmux new-session -d -s "$session" -n scratch
+    tmux new-window -t "$session" -n nvim "nvim"
+    tmux new-window -t "$session" -n claude "claude"
+    tmux new-window -t "$session" -n runner
+    tmux new-window -t "$session" -n lazygit "lazygit"
+    tmux select-window -t "$session:1"
+fi
+
+if [[ -z "${TMUX:-}" ]]; then
+    exec tmux attach-session -t "$session"
+else
+    tmux switch-client -t "$session"
+fi
