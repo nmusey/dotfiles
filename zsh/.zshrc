@@ -26,6 +26,7 @@ bindkey "^K" history-search-backward
 bindkey '^R' fzf-history-widget
 
 alias t='tmux-dev'
+alias ta='tmux attach -t "$(tmux list-sessions | fzf | cut -d: -f1)"'
 alias g='git status'
 alias gco='git checkout $(git branch -l | fzf)'
 
