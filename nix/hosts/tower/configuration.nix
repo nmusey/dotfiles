@@ -60,6 +60,7 @@
 
     git.enable = true;
     neovim.enable = true;
+    openrgb.enable = true;
     quickshell.enable = true;
     zsh.enable = true;
 
