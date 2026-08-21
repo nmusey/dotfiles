@@ -71,5 +71,6 @@
     plasma.enable = true;
     niri.enable = false;
     ssh.enable = true;
+    tailscale.enable = true;
   };
 }
