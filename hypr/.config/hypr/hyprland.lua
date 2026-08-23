@@ -224,6 +224,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
     hl.exec_cmd("wayclip")
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
+    hl.exec_cmd("quickshell")
 end)
 
 hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")

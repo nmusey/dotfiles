@@ -19,6 +19,8 @@
         "docker"
         "audio"
         "nordvpn"
+        "video"
+        "input"
       ];
 
       packages = with pkgs; [
