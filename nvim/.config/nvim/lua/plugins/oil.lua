@@ -2,11 +2,21 @@ return {
     {
         "stevearc/oil.nvim",
         dependencies = {
-            "nvim-tree/nvim-web-devicons",
+            "nvim-mini/mini.icons",
             "refractalize/oil-git-status.nvim",
         },
+        lazy = false,
         config = function()
             require('oil').setup({
+                columns = {
+                    "icon",
+                    "permissions",
+                    "size",
+                },
+                skip_confirm_for_simple_edits = true,
+                prompt_save_on_select_new_entry = false,
+                watch_for_changes = true,
+                default_file_explorer = true,
                 view_options = {
                     show_hidden = true,
                     case_insensitive = true,
@@ -16,5 +26,22 @@ return {
                 },
             })
         end,
+        keymaps = {
+            ["gd"] = {
+                desc = "Toggle file detail view",
+                callback = function()
+                    detail = not detail
+                    if detail then
+                        require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+                    else
+                        require("oil").set_columns({ "icon" })
+                    end
+                end,
+            },
+        }
+    },
+    {
+        "refractalize/oil-git-status.nvim",
+        config = true,
     },
 }

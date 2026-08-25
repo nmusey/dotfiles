@@ -22,6 +22,9 @@ vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 vim.keymap.set({"n", "v"}, "<leader>dd", [["_dd]])
 
 vim.keymap.set("n", "y", '[["+Y]]')
+vim.keymap.set("n", "<leader>y", '"+y', { desc = "Yank to system clipboard" })
+vim.keymap.set("v", "<leader>y", '"+y', { desc = "Yank selection to system clipboard" })
+vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "Yank line to system clipboard" })
 vim.keymap.set("v", "p", "_dp")
 
 vim.keymap.set("v", "<", "<gv")
@@ -36,15 +39,18 @@ vim.keymap.set('n', '<leader>ep', vim.diagnostic.goto_prev)
 vim.keymap.set('n', '<leader>en', vim.diagnostic.goto_next)
 
 -- File tree
-vim.keymap.set('n', '<leader>tt', '<cmd>Oil<CR>')
+vim.keymap.set('n', '<leader>tt', '<cmd>Oil --float<CR>')
+vim.keymap.set('n', '<leader>td', '<cmd>Oil<CR>')
 
 -- Git
 vim.keymap.set('n', '<leader>hh', '<cmd>Gitsigns preview_hunk<CR>')
 vim.keymap.set('n', '<leader>hu', '<cmd>Gitsigns reset_hunk<CR>')
 vim.keymap.set('n', '<leader>hn', '<cmd>Gitsigns next_hunk<CR>')
 vim.keymap.set('n', '<leader>hp', '<cmd>Gitsigns prev_hunk<CR>')
+vim.keymap.set('n', '<leader>hb', '<cmd>BlameToggle virtual<CR>')
+vim.keymap.set('n', '<leader>hd', '<cmd>BlameToggle<CR>')
 
--- Ui tt
+-- Ui
 vim.keymap.set('n', '<leader>nd', '<cmd>Noice dismiss<CR>')
 vim.keymap.set('n', '<leader>ns', '<cmd>Noice<CR>')
 vim.keymap.set("c", "<C-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end)
