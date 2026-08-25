@@ -12,8 +12,6 @@ brew "curl"
 brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
-# User-friendly command-line shell for UNIX-like operating systems
-brew "fish"
 # XML-based font configuration API for X Windows
 brew "fontconfig"
 # Command-line fuzzy finder written in Go
@@ -22,8 +20,6 @@ brew "fzf"
 brew "git"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Agent multiplexer that lives in your terminal
-brew "herdr"
 # Simple terminal UI for git commands
 brew "lazygit"
 # Package manager for the Lua programming language
@@ -63,17 +59,12 @@ cask "docker-desktop"
 cask "font-ia-writer-mono"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
 # GPU-based terminal emulator
 cask "kitty"
-# AI coding agent desktop client
-cask "opencode-desktop"
 # Peer to peer Bitorrent client
 cask "qbittorrent"
 # Multimedia player
 cask "vlc"
 # GPU-accelerated cross-platform terminal emulator and multiplexer
 cask "wezterm"
-go "github.com/nmusey/abacus/cmd/aba"
 go "github.com/golang-migrate/migrate/v4/cmd/migrate"
