@@ -1,0 +1,16 @@
+singleton Theme 1.0 Theme.qml
+singleton MprisHover 1.0 MprisHover.qml
+Bar 1.0 Bar.qml
+BarModule 1.0 BarModule.qml
+Workspaces 1.0 Workspaces.qml
+ClockWidget 1.0 ClockWidget.qml
+MprisWidget 1.0 MprisWidget.qml
+VolumeWidget 1.0 VolumeWidget.qml
+MemoryWidget 1.0 MemoryWidget.qml
+CpuWidget 1.0 CpuWidget.qml
+TrayWidget 1.0 TrayWidget.qml
+HudWindow 1.0 HudWindow.qml
+VolumeHud 1.0 VolumeHud.qml
+MicHud 1.0 MicHud.qml
+MediaHud 1.0 MediaHud.qml
+MediaExpandedWindow 1.0 MediaExpandedWindow.qml

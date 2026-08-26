@@ -18,6 +18,8 @@
       mako
       fuzzel
       hyprshot
+      grim
+      slurp
       bemoji
       hyprpaper
       awww

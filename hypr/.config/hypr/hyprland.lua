@@ -33,6 +33,8 @@ for i = 1, 9 do
     bindings[tostring(i)] = hl.dsp.focus({ workspace = tostring(i) })
     bindings["SHIFT + " .. tostring(i)] = hl.dsp.window.move({ workspace = tostring(i) })
 end
+bindings["0"] = hl.dsp.focus({ workspace = "10" })
+bindings["SHIFT + 0"] = hl.dsp.window.move({ workspace = "10" })
 
 local mouse_binds = {
     ["mouse:272"] = hl.dsp.window.drag(),
@@ -108,6 +110,13 @@ hl.bind("SUPER + D", layout_bind({
 
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
 hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
+hl.bind("XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"))
+
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
 
 hl.config({
     general = {
@@ -191,7 +200,8 @@ hl.config({
 })
 
 hl.workspace_rule({ workspace = "1", monitor = "DP-2", default = true })
-hl.workspace_rule({ workspace = "9", monitor = "DP-1", default = true })
+hl.workspace_rule({ workspace = "9", monitor = "DP-2" })
+hl.workspace_rule({ workspace = "10", monitor = "DP-1", default = true })
 
 hl.monitor({
     output = "DP-2",
@@ -214,7 +224,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
     hl.exec_cmd("wayclip")
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-    hl.exec_cmd("waybar &")
+    hl.exec_cmd("quickshell")
 end)
 
 hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")

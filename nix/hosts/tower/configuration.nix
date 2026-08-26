@@ -60,6 +60,8 @@
 
     git.enable = true;
     neovim.enable = true;
+    openrgb.enable = true;
+    quickshell.enable = true;
     zsh.enable = true;
 
     bluetooth.enable = true;
@@ -69,5 +71,6 @@
     plasma.enable = true;
     niri.enable = false;
     ssh.enable = true;
+    tailscale.enable = true;
   };
 }

@@ -27,6 +27,7 @@
       lsof
       killall
       lazygit
+      tealdeer
     ];
 
     fonts.packages = with pkgs; [

@@ -29,6 +29,7 @@
     ./programs/kanata.nix
     ./programs/neovim.nix
     ./programs/openrgb.nix
+    ./programs/quickshell.nix
     ./programs/zsh.nix
 
     ./services/bluetooth.nix
@@ -39,6 +40,7 @@
     ./services/niri.nix
     ./services/plasma.nix
     ./services/ssh.nix
+    ./services/tailscale.nix
     ./services/x.nix
   ];
 }
