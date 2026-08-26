@@ -16,7 +16,7 @@ if [[ $1 = "change" ]]; then
 fi
 
 wal -c
-wal --cols16 -i $symlink -o fuzzel-retheme
+wal --cols16 -i $symlink
 
 if command -v hyprpaper &>/dev/null; then
     pkill hyprpaper
