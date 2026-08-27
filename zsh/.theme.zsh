@@ -27,4 +27,4 @@ git_prompt() {
 setopt prompt_subst
 export TRANSIENT_RPROMPT=true
 export PROMPT=' $lbracket%F{$color2}%2~%f$rbracket$(git_prompt) $STATUS_INDICATOR '
-export RPROMPT='$lbracket%F{$color2}%n%f@%F{$color3}%m%f$rbracket'
+export RPROMPT='$lbracket%F{$color2}%n%f@%F{$color3}%m%f@%F{$color5}%T%f$rbracket'
