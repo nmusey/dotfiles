@@ -42,6 +42,8 @@ return {
     },
     {
         "refractalize/oil-git-status.nvim",
-        config = true,
+        config = function ()
+            require('oil-git-status').setup()
+        end
     },
 }
