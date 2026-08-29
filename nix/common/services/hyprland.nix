@@ -28,6 +28,14 @@
       "f /var/log/ly-session.log 0666 root root -"
     ];
 
+    systemd.user.targets.hyprland-session = {
+      description = "Hyprland compositor session";
+      documentation = [ "man:systemd.special(7)" ];
+      bindsTo = [ "graphical-session.target" ];
+      wants = [ "graphical-session-pre.target" ];
+      after = [ "graphical-session-pre.target" ];
+    };
+
     environment.systemPackages = with pkgs; [
       hyprpaper
       hyprshot
