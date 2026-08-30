@@ -41,6 +41,5 @@
 
     xdg.portal.enable = true;
     services.flatpak.enable = true;
-    services.nordvpn.enable = true;
   };
 }
