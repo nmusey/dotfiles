@@ -36,6 +36,7 @@
         hunspell
         hunspellDicts.en_US
         waypipe
+        localsend
       ];
     };
 
