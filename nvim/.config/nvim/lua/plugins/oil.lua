@@ -1,9 +1,12 @@
 return {
     {
+        "refractalize/oil-git-status.nvim",
+        config = true,
+    },
+    {
         "stevearc/oil.nvim",
         dependencies = {
             "nvim-mini/mini.icons",
-            "refractalize/oil-git-status.nvim",
         },
         lazy = false,
         config = function()
@@ -39,9 +42,5 @@ return {
                 end,
             },
         }
-    },
-    {
-        "refractalize/oil-git-status.nvim",
-        config = true,
     },
 }
