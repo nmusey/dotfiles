@@ -6,9 +6,40 @@ return {
         },
         config = function()
             local telescope = require('telescope')
+            local sorters = require('telescope.sorters')
+
+            local function extension_filter_sorter(opts)
+                local base = sorters.get_fzy_sorter(opts)
+
+                local function parse(prompt)
+                    local name, ext = prompt:match('^(.-)  +(%S+)$')
+                    if not ext then
+                        return prompt, nil
+                    end
+                    return name, (ext:gsub('^%.', ''))
+                end
+
+                return sorters.Sorter:new({
+                    scoring_function = function(_, prompt, line, entry, cb_add, cb_filter)
+                        local name, ext = parse(prompt)
+                        if ext then
+                            local pattern = '%.' .. ext:lower():gsub('%p', '%%%1') .. '$'
+                            if not line:lower():match(pattern) then
+                                return -1
+                            end
+                        end
+                        return base.scoring_function(base, name, line, entry, cb_add, cb_filter)
+                    end,
+                    highlighter = function(_, prompt, display)
+                        local name = parse(prompt)
+                        return base.highlighter(base, name, display)
+                    end,
+                })
+            end
 
             telescope.setup({
                 defaults = {
+                    file_sorter = extension_filter_sorter,
                     mappings = {
                         n = {
                             ['<C-w'] = telescope.delete_buffer
