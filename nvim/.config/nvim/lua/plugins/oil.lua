@@ -29,8 +29,8 @@ return {
             ["gd"] = {
                 desc = "Toggle file detail view",
                 callback = function()
-                    local detail = not detail
-                    if detail then
+                    Detail = not Detail
+                    if Detail then
                         require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
                     else
                         require("oil").set_columns({ "icon" })
@@ -45,7 +45,7 @@ return {
             "stevearc/oil.nvim",
         },
         config = function ()
-            require('oil-git-status').setup()
+            require('oil-git-status').setup({})
         end
     },
 }
