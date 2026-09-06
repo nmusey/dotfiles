@@ -50,8 +50,8 @@ PanelWindow {
         spacing: Theme.moduleSpacing
 
         VolumeWidget {}
-        MemoryWidget {}
-        CpuWidget {}
+        NetworkGroup { screen: bar.screen }
+        SystemGroup {}
         TrayWidget {}
     }
 }

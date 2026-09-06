@@ -7,6 +7,10 @@ RowLayout {
 
     property var screen
 
+    // Populate HyprlandToplevel.lastIpcObject (the class fallback below); the
+    // Wayland app_id is live without it, but this keeps the fallback usable.
+    Component.onCompleted: Hyprland.refreshToplevels()
+
     // Mirrors waybar's hyprland/workspaces window-rewrite map (same codepoints).
     readonly property var iconMap: ({
         "com.mitchellh.ghostty": "",
@@ -72,7 +76,11 @@ RowLayout {
                         if (wins.length === 0)
                             return root.defaultIcon;
                         return wins.map(function (t) {
-                            const cls = t.lastIpcObject ? t.lastIpcObject.class : undefined;
+                            // Prefer the live Wayland app_id; lastIpcObject is only
+                            // populated after an explicit Hyprland.refreshToplevels().
+                            const cls = (t.wayland && t.wayland.appId)
+                                || (t.lastIpcObject && t.lastIpcObject.class)
+                                || "";
                             return root.iconMap[cls] || root.defaultIcon;
                         }).join(" ");
                     }

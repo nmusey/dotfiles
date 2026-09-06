@@ -21,11 +21,11 @@ PanelWindow {
     visible: true
 
     anchors {
-        bottom: true
+        top: true
     }
 
     margins {
-        bottom: Theme.hudBottomMargin
+        top: Theme.hudTopMargin
     }
 
     implicitWidth: column.implicitWidth

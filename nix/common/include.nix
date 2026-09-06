@@ -38,6 +38,7 @@
     ./services/hyprland.nix
     ./services/i3.nix
     ./services/niri.nix
+    ./services/nordvpn.nix
     ./services/plasma.nix
     ./services/ssh.nix
     ./services/tailscale.nix

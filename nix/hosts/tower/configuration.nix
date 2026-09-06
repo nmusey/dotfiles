@@ -70,6 +70,7 @@
     hyprland.enable = true;
     plasma.enable = true;
     niri.enable = false;
+    nordvpn.enable = true;
     ssh.enable = true;
     tailscale.enable = true;
   };

@@ -1,5 +1,7 @@
 singleton Theme 1.0 Theme.qml
 singleton MprisHover 1.0 MprisHover.qml
+singleton Network 1.0 Network.qml
+singleton NetworkPopup 1.0 NetworkPopup.qml
 Bar 1.0 Bar.qml
 BarModule 1.0 BarModule.qml
 Workspaces 1.0 Workspaces.qml
@@ -8,9 +10,18 @@ MprisWidget 1.0 MprisWidget.qml
 VolumeWidget 1.0 VolumeWidget.qml
 MemoryWidget 1.0 MemoryWidget.qml
 CpuWidget 1.0 CpuWidget.qml
+SystemGroup 1.0 SystemGroup.qml
+NetworkGroup 1.0 NetworkGroup.qml
+NetToggle 1.0 NetToggle.qml
+NetPanel 1.0 NetPanel.qml
+NetRow 1.0 NetRow.qml
+WifiPanel 1.0 WifiPanel.qml
+BluetoothPanel 1.0 BluetoothPanel.qml
+EthernetPanel 1.0 EthernetPanel.qml
 TrayWidget 1.0 TrayWidget.qml
 HudWindow 1.0 HudWindow.qml
 VolumeHud 1.0 VolumeHud.qml
 MicHud 1.0 MicHud.qml
 MediaHud 1.0 MediaHud.qml
 MediaExpandedWindow 1.0 MediaExpandedWindow.qml
+NetworkPopupWindow 1.0 NetworkPopupWindow.qml

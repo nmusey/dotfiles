@@ -10,10 +10,20 @@ ShellRoot {
         }
     }
 
+    HudWindow {
+        screen: {
+            const screens = Quickshell.screens;
+            for (const s of screens)
+                if (s.name === "DP-2")
+                    return s;
+            return screens[0] ?? null;
+        }
+    }
+
     Variants {
         model: Quickshell.screens
 
-        HudWindow {
+        MediaExpandedWindow {
             required property var modelData
             screen: modelData
         }
@@ -22,7 +32,7 @@ ShellRoot {
     Variants {
         model: Quickshell.screens
 
-        MediaExpandedWindow {
+        NetworkPopupWindow {
             required property var modelData
             screen: modelData
         }

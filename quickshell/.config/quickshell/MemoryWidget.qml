@@ -2,13 +2,15 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 
+// RAM usage readout. Bare content only (icon + percentage) — it's placed
+// inside the shared SystemGroup pill, so it doesn't draw its own BarModule.
 Item {
     id: root
 
     property real usage: 0
 
-    implicitWidth: pill.implicitWidth
-    implicitHeight: pill.implicitHeight
+    implicitWidth: row.implicitWidth
+    implicitHeight: row.implicitHeight
 
     Timer {
         interval: 10000
@@ -40,16 +42,17 @@ Item {
         }
     }
 
-    BarModule {
-        id: pill
-        anchors.fill: parent
+    Row {
+        id: row
+        anchors.verticalCenter: parent.verticalCenter
+        spacing: 6
 
         Text {
             anchors.verticalCenter: parent.verticalCenter
             color: Theme.foreground
             font.family: Theme.fontFamily
             font.pixelSize: Theme.iconFontSize
-            text: ""
+            text: ""
         }
 
         Text {
@@ -62,7 +65,8 @@ Item {
     }
 
     MouseArea {
-        anchors.fill: pill
+        anchors.fill: parent
+        cursorShape: Qt.PointingHandCursor
         onClicked: Quickshell.execDetached(["top", "-o", "+%MEM"])
     }
 }

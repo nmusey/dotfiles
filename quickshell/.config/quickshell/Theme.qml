@@ -37,7 +37,7 @@ QtObject {
     property int iconFontSize: fontSize + 3
 
     property int hudTimeout: 1800
-    property int hudBottomMargin: 60
+    property int hudTopMargin: 60
     property int hudBarWidth: 160
 
     property FileView _wal: FileView {
