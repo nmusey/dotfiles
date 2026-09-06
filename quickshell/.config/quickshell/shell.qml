@@ -27,4 +27,13 @@ ShellRoot {
             screen: modelData
         }
     }
+
+    Variants {
+        model: Quickshell.screens
+
+        NetworkPopupWindow {
+            required property var modelData
+            screen: modelData
+        }
+    }
 }
