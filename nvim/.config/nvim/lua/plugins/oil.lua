@@ -3,7 +3,6 @@ return {
         "stevearc/oil.nvim",
         dependencies = {
             "nvim-mini/mini.icons",
-            "refractalize/oil-git-status.nvim",
         },
         lazy = false,
         config = function()
@@ -30,7 +29,7 @@ return {
             ["gd"] = {
                 desc = "Toggle file detail view",
                 callback = function()
-                    detail = not detail
+                    local detail = not detail
                     if detail then
                         require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
                     else
@@ -42,6 +41,9 @@ return {
     },
     {
         "refractalize/oil-git-status.nvim",
+        dependencies = {
+            "stevearc/oil.nvim",
+        },
         config = function ()
             require('oil-git-status').setup()
         end
