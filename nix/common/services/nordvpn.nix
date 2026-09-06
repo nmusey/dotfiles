@@ -6,10 +6,10 @@
 }:
 {
     options = {
-        nordvpn.enable = lib.mkEnableOption = "Enable NordVPN with modifications to make it work";
-    }
+        nordvpn.enable = lib.mkEnableOption "Enable NordVPN with modifications to make it work";
+    };
 
-    config = lib.mkIf config.nordvpn.enable = {
+    config = lib.mkIf config.nordvpn.enable {
         services.nordvpn.enable = true;
         networking.firewall.checkReversePath = "loose";
         security.polkit.extraConfig = ''
