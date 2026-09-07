@@ -47,6 +47,8 @@
       bemoji
       waybar
       pywal16
+      ghostty
+      wl-clipboard
     ];
 
     xdg.portal = {
