@@ -23,21 +23,22 @@ return {
                 win_options = {
                     signcolumn = "yes:2",
                 },
+                keymaps = {
+                    ["q"] = { "actions.close", desc = "Quit the oil browser" },
+                    ["gd"] = {
+                        desc = "Toggle file detail view",
+                        callback = function()
+                            Detail = not Detail
+                            if Detail then
+                                require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
+                            else
+                                require("oil").set_columns({ "icon" })
+                            end
+                        end,
+                    },
+                },
             })
         end,
-        keymaps = {
-            ["gd"] = {
-                desc = "Toggle file detail view",
-                callback = function()
-                    Detail = not Detail
-                    if Detail then
-                        require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
-                    else
-                        require("oil").set_columns({ "icon" })
-                    end
-                end,
-            },
-        }
     },
     {
         "refractalize/oil-git-status.nvim",
