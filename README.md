@@ -41,7 +41,7 @@ stow bin ghostty git nvim ripgrep tmux zsh
 
 **Linux Window Manager Programs** (run in addition to development programs)
 ```sh
-stow fastfetch fuzzel hypr quickshell waybar
+stow fastfetch fuzzel hypr mako quickshell waybar
 ```
 
 ## Installed and Configured Programs
@@ -63,6 +63,9 @@ System defaults for git on this machine.
 
 ### Hypr
 The Hyprland ecosystem configs. Includes the lockscreen and wallpaper manager configurations as well as the window manager.
+
+### Mako
+The notification manager for hyprland. 
 
 ### Neovim
 A muscle-memory and keyboard driven modal text editor.

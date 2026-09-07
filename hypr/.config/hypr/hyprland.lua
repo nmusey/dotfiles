@@ -6,6 +6,9 @@ local bindings = {
     ["p"]         = hl.dsp.exec_cmd("hyprshot -m region"),
     ["t"]         = hl.dsp.exec_cmd("ghostty"),
 
+    ["u"]         = hl.dsp.exec_cmd("makoctl dismiss --all"),
+    ["SHIFT + u"] = hl.dsp.exec_cmd("sh -c 'for _ in $(seq 1 20); do makoctl restore; done'"),
+
     ["SHIFT + w"] = hl.dsp.exec_cmd("waypaper change"),
 
     ["e"]         = hl.dsp.window.fullscreen(),
@@ -221,6 +224,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("xrandr --output DP-2 --primary")
     hl.exec_cmd("wal -c && wal -i ~/Pictures/Wallpapers/wallpaper.jpg")
     hl.exec_cmd("hyprpaper")
+    hl.exec_cmd("mako")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
     hl.exec_cmd("wayclip")
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP HYPRLAND_INSTANCE_SIGNATURE")
