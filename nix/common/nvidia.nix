@@ -9,6 +9,7 @@
 
   config = lib.mkIf config.nvidia.enable {
     services.xserver.videoDrivers = [ "nvidia" ];
+    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
     hardware.nvidia = {
       modesetting.enable = true;

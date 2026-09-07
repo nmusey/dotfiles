@@ -24,23 +24,17 @@
       ];
 
       packages = with pkgs; [
-        vim
-        flameshot
         zathura
-        rsync
-        ghostty
         imagemagick
-        wl-clipboard
         unzip
         yazi
         hunspell
         hunspellDicts.en_US
-        waypipe
         localsend
+        fastfetch
       ];
     };
 
-    xdg.portal.enable = true;
     services.flatpak.enable = true;
   };
 }
