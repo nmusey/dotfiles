@@ -13,8 +13,6 @@
     networking.hostName = "tower";
 
     nixpkgs.config.allowUnfree = true;
-    hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-
     system.stateVersion = "26.05";
 
     environment.systemPackages = with pkgs; [
