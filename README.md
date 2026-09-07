@@ -23,7 +23,7 @@ sudo nixos-rebuild switch --flake .
 ```
 
 ##### Adding a host
-TODO - Add these docs
+See the [documentation in this repository](nix/hosts/README.md)
 
 #### macos
 A brewfile is included for easy installation. This theoretically works on supported Linux distros too, but those should have a decent package manager built-in already.
@@ -45,6 +45,10 @@ stow fastfetch fuzzel hypr quickshell waybar
 ```
 
 ## Installed and Configured Programs
+These are the configured programs, many other programs are installed and setup in other ways. 
+Due to the changing nature of this repository and how programs come and go with different needs, these will remain largely undocumented. 
+If necessary, they can be inferred from `.zshrc` and the nix or homebrew setup files.
+
 ### Fastfetch
 See some system info. I don't use it much but is it a dotfile repo without a fetch program?
 
