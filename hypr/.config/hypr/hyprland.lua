@@ -9,7 +9,7 @@ local bindings = {
     ["u"]         = hl.dsp.exec_cmd("makoctl dismiss --all"),
     ["SHIFT + u"] = hl.dsp.exec_cmd("sh -c 'for _ in $(seq 1 20); do makoctl restore; done'"),
 
-    ["SHIFT + w"] = hl.dsp.exec_cmd("waypaper change"),
+    ["SHIFT + w"] = hl.dsp.exec_cmd("~/.local/bin/waypaper change"),
 
     ["e"]         = hl.dsp.window.fullscreen(),
     ["f"]         = hl.dsp.window.float(),
