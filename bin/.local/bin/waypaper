@@ -1,35 +1,112 @@
 #!/usr/bin/env bash
 
-wallpapers="/home/nick/Pictures/Wallpapers"
-symlink="$wallpapers/wallpaper.jpg"
+wallpaperDir="/home/nick/Pictures/Wallpapers"
+symlinkPath="$wallpaperDir/wallpaper.jpg"
 
-if [[ $1 = "change" ]]; then 
-    choices=$(find "$wallpapers" -maxdepth 1 -type f \
-      \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.gif" \) \
-      -exec basename {} \;)
+function usage() {
+    echo """
+    theme picker for hyprland
 
-    selected=$(echo $choices | sed "s/ /\n/g" | fuzzel --dmenu)
-    [ -z "$selected" ] && exit 1
+    change - file picker to change to
+    set <name> - set wallpaper to <name>
+    refresh - set the theme based on the wallpaper
 
-    rm $symlink
-    ln -s $selected $symlink
+    use either --no-refresh or --refresh to force desired behaviour
+    use neither option to refresh by default
+    """
+}
+
+function get_paper_choice() {
+    files=$(
+        find "$wallpaperDir" -maxdepth 1 -type f \
+            \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.gif" \) \
+            -exec basename {} \;
+    )
+
+    readarray -t filenames <<<"$files"
+
+    declare -A namedOptions
+    for filename in "${filenames[@]}"; do
+        title=$(echo "$filename" | sed -E "s/-/ /g; s/(.*)\.[^.]+/\1/g;")
+        namedOptions[$title]="$filename"
+    done
+
+    selectedTitle=$(printf '%s\n' "${!namedOptions[@]}" | shuf | fuzzel --dmenu)
+    echo "${namedOptions["$selectedTitle"]}"
+}
+
+set_paper() {
+    [ -z "$1" ] && exit 1
+    ln -sf "$wallpaperDir/$1" "$symlinkPath"
+}
+
+function refresh() {
+    wal -c
+    wal --cols16 -i "$symlinkPath"
+
+    if command -v hyprpaper &>/dev/null; then
+        pkill hyprpaper
+        hyprpaper &
+        disown
+    fi
+
+    if command -v quickshell &>/dev/null; then
+        quickshell kill
+        while quickshell list 2>/dev/null | grep -q "Process ID:"; do sleep 0.1; done
+        quickshell -d &
+        disown
+    fi
+
+    if command -v openrgb &>/dev/null && [[ -f ~/.cache/wal/colors.sh ]]; then
+        source ~/.cache/wal/colors.sh
+        openrgb --color "${color1:1}"
+    fi
+}
+
+shouldRefresh=1
+debug=0
+
+if [[ $# == 0 ]]; then
+    usage
+    exit 0
 fi
 
-wal -c
-wal --cols16 -i $symlink
+while [[ $# != 0 ]]; do
+    case $1 in
+    "set")
+        set_paper "$2"
+        shift
+    ;;
 
-if command -v hyprpaper &>/dev/null; then
-    pkill hyprpaper
-    hyprpaper & disown
-fi
+    "refresh"|"--refresh"|"-r")
+        shouldRefresh=1
+    ;;
 
-if command -v quickshell &>/dev/null; then
-    quickshell kill
-    while quickshell list 2>/dev/null | grep -q "Process ID:"; do sleep 0.1; done
-    quickshell -d &>/dev/null & disown
-fi
+    "--no-refresh"|"-n")
+        shouldRefresh=0
+    ;;
 
-if command -v openrgb &>/dev/null && [[ -f ~/.cache/wal/colors.sh ]] ; then 
-    source ~/.cache/wal/colors.sh
-    openrgb --color ${color1:1}
+    "--debug"|"-d")
+        debug=1
+    ;;
+
+    "--help"|"-h")
+        usage
+        shouldRefresh=0
+    ;;
+
+    "change")
+        set_paper "$(get_paper_choice)"
+    ;;
+
+    esac
+    shift
+done
+
+if [[ $shouldRefresh -eq 1 ]]; then
+    if [[ $debug -eq 1 ]]; then
+        refresh
+    else
+        refresh &>/dev/null
+    fi
 fi
