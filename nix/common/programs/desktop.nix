@@ -11,6 +11,7 @@
 
   config = lib.mkIf config.desktop.enable {
     environment.systemPackages = with pkgs; [
+      brave
       spotify
       obsidian
       obs-studio
