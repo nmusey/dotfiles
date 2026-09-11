@@ -40,7 +40,11 @@ RowLayout {
     spacing: 4
 
     Repeater {
-        model: Hyprland.workspaces
+        model: {
+            const arr = Hyprland.workspaces.values.slice();
+            arr.sort(function (a, b) { return a.id - b.id; });
+            return arr;
+        }
 
         delegate: Rectangle {
             id: ws

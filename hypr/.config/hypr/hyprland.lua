@@ -242,7 +242,7 @@ hl.monitor({
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("xrandr --output DP-2 --primary")
-    hl.exec_cmd("wal -c && wal -i ~/Pictures/Wallpapers/wallpaper.jpg")
+    hl.exec_cmd("wal -c && wal -i ~/.cache/wallpaper/current.jpg")
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("mako")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
