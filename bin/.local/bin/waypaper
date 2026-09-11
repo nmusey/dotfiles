@@ -23,9 +23,10 @@ if command -v hyprpaper &>/dev/null; then
     hyprpaper & disown
 fi
 
-if command -v waybar &>/dev/null; then
-    pkill waybar
-    waybar & disown
+if command -v quickshell &>/dev/null; then
+    quickshell kill
+    while quickshell list 2>/dev/null | grep -q "Process ID:"; do sleep 0.1; done
+    quickshell -d &>/dev/null & disown
 fi
 
 if command -v openrgb &>/dev/null && [[ -f ~/.cache/wal/colors.sh ]] ; then 
