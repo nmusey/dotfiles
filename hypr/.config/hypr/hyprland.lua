@@ -15,7 +15,6 @@ local bindings = {
     ["f"]         = hl.dsp.window.float(),
     ["q"]         = hl.dsp.window.close(),
     ["r"]         = hl.dsp.submap("resize"),
-    ["w"]         = hl.dsp.layout("colresize"),
 
     ["SHIFT + x"] = hl.dsp.exec_cmd("hyprshutdown"),
     ["SHIFT + p"] = hl.dsp.window.pin(),
@@ -81,7 +80,7 @@ hl.bind("SUPER + TAB", function()
 	end
 end)
 
-local function layout_bind(bind_table)
+local function layout_bind(bind_table, fallback)
     return function ()
         local workspace = hl.get_active_special_workspace() or
                           hl.get_active_workspace()
@@ -90,9 +89,9 @@ local function layout_bind(bind_table)
             return
         end
 
-        local layout = workspace.tiled_layout
-        if bind_table[layout] then
-            hl.dispatch(bind_table[layout])
+        local action = bind_table[workspace.tiled_layout] or fallback
+        if action then
+            hl.dispatch(action)
         end
     end
 end
@@ -106,9 +105,30 @@ hl.bind("SUPER + A", layout_bind({
 
 hl.bind("SUPER + D", layout_bind({
     scrolling = hl.dsp.layout("swapcol r"),   -- Scrolling: swap column with right one
-    dwindle   = hl.dsp.layout("togglesplit"), -- Dwindle: toggle window split 
+    dwindle   = hl.dsp.layout("togglesplit"), -- Dwindle: toggle window split
     monocle   = hl.dsp.layout("cyclenext"),   -- Monocle and master: cycle next window
     master    = hl.dsp.layout("cyclenext"),
+}))
+
+local resize_step = 80
+hl.define_submap("resize", function()
+    hl.bind("h", layout_bind(
+        { scrolling = hl.dsp.layout("colresize -0.05") },
+        hl.dsp.window.resize({ x = -resize_step, y = 0, relative = true })
+    ), { repeating = true })
+    hl.bind("l", layout_bind(
+        { scrolling = hl.dsp.layout("colresize +0.05") },
+        hl.dsp.window.resize({ x = resize_step, y = 0, relative = true })
+    ), { repeating = true })
+    hl.bind("k", hl.dsp.window.resize({ x = 0, y = -resize_step, relative = true }), { repeating = true })
+    hl.bind("j", hl.dsp.window.resize({ x = 0, y = resize_step, relative = true }), { repeating = true })
+
+    hl.bind("escape", hl.dsp.submap("reset"))
+    hl.bind("return", hl.dsp.submap("reset"))
+end)
+
+hl.bind("SUPER + W", layout_bind({
+    scrolling = hl.dsp.layout("colresize +conf"),
 }))
 
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
