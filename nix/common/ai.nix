@@ -12,6 +12,7 @@
   config = lib.mkIf config.ai.enable {
     environment.systemPackages = with pkgs; [
       claude-code
+      open-webui
     ];
 
     services.ollama = {
