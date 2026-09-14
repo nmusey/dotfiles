@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+somafm_list() {
+    curl -sf --max-time 8 https://somafm.com/channels.json | jq -r '
+        .channels[]
+        | select(.playlists | length > 0)
+        | . as $c
+        | (
+            ([$c.playlists[] | select(.format == "mp3" and .quality == "highest")]
+            + [$c.playlists[] | select(.format == "mp3")]
+            + $c.playlists)[0].url
+          ) as $url
+        | "SomaFM: \($c.title) — \($c.genre)\t\($url)"
+    '
+}
+
+nts_list() {
+    local now1 now2
+    now1=$(curl -sf --max-time 5 https://www.nts.live/api/v2/live \
+        | jq -r '.results[] | select(.channel_name == "1") | .now.broadcast_title // "Live"' 2>/dev/null || true)
+    now2=$(curl -sf --max-time 5 https://www.nts.live/api/v2/live \
+        | jq -r '.results[] | select(.channel_name == "2") | .now.broadcast_title // "Live"' 2>/dev/null || true)
+    printf 'NTS 1: %s\thttps://stream-relay-geo.ntslive.net/stream\n' "${now1:-Live}"
+    printf 'NTS 2: %s\thttps://stream-relay-geo.ntslive.net/stream2\n' "${now2:-Live}"
+}
+
+misc_list() {
+    printf 'FIP Électro (Radio France)\thttps://icecast.radiofrance.fr/fipelectro-hifi.aac\n'
+    printf 'Nightwave Plaza (vaporwave/synth)\thttps://radio.plaza.one/mp3\n'
+    printf 'Ibiza Global Radio\thttp://ibizaglobalradio.streaming-pro.com:8024/\n'
+    printf 'Radio Paradise (Main Mix)\thttps://stream.radioparadise.com/aac-320\n'
+    printf 'Chillhop\thttps://streams.fluxfm.de/Chillhop/mp3-320/streams.fluxfm.de/\n'
+}
+
+selection=$(
+    { nts_list; misc_list; somafm_list; } |
+        fzf --delimiter='\t' --with-nth=1 --prompt='radio> '
+)
+
+[[ -z "$selection" ]] && exit 0
+
+url="${selection##*$'\t'}"
+label="${selection%%$'\t'*}"
+
+echo "Vibing to: $label"
+exec mpv --no-video --title="$label" "$url"

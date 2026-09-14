@@ -25,7 +25,14 @@ import Quickshell.Services.Pipewire
 PanelWindow {
     id: root
 
-    readonly property var player: Mpris.players.values.length > 0 ? Mpris.players.values[0] : null
+    readonly property var player: {
+        const list = Mpris.players.values;
+        for (let i = 0; i < list.length; i++) {
+            if (list[i].isPlaying)
+                return list[i];
+        }
+        return list.length > 0 ? list[0] : null;
+    }
     readonly property bool shouldShow: (MprisHover.hovered || MprisHover.pinned) && MprisHover.activeScreen === root.screen && root.player !== null
     readonly property int cardWidth: 340
 

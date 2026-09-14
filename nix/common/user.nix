@@ -32,6 +32,8 @@
         hunspellDicts.en_US
         localsend
         fastfetch
+        speedtest-cli
+        (mpv.override { scripts = [ mpvScripts.mpris ]; })
       ];
     };
 
