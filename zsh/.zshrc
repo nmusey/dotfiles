@@ -23,10 +23,12 @@ bindkey "^k" forward-word
 bindkey "^H" backward-kill-word
 bindkey "^J" history-search-forward
 bindkey "^K" history-search-backward
-bindkey '^R' fzf-history-widget
+bindkey "^R" fzf-history-widget
 
-alias t='tmux-dev'
-alias ta='tmux attach -t "$(tmux list-sessions | fzf | cut -d: -f1)"'
+alias t='tmux-init'
+alias td='tmux-dev'
+alias ti='tmux-init'
+alias ta='tmux-dev-attach'
 alias g='git status'
 alias gco='git checkout $(git branch -l | fzf)'
 

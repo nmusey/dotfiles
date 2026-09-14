@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+projects_dir="$HOME/Projects"
+
+init_sessions() {
+    if ! tmux has-session -t scratch 2>/dev/null; then
+        tmux new-session -d -s scratch
+    fi
+
+    for project in "$projects_dir"/*/; do
+        [[ -d "$project" ]] || continue
+        name="$(basename "$project")"
+        (cd "$project" && TMUX_DEV_NO_ATTACH=1 tmux-dev "$name")
+    done
+}
+
+if tmux list-sessions &>/dev/null; then
+    init_sessions
+    exec tmux-dev-attach
+else
+    init_sessions
+    exec tmux attach-session -t scratch
+fi
