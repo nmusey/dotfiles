@@ -11,8 +11,11 @@
 
   config = lib.mkIf config.ai.enable {
     environment.systemPackages = with pkgs; [
-      herdr
       claude-code
     ];
+
+    services.ollama = {
+        enable = true;
+    };
   };
 }
