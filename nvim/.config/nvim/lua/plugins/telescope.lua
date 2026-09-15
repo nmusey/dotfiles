@@ -7,6 +7,7 @@ return {
         config = function()
             local telescope = require('telescope')
             local sorters = require('telescope.sorters')
+            local actions = require('telescope.actions')
 
             local function extension_filter_sorter(opts)
                 local base = sorters.get_fzy_sorter(opts)
@@ -42,11 +43,11 @@ return {
                     file_sorter = extension_filter_sorter,
                     mappings = {
                         n = {
-                            ['<C-w'] = telescope.delete_buffer
+                            ['<C-w>'] = actions.delete_buffer
                         },
                         i = {
                             ['<C-h>'] = 'which_key',
-                            ['<C-w>'] = telescope.delete_buffer
+                            ['<C-w>'] = actions.delete_buffer
                         }
                     },
                 },
