@@ -37,4 +37,13 @@ ShellRoot {
             screen: modelData
         }
     }
+
+    Variants {
+        model: Quickshell.screens
+
+        AudioPopupWindow {
+            required property var modelData
+            screen: modelData
+        }
+    }
 }

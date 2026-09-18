@@ -49,7 +49,7 @@ PanelWindow {
         anchors.verticalCenter: parent.verticalCenter
         spacing: Theme.moduleSpacing
 
-        VolumeWidget {}
+        VolumeWidget { screen: bar.screen }
         NetworkGroup { screen: bar.screen }
         SystemGroup {}
         TrayWidget {}
