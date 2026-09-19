@@ -6,7 +6,7 @@ return {
                 legacy_commands = false,
                 workspaces = {
                     {
-                        name = 'vault',
+                        name = 'nick-vault',
                         path = os.getenv('VAULT_LOCATION') or '~/Documents/nick-vault',
                     }
                 },
