@@ -6,6 +6,8 @@ export EDITOR='nvim'
 source ~/.theme.zsh
 
 # Setup zsh history
+export XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
+mkdir -p "$XDG_CACHE_HOME"
 export HISTFILE="$XDG_CACHE_HOME/zsh_history"
 export HISTSIZE=100000
 export SAVEHIST=100000
