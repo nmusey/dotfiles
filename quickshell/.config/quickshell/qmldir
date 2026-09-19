@@ -1,5 +1,6 @@
 singleton Theme 1.0 Theme.qml
 singleton MprisHover 1.0 MprisHover.qml
+singleton AudioHover 1.0 AudioHover.qml
 singleton Network 1.0 Network.qml
 singleton NetworkPopup 1.0 NetworkPopup.qml
 Bar 1.0 Bar.qml
@@ -25,3 +26,4 @@ MicHud 1.0 MicHud.qml
 MediaHud 1.0 MediaHud.qml
 MediaExpandedWindow 1.0 MediaExpandedWindow.qml
 NetworkPopupWindow 1.0 NetworkPopupWindow.qml
+AudioPopupWindow 1.0 AudioPopupWindow.qml

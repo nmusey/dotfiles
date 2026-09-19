@@ -40,6 +40,44 @@ return {
                         }
                         require("mason-nvim-dap").default_setup(config)
                     end,
+                    delve = function(config)
+                        require("mason-nvim-dap").default_setup(config)
+                        dap.configurations.go = {
+                            {
+                                type = "delve",
+                                name = "Debug",
+                                request = "launch",
+                                program = "${workspaceFolder}",
+                            },
+                            {
+                                type = "delve",
+                                name = "Debug (with args)",
+                                request = "launch",
+                                program = "${workspaceFolder}",
+                                args = function()
+                                    return vim.split(vim.fn.input("Args: "), " +")
+                                end,
+                            },
+                            {
+                                type = "delve",
+                                name = "Debug package (pick path)",
+                                request = "launch",
+                                program = function()
+                                    return vim.fn.input("Path to main package: ", vim.fn.getcwd() .. "/cmd/", "file")
+                                end,
+                                args = function()
+                                    return vim.split(vim.fn.input("Args: "), " +")
+                                end,
+                            },
+                            {
+                                type = "delve",
+                                name = "Debug test (current package)",
+                                request = "launch",
+                                mode = "test",
+                                program = "${workspaceFolder}",
+                            },
+                        }
+                    end,
                     js = function(config)
                         for _, language in ipairs({ "javascript", "typescript" }) do
                             dap.configurations[language] = {
