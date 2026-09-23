@@ -11,6 +11,7 @@
 
   config = {
     networking.hostName = "tower";
+    variables.global.username = "nick";
 
     nixpkgs.config.allowUnfree = true;
     system.stateVersion = "26.05";
@@ -70,6 +71,7 @@
     niri.enable = false;
     nordvpn.enable = true;
     ssh.enable = true;
+    sync.enable = true;
     tailscale.enable = true;
   };
 }

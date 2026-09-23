@@ -41,6 +41,7 @@
     ./services/nordvpn.nix
     ./services/plasma.nix
     ./services/ssh.nix
+    ./services/sync.nix
     ./services/tailscale.nix
     ./services/x.nix
   ];

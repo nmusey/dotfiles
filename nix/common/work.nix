@@ -14,7 +14,7 @@
       "127.0.0.1" = [ "katipult.test" ];
     };
 
-    users.users.${config.username} = {
+    users.users.${config.variables.global.username} = {
       packages = with pkgs; [
         php
         nginx

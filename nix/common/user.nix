@@ -6,11 +6,16 @@
 }:
 {
   options = {
-    user.enable = lib.mkEnableOption "enable Nick's custom environment";
+    user.enable = lib.mkEnableOption "enable desktop user defaults custom environment";
+    variables.global.username = lib.mkOption {
+      type = lib.types.str;
+      default = "nick";
+      description = "username for this device";
+    };
   };
 
   config = lib.mkIf config.user.enable {
-    users.users.nick = {
+    users.users.${config.variables.global.username} = {
       isNormalUser = true;
       shell = pkgs.zsh;
       extraGroups = [
@@ -34,6 +39,7 @@
         fastfetch
         speedtest-cli
         (mpv.override { scripts = [ mpvScripts.mpris ]; })
+
       ];
     };
 
