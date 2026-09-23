@@ -141,6 +141,9 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
 
+local primary_monitor = "HDMI-A-2"
+local secondary_monitor = "DP-2"
+
 hl.config({
     general = {
         gaps_in = 8,
@@ -163,7 +166,7 @@ hl.config({
     },
 
     cursor = {
-        default_monitor = "DP-2",
+        default_monitor = primary_monitor,
     },
 
     decoration = {
@@ -222,9 +225,9 @@ hl.config({
     },
 })
 
-hl.workspace_rule({ workspace = "1", monitor = "DP-2", default = true })
-hl.workspace_rule({ workspace = "9", monitor = "DP-2" })
-hl.workspace_rule({ workspace = "10", monitor = "DP-1", default = true })
+hl.workspace_rule({ workspace = "1", monitor = primary_monitor, default = true })
+hl.workspace_rule({ workspace = "9", monitor = primary_monitor })
+hl.workspace_rule({ workspace = "10", monitor = secondary_monitor, default = true })
 
 hl.monitor({
     output = "HDMI-A-2",
@@ -241,7 +244,7 @@ hl.monitor({
 })
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("xrandr --output HDMI-A-2 --primary")
+    hl.exec_cmd("xrandr --output " .. primary_monitor .. " --primary")
     hl.exec_cmd("wal -c && wal -i ~/.cache/wallpaper/current.jpg")
     hl.exec_cmd("hyprpaper")
     hl.exec_cmd("mako")
