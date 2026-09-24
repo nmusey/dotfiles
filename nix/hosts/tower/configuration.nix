@@ -18,7 +18,6 @@
 
     environment.systemPackages = with pkgs; [
       ntfs3g
-      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     environment.sessionVariables = {

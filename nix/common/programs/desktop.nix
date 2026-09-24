@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -25,6 +26,7 @@
       vscode
       libreoffice-qt
       qbittorrent
+      inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
 }
