@@ -1,7 +1,8 @@
 {
   config,
-  pkgs,
+  inputs,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -11,12 +12,12 @@
 
   config = lib.mkIf config.ai.enable {
     environment.systemPackages = with pkgs; [
-      claude-code
       open-webui
+      inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
 
     services.ollama = {
-        enable = true;
+      enable = true;
     };
   };
 }
