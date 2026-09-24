@@ -6,12 +6,7 @@
 }:
 {
   options = {
-    user.enable = lib.mkEnableOption "enable desktop user defaults custom environment";
-    variables.global.username = lib.mkOption {
-      type = lib.types.str;
-      default = "nick";
-      description = "username for this device";
-    };
+    user.enable = lib.mkEnableOption "enable admin user defaults custom environment";
   };
 
   config = lib.mkIf config.user.enable {
@@ -21,9 +16,7 @@
       extraGroups = [
         "wheel"
         "networkmanager"
-        "docker"
         "audio"
-        "nordvpn"
         "video"
         "input"
       ];

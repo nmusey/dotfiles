@@ -10,6 +10,8 @@
     };
 
     config = lib.mkIf config.nordvpn.enable {
+        users.users.${config.variables.global.username}.extraGroups = [ "nordvpn" ];
+
         services.nordvpn.enable = true;
         networking.firewall.checkReversePath = "loose";
         security.polkit.extraConfig = ''

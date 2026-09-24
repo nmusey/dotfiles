@@ -10,6 +10,8 @@
   };
 
   config = lib.mkIf config.docker.enable {
+    users.users.${config.variables.global.username}.extraGroups = [ "docker" ];
+
     virtualisation.docker = {
       enable = true;
       rootless = {

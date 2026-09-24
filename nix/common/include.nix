@@ -8,6 +8,7 @@
     ./gaming.nix
     ./networking.nix
     ./nvidia.nix
+    ./options.nix
     ./settings.nix
     ./user.nix
     ./work.nix
