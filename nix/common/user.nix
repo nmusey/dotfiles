@@ -19,6 +19,7 @@
         "audio"
         "video"
         "input"
+        "srv"
       ];
 
       packages = with pkgs; [
@@ -37,5 +38,9 @@
     };
 
     services.flatpak.enable = true;
+
+    systemd.tmpfiles.rules = [
+        "d /srv 0755 ${config.variables.global.username} srv -"
+    ];
   };
 }
