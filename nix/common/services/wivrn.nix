@@ -32,7 +32,6 @@
         destination = "/etc/udev/rules.d/50-oculus.rules";
         text = ''SUBSYSTEM=="usb", ATTR{idVendor}=="2833", MODE="0666", OWNER="${config.variables.global.username}"'';
       })
-      android-udev-rules
     ];
 
     environment.variables = {
@@ -43,7 +42,6 @@
     environment.systemPackages = with pkgs; [
       android-tools
       vulkan-tools
-      glxinfo
       pciutils
     ];
   };
