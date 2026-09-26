@@ -11,8 +11,6 @@
 
   config = {
     networking.hostName = "HOSTNAME";
-
-    nixpkgs.config.allowUnfree = true;
     system.stateVersion = "26.05";
 
     environment.sessionVariables = {

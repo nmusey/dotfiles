@@ -13,6 +13,8 @@
 
     hardware.nvidia = {
       modesetting.enable = true;
+      powerManagement.enable = true;
+
       open = false;
       nvidiaSettings = true;
       forceFullCompositionPipeline = true;

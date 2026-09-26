@@ -13,7 +13,6 @@
     networking.hostName = "tower";
     variables.global.username = "nick";
 
-    nixpkgs.config.allowUnfree = true;
     system.stateVersion = "26.05";
 
     environment.systemPackages = with pkgs; [
