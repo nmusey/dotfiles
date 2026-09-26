@@ -71,5 +71,6 @@
     ssh.enable = true;
     sync.enable = true;
     tailscale.enable = true;
+    wivrn.enable = true;
   };
 }

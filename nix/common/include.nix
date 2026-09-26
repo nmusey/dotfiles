@@ -44,6 +44,7 @@
     ./services/ssh.nix
     ./services/sync.nix
     ./services/tailscale.nix
+    ./services/wivrn.nix
     ./services/x.nix
   ];
 }
