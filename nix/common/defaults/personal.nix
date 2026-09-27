@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 {
     config = lib.mkIf config.presets.personal {
         modules.core.ai.enable = true;

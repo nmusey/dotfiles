@@ -11,13 +11,16 @@
 
   config = {
     networking.hostName = "HOSTNAME";
-    system.stateVersion = "26.05";
+    variables.global.username = "USERNAME";
+
+    # Enable preset if desired. Eg:
+    # config.presets.personal.enable = true;
 
     environment.sessionVariables = {
       # HOST_SPECIFIC = "value";
     };
 
-    # Configure modules
-    # eg modules.core.developer.enable = true;
+    # Overwrite options or modules. Eg:
+    # modules.core.nvidia.enable = true;
   };
 }

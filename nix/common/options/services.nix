@@ -40,7 +40,7 @@
         type = lib.types.bool;
         default = false;
         description = "enable ntfs filesystem support";
-    }
+    };
     plasma.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;

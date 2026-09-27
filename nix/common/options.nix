@@ -19,7 +19,7 @@
     ./options/dev.nix
     ./options/programs.nix
     ./options/services.nix
-    ./defaults/imports.nix
+    ./defaults/options.nix
   ];
 
   config = {

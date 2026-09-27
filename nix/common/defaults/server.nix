@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 {
     config = lib.mkIf config.presets.server {
         modules.core.ai.enable = false;

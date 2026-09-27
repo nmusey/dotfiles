@@ -13,8 +13,7 @@
     networking.hostName = "tower";
     variables.global.username = "nick";
 
-    config.presets.personal = true; 
-
+    presets.personal = true; 
     modules.core.nvidia.enable = true;
 
     boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
