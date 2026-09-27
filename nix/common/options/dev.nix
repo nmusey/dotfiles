@@ -31,6 +31,11 @@
       default = false;
       description = "enable Lua programming environment";
     };
+    nix.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "enable Nix development tooling (formatters, language servers, linters)";
+    };
     rust.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;

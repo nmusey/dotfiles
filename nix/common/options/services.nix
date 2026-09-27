@@ -19,27 +19,32 @@
     hyprland.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Enable hyprland as window manager";
+      description = "enable hyprland as window manager";
     };
     i3.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Enable i3 as a window manager";
+      description = "enable i3 as a window manager";
     };
     niri.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Enable niri as a window manager";
+      description = "enable niri as a window manager";
     };
     nordvpn.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Enable NordVPN with modifications to make it work";
+      description = "enable NordVPN with modifications to make it work";
     };
+    ntfs.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "enable ntfs filesystem support";
+    }
     plasma.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Enable plasma as a window manaager";
+      description = "enable plasma as a window manaager";
     };
     ssh.enable = lib.mkOption {
       type = lib.types.bool;
@@ -59,17 +64,17 @@
     vr.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Enable ALVR";
+      description = "enable ALVR";
     };
     wivrn.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Enable WiVRn";
+      description = "enable WiVRn";
     };
     x.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "Enable X";
+      description = "enable X";
     };
   };
 
@@ -81,6 +86,7 @@
     ../services/i3.nix
     ../services/niri.nix
     ../services/nordvpn.nix
+    ../services/ntfs.nix
     ../services/plasma.nix
     ../services/ssh.nix
     ../services/sync.nix
