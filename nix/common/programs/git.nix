@@ -5,11 +5,7 @@
   ...
 }:
 {
-  options = {
-    git.enable = lib.mkEnableOption "enable git";
-  };
-
-  config.programs.git = lib.mkIf config.git.enable {
+  config.programs.git = lib.mkIf config.modules.programs.git.enable {
     enable = true;
     config.user.name = "nmusey";
     config.user.email = "nmusey@gmail.com";

@@ -5,11 +5,7 @@
   ...
 }:
 {
-  options = {
-    javascript.enable = lib.mkEnableOption "enable JavaScript/TypeScript programming environment";
-  };
-
-  config = lib.mkIf config.javascript.enable {
+  config = lib.mkIf config.modules.dev.javascript.enable {
     environment.systemPackages = with pkgs; [
       nodejs
       yarn

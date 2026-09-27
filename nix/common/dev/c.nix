@@ -5,11 +5,7 @@
   ...
 }:
 {
-  options = {
-    c.enable = lib.mkEnableOption "Enable C/C++ tooling, might be necessary for other modules becuase this installs compilers.";
-  };
-
-  config = lib.mkIf config.c.enable {
+  config = lib.mkIf config.modules.dev.c.enable {
     environment.systemPackages = with pkgs; [
       gcc
       clang

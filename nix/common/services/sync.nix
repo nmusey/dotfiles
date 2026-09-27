@@ -5,11 +5,7 @@
     ...
 }:
 {
-    options = {
-        sync.enable = lib.mkEnableOption "enable sync packages between systems";
-    };
-
-    config = lib.mkIf config.sync.enable {
+    config = lib.mkIf config.modules.services.sync.enable {
         users.groups.sync = { };
         users.users.${config.variables.global.username}.extraGroups = [ "sync" ];
         users.users.syncthing = {

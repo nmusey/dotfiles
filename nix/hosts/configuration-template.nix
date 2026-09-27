@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    ../../common/include.nix
+    ../../common/options.nix
   ];
 
   config = {
@@ -18,6 +18,6 @@
     };
 
     # Configure modules
-    # eg developer.enable = true;
+    # eg modules.core.developer.enable = true;
   };
 }

@@ -5,11 +5,7 @@
   ...
 }:
 {
-  options = {
-    i3.enable = lib.mkEnableOption "Enable i3 as a window manager";
-  };
-
-  config = lib.mkIf config.i3.enable {
+  config = lib.mkIf config.modules.services.i3.enable {
     environment.pathsToLink = [ "/libexec" ];
     services.xserver = {
       enable = true;

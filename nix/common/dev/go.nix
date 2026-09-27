@@ -5,11 +5,7 @@
   ...
 }:
 {
-  options = {
-    go.enable = lib.mkEnableOption "enable Go programming environment";
-  };
-
-  config = lib.mkIf config.go.enable {
+  config = lib.mkIf config.modules.dev.go.enable {
     environment.systemPackages = with pkgs; [
       go
       delve

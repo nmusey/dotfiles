@@ -1,15 +1,11 @@
 { config, lib, ... }:
 {
-  options = {
-    dlna.enable = lib.mkEnableOption "enable dlna streaming server";
-  };
+  config = lib.mkIf config.modules.services.dlna.enable {
+    services.avahi.enable = config.modules.services.dlna.enable;
+    services.avahi.nssmdns4 = config.modules.services.dlna.enable;
 
-  config = lib.mkIf config.dlna.enable {
-    services.avahi.enable = config.dlna.enable;
-    services.avahi.nssmdns4 = config.dlna.enable;
-
-    services.minidlna.enable = config.dlna.enable;
-    services.minidlna.openFirewall = config.dlna.enable;
+    services.minidlna.enable = config.modules.services.dlna.enable;
+    services.minidlna.openFirewall = config.modules.services.dlna.enable;
     services.minidlna.settings = {
       friendly_name = "tower";
       media_dir = [

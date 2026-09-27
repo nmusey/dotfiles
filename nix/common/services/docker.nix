@@ -5,11 +5,7 @@
   ...
 }:
 {
-  options = {
-    docker.enable = lib.mkEnableOption "enable Docker and related tools";
-  };
-
-  config = lib.mkIf config.docker.enable {
+  config = lib.mkIf config.modules.services.docker.enable {
     users.users.${config.variables.global.username}.extraGroups = [ "docker" ];
 
     virtualisation.docker = {

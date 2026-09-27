@@ -5,11 +5,7 @@
   ...
 }:
 {
-  options = {
-    katipult.enable = lib.mkEnableOption "enables packages for katipult development";
-  };
-
-  config = lib.mkIf config.katipult.enable {
+  config = lib.mkIf config.modules.core.work.enable {
     networking.hosts = {
       "127.0.0.1" = [ "katipult.test" ];
     };

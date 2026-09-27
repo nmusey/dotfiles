@@ -5,11 +5,7 @@
   ...
 }:
 {
-  options = {
-    x.enable = lib.mkEnableOption "Enable X";
-  };
-
-  config = lib.mkIf config.x.enable {
+  config = lib.mkIf config.modules.services.x.enable {
     services.xserver.enable = true;
     services.xserver.xkb = {
       layout = "us";

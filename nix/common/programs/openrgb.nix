@@ -5,10 +5,7 @@
   ...
 }:
 {
-  options = {
-    openrgb.enable = lib.mkEnableOption "enable openrgb";
-  };
-  config = lib.mkIf config.openrgb.enable {
+  config = lib.mkIf config.modules.programs.openrgb.enable {
     environment.systemPackages = with pkgs; [
       (openrgb.overrideAttrs (oldAttrs: {
         postInstall = ''

@@ -5,11 +5,7 @@
   ...
 }:
 {
-  options = {
-    lua.enable = lib.mkEnableOption "enable Lua programming environment";
-  };
-
-  config = lib.mkIf config.lua.enable {
+  config = lib.mkIf config.modules.dev.lua.enable {
     environment.systemPackages = with pkgs; [
       lua
       luaPackages.luarocks

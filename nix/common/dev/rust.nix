@@ -5,11 +5,7 @@
   ...
 }:
 {
-  options = {
-    rust.enable = lib.mkEnableOption "enable Rust programming environment";
-  };
-
-  config = lib.mkIf config.rust.enable {
+  config = lib.mkIf config.modules.dev.rust.enable {
     environment.systemPackages = with pkgs; [
       cargo
       rust-analyzer

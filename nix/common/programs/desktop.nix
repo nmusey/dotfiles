@@ -6,13 +6,8 @@
   ...
 }:
 {
-  options = {
-    desktop.enable = lib.mkEnableOption "Enable various desktop applications";
-  };
-
-  config = lib.mkIf config.desktop.enable {
+  config = lib.mkIf config.modules.programs.desktop.enable {
     environment.systemPackages = with pkgs; [
-      brave
       spotify
       obsidian
       obs-studio
@@ -22,10 +17,9 @@
       vlc
       cura-appimage
       calibre
-      openrgb
-      vscode
       libreoffice-qt
       qbittorrent
+      brave
       inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };

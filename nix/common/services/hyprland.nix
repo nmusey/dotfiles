@@ -5,11 +5,7 @@
   ...
 }:
 {
-  options = {
-    hyprland.enable = lib.mkEnableOption "Enable hyprland as window manager";
-  };
-
-  config = lib.mkIf config.hyprland.enable {
+  config = lib.mkIf config.modules.services.hyprland.enable {
     programs.hyprland = {
       enable = true;
       xwayland.enable = true;

@@ -5,10 +5,6 @@
   ...
 }:
 {
-  options = {
-    niri.enable = lib.mkEnableOption "Enable niri as a window manager";
-  };
-
   config = {
     services.xserver.enable = true;
     environment.systemPackages = with pkgs; [

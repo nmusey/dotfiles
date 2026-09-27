@@ -5,11 +5,7 @@
   ...
 }:
 {
-  options = {
-    ssh.enable = lib.mkEnableOption "enable ssh hosting";
-  };
-
-  config = lib.mkIf config.ssh.enable {
+  config = lib.mkIf config.modules.services.ssh.enable {
     environment.systemPackages = with pkgs; [
       openssh
     ];

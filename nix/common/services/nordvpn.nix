@@ -5,11 +5,7 @@
     ...
 }:
 {
-    options = {
-        nordvpn.enable = lib.mkEnableOption "Enable NordVPN with modifications to make it work";
-    };
-
-    config = lib.mkIf config.nordvpn.enable {
+    config = lib.mkIf config.modules.services.nordvpn.enable {
         users.users.${config.variables.global.username}.extraGroups = [ "nordvpn" ];
 
         services.nordvpn.enable = true;

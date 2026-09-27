@@ -5,11 +5,7 @@
   ...
 }:
 {
-  options = {
-    user.enable = lib.mkEnableOption "enable admin user defaults custom environment";
-  };
-
-  config = lib.mkIf config.user.enable {
+  config = lib.mkIf config.modules.core.user.enable {
     users.users.${config.variables.global.username} = {
       isNormalUser = true;
       shell = pkgs.zsh;

@@ -5,10 +5,6 @@
   ...
 }:
 {
-  options = {
-    kanata.enable = lib.mkEnableOption "Enable Kanata keyboard remaps";
-  };
-
   config = {
     boot.kernelModules = [ "uinput" ];
     hardware.uinput.enable = true;

@@ -5,9 +5,7 @@
   ...
 }:
 {
-  options.nvidia.enable = lib.mkEnableOption "Enable NVidia drivers";
-
-  config = lib.mkIf config.nvidia.enable {
+  config = lib.mkIf config.modules.core.nvidia.enable {
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 

@@ -5,11 +5,7 @@
   ...
 }:
 {
-  options = {
-    developer.enable = lib.mkEnableOption "enable developer packages";
-  };
-
-  config = lib.mkIf config.developer.enable {
+  config = lib.mkIf config.modules.core.developer.enable {
     environment.systemPackages = with pkgs; [
       ripgrep
       fzf

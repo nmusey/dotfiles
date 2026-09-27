@@ -5,13 +5,9 @@
   ...
 }:
 {
-  options = {
-    vr.enable = lib.mkEnableOption "Enable ALVR";
-  };
-
-  config = lib.mkIf config.vr.enable {
+  config = lib.mkIf config.modules.services.vr.enable {
     # Unfree packages are required - ensure they are enabled.
-    # Ensure config.nvidia.enable = true as well if using NVidia GPU
+    # Ensure config.modules.core.nvidia.enable = true as well if using NVidia GPU
 
     programs.alvr = {
       enable = true;

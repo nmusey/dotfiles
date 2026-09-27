@@ -5,9 +5,7 @@
   ...
 }:
 {
-  options.zsh.enable = lib.mkEnableOption "enable zsh";
-
-  config = lib.mkIf config.zsh.enable {
+  config = lib.mkIf config.modules.programs.zsh.enable {
     programs.zsh = {
       enable = true;
       enableCompletion = true;

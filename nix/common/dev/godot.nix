@@ -5,11 +5,7 @@
     ...
 }:
 {
-    options = {
-        godot.enable = lib.mkEnableOption "enable Godot game engine";
-    };
-
-    config = lib.mkIf config.godot.enable {
+    config = lib.mkIf config.modules.dev.godot.enable {
         environment.systemPackages = with pkgs; [
             godot
         ];

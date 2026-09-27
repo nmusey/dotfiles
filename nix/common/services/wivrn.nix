@@ -5,12 +5,8 @@
   ...
 }:
 {
-  options = {
-    wivrn.enable = lib.mkEnableOption "Enable WiVRn";
-  };
-
-  config = lib.mkIf config.wivrn.enable {
-    # Ensure config.nvidia.enable = true as well if using NVidia GPU
+  config = lib.mkIf config.modules.services.wivrn.enable {
+    # Ensure config.modules.core.nvidia.enable = true as well if using NVidia GPU
 
     services.wivrn = {
       enable = true;

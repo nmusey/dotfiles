@@ -5,11 +5,7 @@
   ...
 }:
 {
-  options = {
-    dotnet.enable = lib.mkEnableOption "enable Dotnet programming environment";
-  };
-
-  config = lib.mkIf config.dotnet.enable {
+  config = lib.mkIf config.modules.dev.dotnet.enable {
     environment.systemPackages = with pkgs; [
       roslyn-ls
     ];
