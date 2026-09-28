@@ -9,6 +9,7 @@
         environment.systemPackages = with pkgs; [
             unityhub
             roslyn-ls
+            dotnetCorePackages.sdk_10_0
         ];
     };
 }

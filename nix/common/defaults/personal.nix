@@ -12,6 +12,7 @@
         modules.core.zsa.enable = true;
 
         modules.dev.c.enable = true;
+        modules.dev.dotnet.enable = true;
         modules.dev.go.enable = true;
         modules.dev.godot.enable = true;
         modules.dev.javascript.enable = true;

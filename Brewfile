@@ -56,6 +56,8 @@ brew "zsh"
 cask "claude-code"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
+# .NET SDK, required by the roslyn C# language server
+cask "dotnet-sdk"
 cask "font-ia-writer-mono"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
