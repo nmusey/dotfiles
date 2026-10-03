@@ -212,6 +212,8 @@ hl.config({
 
     input = {
         natural_scroll = true,
+        sensitivity = -0.05,
+        accel_profile = "flat",
     },
 
     ecosystem = {
