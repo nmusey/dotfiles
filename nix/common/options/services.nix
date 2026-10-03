@@ -41,6 +41,18 @@
         default = false;
         description = "enable ntfs filesystem support";
     };
+    personalnet = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "share the wan connection to a personal network on the lan interface";
+      };
+      lanInterface = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+        description = "interface the personal network's access point is plugged into";
+      };
+    };
     plasma.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -87,6 +99,7 @@
     ../services/niri.nix
     ../services/nordvpn.nix
     ../services/ntfs.nix
+    ../services/personalnet.nix
     ../services/plasma.nix
     ../services/ssh.nix
     ../services/sync.nix

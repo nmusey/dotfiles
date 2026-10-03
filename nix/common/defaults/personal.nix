@@ -36,7 +36,7 @@
         modules.services.plasma.enable = true;
         modules.services.niri.enable = false;
         modules.services.nordvpn.enable = true;
-        modules.services.ntfs.enable = true;
+        modules.services.ntfs.enable = false;
         modules.services.ssh.enable = true;
         modules.services.sync.enable = true;
         modules.services.tailscale.enable = true;
