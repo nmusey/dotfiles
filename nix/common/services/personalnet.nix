@@ -5,7 +5,6 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    # keep the personal network reachable while NordVPN is connected
     systemd.services.nordvpn-allowlist-personalnet = lib.mkIf config.modules.services.nordvpn.enable {
       description = "Allowlist the personal network in NordVPN";
       wantedBy = [ "multi-user.target" ];
@@ -15,7 +14,6 @@ in
       serviceConfig = {
         Type = "oneshot";
         RemainAfterExit = true;
-        # the nordvpn cli needs a home directory and the nordvpn group
         User = config.variables.global.username;
       };
       script = ''
@@ -33,7 +31,6 @@ in
       '';
     };
 
-    # "shared" makes NetworkManager handle NAT, DHCP and DNS for the network
     networking.networkmanager.ensureProfiles.profiles.personal = {
       connection = {
         id = "personal";
@@ -48,7 +45,6 @@ in
       ipv6.method = "disabled";
     };
 
-    # DNS (53) and DHCP (67), only on the personal network
     networking.firewall.interfaces.${cfg.lanInterface} = {
       allowedTCPPorts = [ 53 ];
       allowedUDPPorts = [
