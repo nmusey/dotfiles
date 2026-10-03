@@ -8,9 +8,10 @@
   config = lib.mkIf config.modules.services.ssh.enable {
     environment.systemPackages = with pkgs; [
       openssh
+
+      ghostty.terminfo
     ];
 
-    environment.enableAllTerminfo = true;
     services.openssh = {
       enable = true;
       settings.PasswordAuthentication = true;
