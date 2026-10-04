@@ -17,6 +17,7 @@
         modules.dev.javascript.enable = true;
         modules.dev.lua.enable = true;
         modules.dev.nix.enable = true;
+        modules.dev.php.enable = true;
         modules.dev.rust.enable = true;
         modules.dev.unity.enable = true;
         modules.dev.zig.enable = true;

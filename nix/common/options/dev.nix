@@ -36,6 +36,11 @@
       default = true;
       description = "enable Nix development tooling (formatters, language servers, linters)";
     };
+    php.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "enable PHP/Laravel programming environment";
+    };
     rust.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -61,6 +66,7 @@
     ../dev/javascript.nix
     ../dev/lua.nix
     ../dev/nix.nix
+    ../dev/php.nix
     ../dev/rust.nix
     ../dev/unity.nix
     ../dev/zig.nix
