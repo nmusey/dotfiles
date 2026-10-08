@@ -2,6 +2,16 @@
 let
   cfg = config.modules.services.personalnet;
   subnet = "10.42.0.0/24";
+
+  homelab = {
+    mac = "e4:5f:01:b9:2c:da";
+    ip = "10.42.0.201";
+    subdomains = [
+      "budget" "cloud" "dragons" "git" "ha" "media" "pgadmin" "pihole"
+      "prowlarr" "qbittorrent" "radarr" "search" "sonarr" "sync" "vault"
+      "watch" "www"
+    ];
+  };
 in
 {
   config = lib.mkIf cfg.enable {
@@ -44,6 +54,14 @@ in
       };
       ipv6.method = "disabled";
     };
+
+    environment.etc."NetworkManager/dnsmasq-shared.d/homelab.conf".text = ''
+      dhcp-host=${homelab.mac},${homelab.ip}
+      address=/home.lan/${homelab.ip}
+    '';
+
+    networking.hosts.${homelab.ip} =
+      [ "home.lan" ] ++ map (s: "${s}.home.lan") homelab.subdomains;
 
     networking.firewall.interfaces.${cfg.lanInterface} = {
       allowedTCPPorts = [ 53 ];
