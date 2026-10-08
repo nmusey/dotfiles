@@ -16,11 +16,16 @@
       enable = true;
       capSysNice = true;
     };
+    
+    environment.sessionVariables = {
+      PROTONPATH = "GE-Proton";
+    };
 
     environment.systemPackages = with pkgs; [
       lutris
       prismlauncher
-      wine
+      wine64
+      winetricks
       umu-launcher
     ];
   };
