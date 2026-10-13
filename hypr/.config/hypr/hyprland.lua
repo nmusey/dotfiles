@@ -141,8 +141,23 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
 hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
 
-local primary_monitor = "HDMI-A-2"
-local secondary_monitor = "DP-2"
+local primary_monitor = "DP-2"
+local secondary_monitor = "DP-1"
+
+hl.monitor({
+    output = primary_monitor,
+    mode = "2560x1440@165",
+    position = "0x0",
+    scale = 1,
+})
+
+hl.monitor({
+    output = secondary_monitor,
+    mode = "1920x1080@60",
+    position = "auto-up",
+    scale = 1,
+})
+
 
 hl.config({
     general = {
@@ -230,20 +245,6 @@ hl.config({
 hl.workspace_rule({ workspace = "1", monitor = primary_monitor, default = true })
 hl.workspace_rule({ workspace = "9", monitor = primary_monitor })
 hl.workspace_rule({ workspace = "10", monitor = secondary_monitor, default = true })
-
-hl.monitor({
-    output = "HDMI-A-2",
-    mode = "2560x1440@165",
-    position = "0x0",
-    scale = 1,
-})
-
-hl.monitor({
-    output = "DP-2",
-    mode = "1920x1080@60",
-    position = "auto-up",
-    scale = 1,
-})
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("xrandr --output " .. primary_monitor .. " --primary")
