@@ -78,6 +78,11 @@
       default = false;
       description = "enable ALVR";
     };
+    wayvnc.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "enable wayvnc to share the hyprland desktop over vnc";
+    };
     wivrn.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -104,6 +109,7 @@
     ../services/ssh.nix
     ../services/sync.nix
     ../services/tailscale.nix
+    ../services/wayvnc.nix
     ../services/wivrn.nix
     ../services/x.nix
   ];

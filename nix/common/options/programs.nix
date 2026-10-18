@@ -26,6 +26,11 @@
       default = false;
       description = "enable openrgb";
     };
+    proton.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable proton mail, pass, and vpn";
+    };
     quickshell.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -44,6 +49,7 @@
     ../programs/kanata.nix
     ../programs/neovim.nix
     ../programs/openrgb.nix
+    ../programs/proton.nix
     ../programs/quickshell.nix
     ../programs/zsh.nix
   ];

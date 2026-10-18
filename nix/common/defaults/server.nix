@@ -26,6 +26,7 @@
         modules.programs.git.enable = true;
         modules.programs.neovim.enable = true;
         modules.programs.openrgb.enable = false;
+        modules.programs.proton.enable = false;
         modules.programs.quickshell.enable = false;
         modules.programs.zsh.enable = true;
 
@@ -40,6 +41,7 @@
         modules.services.ssh.enable = true;
         modules.services.sync.enable = true;
         modules.services.tailscale.enable = false;
+        modules.services.wayvnc.enable = false;
         modules.services.wivrn.enable = false;
         modules.services.vr.enable = false;
     };
