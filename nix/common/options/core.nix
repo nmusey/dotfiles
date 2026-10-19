@@ -21,6 +21,11 @@
       default = true;
       description = "enable miscellaneous cli/developer packages";
     };
+    documentation.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = "enable better documentation programs";
+    };
     gaming.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
