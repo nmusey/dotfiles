@@ -4,8 +4,10 @@
 set -euo pipefail
 
 session="${1:-$(basename "$PWD")}"
+# tmux rewrites . and : in session names; match that so has-session finds it
+session="${session//[.:]/_}"
 
-if ! tmux has-session -t "$session" 2>/dev/null; then
+if ! tmux has-session -t "=$session" 2>/dev/null; then
     tmux new-session -d -s "$session" -n scratch
     tmux new-window -t "$session" -n nvim "nvim"
     tmux new-window -t "$session" -n claude "claude"
