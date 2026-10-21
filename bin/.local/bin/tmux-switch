@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Ignore user-level fzf defaults (height/border) so the popup styling is predictable
+unset FZF_DEFAULT_OPTS
+
+# Fuzzy-pick a tmux session, most recently used first.
+# Inside tmux: switch-client. Outside: attach.
+current="$(tmux display-message -p '#{session_name}' 2>/dev/null || true)"
+
+target="$(
+    tmux list-sessions -F '#{session_activity}'$'\t''#{session_name}'$'\t''#{session_windows}'$'\t''#{session_attached}' \
+        | sort -t$'\t' -k1,1nr \
+        | awk -F'\t' -v cur="$current" -v now="$(date +%s)" '
+            function ago(s) {
+                if (s < 60) return "now"
+                if (s < 3600) return int(s / 60) "m ago"
+                if (s < 86400) return int(s / 3600) "h ago"
+                return int(s / 86400) "d ago"
+            }
+            $2 != cur {
+                dot = ($4 > 0) ? "\033[32m●\033[0m" : " "
+                printf "%s\t%s \033[1;38;5;117m%-28s\033[0m \033[38;5;215m%2sw\033[0m  \033[38;5;110m%s\033[0m\n", $2, dot, $2, $3, ago(now - $1)
+            }' \
+        | fzf --ansi --reverse --no-sort --delimiter=$'\t' --with-nth=2 \
+              --prompt='  ❯ ' --pointer=' ' --gutter=' ' --marker=' ' --info=hidden --no-scrollbar \
+              --border=rounded --border-label=' tmux sessions ' \
+              --padding=1 --select-1 --exit-0 \
+              --color='bg:-1,fg:-1,bg+:#1f3a63,fg+:#ffffff:bold,hl:#f38ba8:bold,hl+:#d20f39:bold,prompt:#f5c2e7:bold,pointer:#89b4fa,border:#89b4fa,label:#f5c2e7:bold,query:#cdd6f4:bold' \
+        | cut -f1
+)"
+
+[[ -n "$target" ]] || exit 0
+
+if [[ -n "${TMUX:-}" ]]; then
+    tmux switch-client -t "$target"
+else
+    tmux attach -t "$target"
+fi
