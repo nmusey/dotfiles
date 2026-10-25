@@ -35,6 +35,7 @@
     systemd.packages = [ pkgs.hyprpolkitagent ];
 
     environment.systemPackages = with pkgs; [
+      hyprpolkitagent
       hyprpaper
       hyprshot
       hyprshutdown
