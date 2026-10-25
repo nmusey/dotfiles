@@ -28,6 +28,7 @@
         modules.programs.openrgb.enable = false;
         modules.programs.proton.enable = false;
         modules.programs.quickshell.enable = false;
+        modules.programs.zathura.enable = false;
         modules.programs.zsh.enable = true;
 
         modules.services.bluetooth.enable = false;

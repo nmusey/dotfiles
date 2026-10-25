@@ -78,6 +78,18 @@
       default = false;
       description = "enable ALVR";
     };
+    vm = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "enable libvirt/qemu for running a windows vm";
+      };
+      usbVendors = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        default = [ "1b1c" ];
+        description = "usb vendor ids that vm-usb-passthrough attaches to a vm";
+      };
+    };
     wayvnc.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -109,6 +121,7 @@
     ../services/ssh.nix
     ../services/sync.nix
     ../services/tailscale.nix
+    ../services/vm.nix
     ../services/wayvnc.nix
     ../services/wivrn.nix
     ../services/x.nix

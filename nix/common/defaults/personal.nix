@@ -29,6 +29,7 @@
         modules.programs.openrgb.enable = true;
         modules.programs.proton.enable = true;
         modules.programs.quickshell.enable = true;
+        modules.programs.zathura.enable = true;
         modules.programs.zsh.enable = true;
 
         modules.services.bluetooth.enable = true;
@@ -45,5 +46,6 @@
         modules.services.wayvnc.enable = true;
         modules.services.wivrn.enable = false;
         modules.services.vr.enable = false;
+        modules.services.vm.enable = true;
     };
 }

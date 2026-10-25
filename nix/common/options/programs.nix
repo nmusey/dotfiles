@@ -36,6 +36,11 @@
       default = false;
       description = "Enable quickshell desktop shell toolkit";
     };
+    zathura.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable zathura as the default pdf and image viewer";
+    };
     zsh.enable = lib.mkOption {
       type = lib.types.bool;
       default = true;
@@ -51,6 +56,7 @@
     ../programs/openrgb.nix
     ../programs/proton.nix
     ../programs/quickshell.nix
+    ../programs/zathura.nix
     ../programs/zsh.nix
   ];
 }

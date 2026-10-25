@@ -32,6 +32,8 @@
       after = [ "graphical-session-pre.target" ];
     };
 
+    systemd.packages = [ pkgs.hyprpolkitagent ];
+
     environment.systemPackages = with pkgs; [
       hyprpaper
       hyprshot
@@ -50,7 +52,6 @@
     xdg.portal = {
       enable = true;
       extraPortals = with pkgs; [
-        xdg-desktop-portal-hyprland
         xdg-desktop-portal-gtk
       ];
 

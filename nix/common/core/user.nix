@@ -19,7 +19,6 @@
       ];
 
       packages = with pkgs; [
-        zathura
         imagemagick
         unzip
         yazi
