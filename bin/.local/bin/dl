@@ -1,0 +1,118 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Download files using a per-domain stored token.
+#   dl token <domain> <token>   save a token for a domain
+#   dl show <domain>            print the stored token for a domain
+#   dl clear <domain>           remove the token for a domain
+#   dl get <url> [-o file]      download, sending the token as a Bearer header
+
+store="${XDG_CONFIG_HOME:-$HOME/.config}/dl/tokens"
+
+usage() {
+    echo "usage: dl token <domain> <token>" >&2
+    echo "       dl show <domain>" >&2
+    echo "       dl clear <domain>" >&2
+    echo "       dl get <url> [-o file]" >&2
+    exit 1
+}
+
+# Extract the host from a url (scheme, userinfo, port and path removed)
+host_of() {
+    local h="${1#*://}"
+    h="${h%%/*}"
+    h="${h##*@}"
+    echo "${h%%:*}"
+}
+
+# Find a token for a host, falling back to parent domains (a.b.com -> b.com)
+find_token() {
+    local host="$1"
+    [[ -f "$store" ]] || return 1
+    while [[ -n "$host" ]]; do
+        local tok
+        tok="$(awk -F'\t' -v d="$host" '$1 == d { print $2; exit }' "$store")"
+        if [[ -n "$tok" ]]; then
+            echo "$tok"
+            return 0
+        fi
+        [[ "$host" == *.* ]] || break
+        host="${host#*.}"
+    done
+    return 1
+}
+
+cmd_token() {
+    [[ $# -eq 2 ]] || usage
+    local domain tok tmp
+    domain="$(host_of "$1")"
+    tok="$2"
+    mkdir -p "$(dirname "$store")"
+    touch "$store"
+    chmod 600 "$store"
+    tmp="$(mktemp)"
+    awk -F'\t' -v d="$domain" '$1 != d' "$store" > "$tmp"
+    printf '%s\t%s\n' "$domain" "$tok" >> "$tmp"
+    cat "$tmp" > "$store"
+    rm -f "$tmp"
+    echo "saved token for $domain"
+}
+
+cmd_show() {
+    [[ $# -eq 1 ]] || usage
+    local domain
+    domain="$(host_of "$1")"
+    find_token "$domain" || { echo "dl: no token for $domain" >&2; exit 1; }
+}
+
+cmd_clear() {
+    [[ $# -eq 1 ]] || usage
+    local domain tmp
+    domain="$(host_of "$1")"
+    if [[ ! -f "$store" ]] || ! awk -F'\t' -v d="$domain" '$1 == d { f = 1 } END { exit !f }' "$store"; then
+        echo "dl: no token stored for $domain" >&2
+        exit 1
+    fi
+    tmp="$(mktemp)"
+    awk -F'\t' -v d="$domain" '$1 != d' "$store" > "$tmp"
+    cat "$tmp" > "$store"
+    rm -f "$tmp"
+    echo "cleared token for $domain"
+}
+
+cmd_get() {
+    local url="" out=""
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            -o) [[ $# -ge 2 ]] || usage; out="$2"; shift 2 ;;
+            -*) usage ;;
+            *) [[ -z "$url" ]] || usage; url="$1"; shift ;;
+        esac
+    done
+    [[ -n "$url" ]] || usage
+    [[ "$url" == *://* ]] || url="https://$url"
+
+    local host tok
+    host="$(host_of "$url")"
+    if ! tok="$(find_token "$host")"; then
+        echo "dl: no token for $host (run: dl token $host <token>)" >&2
+        exit 1
+    fi
+
+    # Header goes via stdin so the token never appears in the process list
+    local args=(-fL --config - "$url")
+    if [[ -n "$out" ]]; then
+        args+=(-o "$out")
+    else
+        args+=(-O -J)
+    fi
+    printf 'header = "Authorization: Bearer %s"\n' "$tok" | curl "${args[@]}"
+}
+
+case "${1:-}" in
+    token) shift; cmd_token "$@" ;;
+    show) shift; cmd_show "$@" ;;
+    clear) shift; cmd_clear "$@" ;;
+    get) shift; cmd_get "$@" ;;
+    *) usage ;;
+esac
