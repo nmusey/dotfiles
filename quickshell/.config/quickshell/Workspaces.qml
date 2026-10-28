@@ -32,8 +32,8 @@ RowLayout {
         "obsidian.AppImage": "",
         "com.obsidian.Obsidian": "",
         "Code": "",
-        "discord": "",
-        "Discord": ""
+        "discord": "󰙯",
+        "Discord": "󰙯"
     })
     readonly property string defaultIcon: "󱂬"
 
