@@ -14,7 +14,7 @@
     git.enable = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      description = "enable git";
+      description = "Enable git";
     };
     kanata.enable = lib.mkOption {
       type = lib.types.bool;
@@ -24,12 +24,12 @@
     neovim.enable = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      description = "enable neovim";
+      description = "Enable neovim";
     };
     openrgb.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
-      description = "enable openrgb";
+      description = "Enable openrgb";
     };
     proton.enable = lib.mkOption {
       type = lib.types.bool;
@@ -49,7 +49,7 @@
     zsh.enable = lib.mkOption {
       type = lib.types.bool;
       default = true;
-      description = "enable zsh";
+      description = "Enable zsh";
     };
   };
 
