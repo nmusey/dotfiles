@@ -14,7 +14,7 @@
     variables.global.username = "nick";
 
     presets.personal = true; 
-    modules.core.nvidia.enable = true;
+    modules.base.nvidia.enable = true;
     modules.services.personalnet = {
       enable = true;
       lanInterface = "enp38s0";

@@ -21,6 +21,6 @@
     };
 
     # Overwrite options or modules. Eg:
-    # modules.core.nvidia.enable = true;
+    # modules.base.nvidia.enable = true;
   };
 }

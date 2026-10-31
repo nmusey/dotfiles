@@ -15,7 +15,7 @@
   };
 
   imports = [
-    ./options/core.nix
+    ./options/base.nix
     ./options/dev.nix
     ./options/programs.nix
     ./options/services.nix

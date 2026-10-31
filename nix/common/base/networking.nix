@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.modules.core.networking.enable {
+  config = lib.mkIf config.modules.base.networking.enable {
     networking = {
       networkmanager = {
         enable = true;

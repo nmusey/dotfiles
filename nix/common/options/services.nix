@@ -37,9 +37,9 @@
       description = "enable NordVPN with modifications to make it work";
     };
     ntfs.enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "enable ntfs filesystem support";
+      type = lib.types.bool;
+      default = false;
+      description = "enable ntfs filesystem support";
     };
     personalnet = {
       enable = lib.mkOption {

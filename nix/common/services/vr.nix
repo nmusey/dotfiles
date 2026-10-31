@@ -7,7 +7,7 @@
 {
   config = lib.mkIf config.modules.services.vr.enable {
     # Unfree packages are required - ensure they are enabled.
-    # Ensure config.modules.core.nvidia.enable = true as well if using NVidia GPU
+    # Ensure config.modules.base.nvidia.enable = true as well if using NVidia GPU
 
     programs.alvr = {
       enable = true;

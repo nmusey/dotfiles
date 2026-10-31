@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.modules.core.audio.enable {
+  config = lib.mkIf config.modules.base.audio.enable {
     security.rtkit.enable = true;
 
     services.pipewire = {

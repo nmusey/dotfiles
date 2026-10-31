@@ -24,5 +24,5 @@ sudo nixos-rebuild switch --flake .#$HOSTNAME
 ### Host template
 In `configuration.nix`, replace the hostname, add host-specific packages under
 `environment.systemPackages`, and enable modules.
-Modules are listed in [options/](../common/options), split into `core`, `dev`,
+Modules are listed in [options/](../common/options), split into `base`, `dev`,
 `programs` and `services`; each file declares its modules' options and defaults.

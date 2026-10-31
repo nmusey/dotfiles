@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.modules.core.developer.enable {
+  config = lib.mkIf config.modules.base.developer.enable {
     environment.systemPackages = with pkgs; [
       ripgrep
       fzf

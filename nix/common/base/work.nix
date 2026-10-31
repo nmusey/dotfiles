@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.modules.core.work.enable {
+  config = lib.mkIf config.modules.base.work.enable {
     networking.hosts = {
       "127.0.0.1" = [ "katipult.test" ];
     };

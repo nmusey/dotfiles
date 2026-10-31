@@ -6,7 +6,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.modules.core.ai.enable {
+  config = lib.mkIf config.modules.base.ai.enable {
     environment.systemPackages = [
       inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];

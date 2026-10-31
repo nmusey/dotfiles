@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.modules.core.user.enable {
+  config = lib.mkIf config.modules.base.user.enable {
     users.users.${config.variables.global.username} = {
       isNormalUser = true;
       shell = pkgs.zsh;
