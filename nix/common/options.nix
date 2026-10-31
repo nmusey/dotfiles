@@ -20,6 +20,12 @@
       ];
       description = "public ssh keys authorized to log in as the user";
     };
+
+    variables.global.secretsFile = lib.mkOption {
+      type = lib.types.str;
+      default = "/etc/secrets.env";
+      description = "env file holding secrets for services that take an environment file";
+    };
   };
 
   imports = [
