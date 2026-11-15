@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
-# Deploys the local .env (and proton.conf, if present) to a freshly
-# installed Pi and restarts every service that reads them.
+# Deploys the local .env (and proton.conf, if present) to the Pi and
+# restarts every service that reads them.
 #
-# Run via `make post-install` (also run automatically at the end of
-# `make install-remote`), which passes the target
-# and any SSH options (SSH_OPTS) from the Makefile's connection settings.
+# Run via `make secrets`, which passes the target and any SSH options
+# (SSH_OPTS) from the Makefile's connection settings.
 #
 # Usage: scripts/post-install-secrets.sh <ssh-target> [path-to-env]
 

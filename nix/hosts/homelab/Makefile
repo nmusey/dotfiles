@@ -1,9 +1,9 @@
 # Build and deploy the homelab from any NixOS machine.
 #
-# First install: `make install-remote [DISK=/dev/...]` formats the Pi's disk
-# over SSH with nixos-anywhere + disko.nix and installs this flake. The
-# current OS on the Pi needs root SSH or passwordless sudo (kexec needs root);
-# wired ethernet is more reliable for the reconnect after kexec.
+# The Pi must already run NixOS from the standard aarch64 SD image (FIRMWARE +
+# NIXOS_SD partitions); `make deploy` switches it to this flake in place.
+# There's no remote reinstall: nixos-anywhere needs kexec, and the Pi 4's
+# spin-table firmware can't offline CPUs for it.
 #
 # Connecting: if ~/.ssh/config has a `Host homelab` entry (or whatever
 # SSH_HOST is set to), that's used as-is and nothing from .env is needed.
@@ -53,8 +53,7 @@ REBUILD := NIX_SSHOPTS="$(SSH_OPTS)" \
 HELPER_ENV := SSH_OPTS="$(SSH_OPTS)"
 
 .DEFAULT_GOAL := help
-.PHONY: help stage build deploy deploy-native test boot rollback secrets \
-        install-remote post-install ssh
+.PHONY: help stage build deploy deploy-native test boot rollback secrets ssh
 
 help: ## List targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  %-15s %s\n", $$1, $$2}'
@@ -87,18 +86,6 @@ rollback: ## Switch the server back to its previous generation
 
 secrets: ## Upload .env (and proton.conf) to the server and restart everything that reads them
 	@$(HELPER_ENV) scripts/post-install-secrets.sh $(TARGET) $(ENV_FILE)
-
-# --- First install ---------------------------------------------------------
-# After installing, wait for the Pi to answer on SSH, then post-install. The scripts/ helpers each do one step;
-# these targets are the supported way to run them.
-
-install-remote: stage ## First install over SSH via nixos-anywhere (WIPES the Pi; DISK=/dev/... optional), then deploy secrets
-	$(HELPER_ENV) scripts/install-remote.sh $(TARGET) $(DISK)
-	$(HELPER_ENV) scripts/wait-for-ssh.sh $(TARGET)
-	$(HELPER_ENV) scripts/post-install-secrets.sh $(TARGET) $(ENV_FILE)
-
-post-install: ## Deploy .env and proton.conf to a fresh install
-	$(HELPER_ENV) scripts/post-install-secrets.sh $(TARGET) $(ENV_FILE)
 
 ssh: ## Open a shell on the server
 	$(SSH)
