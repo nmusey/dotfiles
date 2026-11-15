@@ -57,6 +57,8 @@ return {
             vim.keymap.set('n', '<leader>ff', pickers.find_files, {})
             vim.keymap.set('n', '<leader>fi', pickers.treesitter, {})
             vim.keymap.set('n', '<leader>fs', pickers.live_grep, {})
+            vim.keymap.set('n', '<leader>fd', pickers.lsp_document_symbols, { desc = "Symbols in buffer" })
+            vim.keymap.set('n', '<leader>fw', pickers.lsp_dynamic_workspace_symbols, { desc = "Symbols in repo" })
             vim.keymap.set('n', '<leader>bb', pickers.buffers, {})
             vim.keymap.set('n', '<leader>fc', pickers.grep_string, {})
             vim.keymap.set('n', '<leader>fm', pickers.marks, {})
