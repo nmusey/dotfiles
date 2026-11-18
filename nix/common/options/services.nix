@@ -156,18 +156,6 @@
       default = false;
       description = "enable Paperless-ngx document archive";
     };
-    personalnet = {
-      enable = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-        description = "share the wan connection to a personal network on the lan interface";
-      };
-      lanInterface = lib.mkOption {
-        type = lib.types.str;
-        default = "";
-        description = "interface the personal network's access point is plugged into";
-      };
-    };
     plasma.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -313,7 +301,6 @@
     ../services/nordvpn.nix
     ../services/ntfs.nix
     ../services/paperless.nix
-    ../services/personalnet.nix
     ../services/plasma.nix
     ../services/postgres.nix
     ../services/prowlarr.nix

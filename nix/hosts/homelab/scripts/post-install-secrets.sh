@@ -25,7 +25,7 @@ if [ ! -f "$ENV_FILE" ]; then
   exit 1
 fi
 
-SECRET_UNITS=(miniflux.service readeck.service searx.service)
+SECRET_UNITS=(miniflux.service readeck.service searx-init.service searx.service)
 
 echo ">> Copying $ENV_FILE to $TARGET:/etc/homelab/homelab.env"
 ssh ${SSH_OPTS:-} "$TARGET" 'sudo mkdir -p /etc/homelab && sudo install -m 600 /dev/stdin /etc/homelab/homelab.env' < "$ENV_FILE"

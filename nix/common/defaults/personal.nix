@@ -33,7 +33,7 @@
         modules.programs.zsh.enable = lib.mkDefault true;
 
         modules.services.bluetooth.enable = lib.mkDefault true;
-        modules.services.dlna.enable = lib.mkDefault false;
+        modules.services.dlna.enable = lib.mkDefault true;
         modules.services.docker.enable = lib.mkDefault true;
         modules.services.hyprland.enable = lib.mkDefault true;
         modules.services.plasma.enable = lib.mkDefault true;

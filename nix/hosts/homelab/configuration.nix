@@ -25,7 +25,7 @@
       bazarr.enable = true;
       caddy = {
         enable = true;
-        address = "10.42.0.201";
+        address = "192.168.0.101";
         landingPage = ./static;
       };
       docker.enable = false;
@@ -146,6 +146,8 @@
               ] (name: noCheck pyPrev.${name})
             )
           ];
+          ffmpeg-full = prev.ffmpeg-full.override { withWhisper = false; };
+          ffmpeg_8-full = prev.ffmpeg_8-full.override { withWhisper = false; };
           music-assistant = noCheck prev.music-assistant;
           paperless-ngx = noCheck prev.paperless-ngx;
         }
@@ -156,6 +158,7 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICKmxw4WI7k418uf4nOfps7+CZK9nxG/bM245a4309mK nick@nixos"
     ];
     services.flatpak.enable = lib.mkForce false;
+    system.autoUpgrade.enable = lib.mkForce false;
     security.sudo.wheelNeedsPassword = false;
     nix.settings.trusted-users = [
       "root"

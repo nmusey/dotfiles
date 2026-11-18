@@ -15,10 +15,6 @@
 
     presets.personal = true; 
     modules.base.nvidia.enable = true;
-    modules.services.personalnet = {
-      enable = true;
-      lanInterface = "enp38s0";
-    };
 
     boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
     environment.variables = {

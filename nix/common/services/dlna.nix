@@ -13,6 +13,7 @@
       ];
 
       inotify = "yes";
+      wide_links = "yes";
       log_level = "info";
       notify_interval = 1;
     };
