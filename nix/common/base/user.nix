@@ -27,8 +27,10 @@
         localsend
         fastfetch
         speedtest-cli
+        progress
+        file
         (mpv.override { scripts = [ mpvScripts.mpris ]; })
-
+        (pkgs.ffmpeg-full.override { withUnfree = true; })
       ];
     };
 
