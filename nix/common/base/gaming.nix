@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.modules.core.gaming.enable {
+  config = lib.mkIf config.modules.base.gaming.enable {
     programs.steam = {
       enable = true;
       gamescopeSession.enable = true;
@@ -16,7 +16,19 @@
       enable = true;
       capSysNice = true;
     };
-    
+
+    programs.gamemode.enable = true;
+
+    hardware.graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+
+    boot.kernelModules = [ "ntsync" ];
+    services.udev.extraRules = ''
+      KERNEL=="ntsync", MODE="0660", TAG+="uaccess"
+    '';
+
     environment.sessionVariables = {
       PROTONPATH = "GE-Proton";
     };
@@ -24,8 +36,9 @@
     environment.systemPackages = with pkgs; [
       lutris
       prismlauncher
-      wine64
+      wineWow64Packages.stagingFull
       winetricks
+      vulkan-tools
       umu-launcher
     ];
   };

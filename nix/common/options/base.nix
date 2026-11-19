@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  options.modules.core = {
+  options.modules.base = {
     ai.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
@@ -10,6 +10,11 @@
       type = lib.types.bool;
       default = false;
       description = "enable local AI models (ollama, open-webui)";
+    };
+    boot.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "enable systemd-boot with a plymouth splash";
     };
     audio.enable = lib.mkOption {
       type = lib.types.bool;
@@ -64,17 +69,17 @@
   };
 
   imports = [
-    ../core/ai.nix
-    ../core/audio.nix
-    ../core/boot.nix
-    ../core/developer.nix
-    ../core/gaming.nix
-    ../core/localai.nix
-    ../core/networking.nix
-    ../core/nvidia.nix
-    ../core/settings.nix
-    ../core/user.nix
-    ../core/work.nix
-    ../core/zsa.nix
+    ../base/ai.nix
+    ../base/audio.nix
+    ../base/boot.nix
+    ../base/developer.nix
+    ../base/gaming.nix
+    ../base/localai.nix
+    ../base/networking.nix
+    ../base/nvidia.nix
+    ../base/settings.nix
+    ../base/user.nix
+    ../base/work.nix
+    ../base/zsa.nix
   ];
 }

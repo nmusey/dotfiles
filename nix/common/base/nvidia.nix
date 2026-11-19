@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.modules.core.nvidia.enable {
+  config = lib.mkIf config.modules.base.nvidia.enable {
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 

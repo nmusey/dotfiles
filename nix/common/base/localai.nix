@@ -5,7 +5,7 @@
   ...
 }:
 {
-  config = lib.mkIf config.modules.core.localai.enable {
+  config = lib.mkIf config.modules.base.localai.enable {
     environment.systemPackages = with pkgs; [
       open-webui
     ];

@@ -4,7 +4,11 @@ nvim/.config/coc
 nvim/.config/nvim/plugin
 
 .env
+proton.conf
 
 nerd-fonts
 
 bin/.local/var
+
+result
+result-*
