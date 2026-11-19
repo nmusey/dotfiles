@@ -36,7 +36,7 @@
 
     fileSystems."/ssd" = {
       device = "/dev/disk/by-uuid/880CA3F60CA3DE06";
-      fsType = "ntfs3";
+      fsType = "ntfs-3g";
       options = [ "nofail" "uid=1000" "gid=100" "umask=022" ];
     };
   };
