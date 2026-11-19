@@ -9,3 +9,6 @@ proton.conf
 nerd-fonts
 
 bin/.local/var
+
+result
+result-*

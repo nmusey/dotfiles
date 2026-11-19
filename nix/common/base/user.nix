@@ -29,6 +29,7 @@
         speedtest-cli
         progress
         file
+        unrar
         (mpv.override { scripts = [ mpvScripts.mpris ]; })
         (pkgs.ffmpeg-full.override { withUnfree = true; })
       ];
