@@ -28,11 +28,15 @@
       "i2c-piix4"
     ];
 
-    fileSystems."/hdd" = {
-      device = "/dev/disk/by-uuid/C026837926836F6A";
-      fsType = "ntfs3";
-      options = [ "nofail" "uid=1000" "gid=100" "umask=022" ];
+    fileSystems."/data" = {
+      device = "/dev/disk/by-label/data";
+      fsType = "ext4";
+      options = [ "nofail" ];
     };
+
+    systemd.tmpfiles.rules = [
+      "d /data 0755 ${config.variables.global.username} users -"
+    ];
 
     fileSystems."/ssd" = {
       device = "/dev/disk/by-uuid/880CA3F60CA3DE06";
