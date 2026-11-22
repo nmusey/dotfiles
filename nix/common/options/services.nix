@@ -37,6 +37,12 @@
         default = "127.0.0.1";
         description = "lan address that the domain and its subdomains resolve to";
       };
+      dnsProvider = lib.mkOption {
+        type = lib.types.nullOr lib.types.str;
+        default = null;
+        example = "namecheap";
+        description = "lego dns provider for a let's encrypt wildcard certificate, credentials read from the secrets file; null uses caddy's local ca";
+      };
       landingPage = lib.mkOption {
         type = lib.types.nullOr lib.types.path;
         default = null;

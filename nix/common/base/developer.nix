@@ -12,7 +12,7 @@
       bat
       fd
       eza
-      btop
+      (btop.override { cudaSupport = config.modules.base.nvidia.enable; })
       htop
       tmux
       stow

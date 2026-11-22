@@ -11,9 +11,9 @@
 # SSH_KEY. Anything can be overridden per run, e.g.
 # `make deploy SSH_HOST=otherpi` or `make deploy HOST_IP=homelab.local`.
 #
-# x86_64 hosts need `boot.binfmt.emulatedSystems = [ "aarch64-linux" ];` to
-# build anything here locally. `make deploy-native` skips
-# that by building on the Pi itself.
+# `deploy` and `boot` build on the Pi itself. `deploy-local` and `boot-local`
+# build on this machine instead, which on x86_64 needs
+# `boot.binfmt.emulatedSystems = [ "aarch64-linux" ];`.
 
 SHELL    := bash
 ENV_FILE ?= .env
@@ -53,7 +53,7 @@ REBUILD := NIX_SSHOPTS="$(SSH_OPTS)" \
 HELPER_ENV := SSH_OPTS="$(SSH_OPTS)"
 
 .DEFAULT_GOAL := help
-.PHONY: help stage build deploy deploy-native test boot rollback secrets ssh
+.PHONY: help stage build deploy deploy-local test boot boot-local rollback secrets ssh
 
 help: ## List targets
 	@grep -E '^[a-z-]+:.*## ' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  %-15s %s\n", $$1, $$2}'
@@ -69,16 +69,19 @@ stage:
 build: stage ## Build the system closure locally (no deploy)
 	nix build $(SYSTEM).toplevel
 
-deploy: stage ## Build locally, copy to the server, and switch to it
-	$(REBUILD) switch
-
-deploy-native: stage ## Same as deploy, but build on the Pi itself (no emulation)
+deploy: stage ## Build on the Pi and switch to it
 	$(REBUILD) --build-host $(TARGET) switch
 
-test: stage ## Build, copy and activate without making it the boot default
+deploy-local: stage ## Build locally, copy to the Pi, and switch to it
+	$(REBUILD) switch
+
+test: stage ## Build locally, copy and activate without making it the boot default
 	$(REBUILD) test
 
-boot: stage ## Build, copy and make it the default for the next reboot only
+boot: stage ## Build on the Pi and make it the default for the next reboot
+	$(REBUILD) --build-host $(TARGET) boot
+
+boot-local: stage ## Build locally, copy to the Pi, and make it the default for the next reboot
 	$(REBUILD) boot
 
 rollback: ## Switch the server back to its previous generation

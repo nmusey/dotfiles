@@ -29,7 +29,7 @@
     ];
 
     fileSystems."/data" = {
-      device = "/dev/disk/by-label/data";
+      device = "/dev/disk/by-uuid/e84257a9-d2f0-47c3-9f1f-79dbd375f147";
       fsType = "ext4";
       options = [ "nofail" ];
     };

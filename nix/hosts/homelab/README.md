@@ -6,8 +6,10 @@ through `make` (`make help` lists the targets).
 
 ## Setup
 
-- **Building on x86_64** needs `boot.binfmt.emulatedSystems = [ "aarch64-linux" ];`
-  (tower already has it). Otherwise use `make deploy-native` to build on the Pi.
+- **Where it builds:** `make deploy` and `make boot` build on the Pi.
+  `make deploy-local` and `make boot-local` build on this machine instead, which
+  on x86_64 needs `boot.binfmt.emulatedSystems = [ "aarch64-linux" ];` (tower
+  already has it).
 - **Connection:** add a `Host homelab` entry to `~/.ssh/config`, or fill in
   `HOST_IP` / `DEPLOY_USER` / `DEPLOY_PORT` / `SSH_KEY` in `.env`.
 - **Secrets** (both git-ignored):
@@ -32,16 +34,20 @@ the Pi's spin-table firmware can't take CPUs offline for it.
 Then, once:
 
 - `make ssh`, then `sudo tailscale up`.
-- Trust Caddy's local CA on your devices, or HTTPS will warn on every
-  `*.home.lan` site: `sudo find /var/lib/caddy -name root.crt`.
+- HTTPS uses a Let's Encrypt wildcard for `*.musey.casa`, issued over DNS-01
+  through the Namecheap API. Fill in `NAMECHEAP_API_*` in `.env` and whitelist
+  the home's public IPv4 in Namecheap before deploying. If the public IP
+  changes, renewals fail until the whitelist is updated. Check with
+  `journalctl -u acme-order-renew-musey.casa`.
 - Give the backup drive the ext4 label `backup` so it mounts at `/mnt/backup`.
-- Finish each service's setup in its web UI. Links are on `https://home.lan/admin/`.
+- Finish each service's setup in its web UI. Links are on `https://musey.casa/admin/`.
 
 ## Updating
 
 | Change | Command |
 |---|---|
-| Any `.nix` file | `make deploy` (or `make deploy-native`) |
+| Any `.nix` file | `make deploy` (or `make deploy-local`) |
+| Apply on next reboot instead of now | `make boot` (or `make boot-local`) |
 | Try a change without making it the boot default | `make test` |
 | `.env` or `proton.conf` | `make secrets` |
 | Undo the last deploy | `make rollback` |
