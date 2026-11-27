@@ -52,7 +52,10 @@
       seerr.enable = true;
       sonarr.enable = true;
       sync.enable = true;
-      tailscale.enable = true;
+      tailscale = {
+        enable = true;
+        advertiseRoutes = [ "192.168.0.101/32" ];
+      };
       valkey.enable = true;
     };
 

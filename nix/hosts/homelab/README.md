@@ -33,7 +33,12 @@ the Pi's spin-table firmware can't take CPUs offline for it.
 
 Then, once:
 
-- `make ssh`, then `sudo tailscale up`.
+- `make ssh`, then `sudo tailscale up`. In the Tailscale admin console:
+  - Approve the homelab's `192.168.0.101/32` subnet route.
+  - Under DNS, add `192.168.0.101` as a split DNS nameserver for `musey.casa`.
+
+  After that, `*.musey.casa` resolves and loads from any tailnet device, even
+  away from home. Linux clients also need `sudo tailscale set --accept-routes`.
 - HTTPS uses a Let's Encrypt wildcard for `*.musey.casa`, issued over DNS-01
   through the Namecheap API. Fill in `NAMECHEAP_API_*` in `.env` and whitelist
   the home's public IPv4 in Namecheap before deploying. If the public IP

@@ -15,6 +15,7 @@
 
     presets.personal = true; 
     modules.base.nvidia.enable = true;
+    services.tailscale.extraSetFlags = [ "--accept-routes" ];
 
     boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
     environment.variables = {

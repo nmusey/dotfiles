@@ -241,10 +241,18 @@
       default = false;
       description = "enable sync packages between systems";
     };
-    tailscale.enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "enable tailscale";
+    tailscale = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "enable tailscale";
+      };
+      advertiseRoutes = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        default = [ ];
+        example = [ "192.168.0.0/24" ];
+        description = "lan subnets this machine routes into the tailnet, each must be approved in the tailscale admin console";
+      };
     };
     valkey.enable = lib.mkOption {
       type = lib.types.bool;
